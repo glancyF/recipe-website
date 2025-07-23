@@ -26,7 +26,7 @@ class AddRecipeForm extends FormsValidation {
     controlName(fieldControlElement,errorMessages){
         const pattern = /^[A-Za-z\s]+$/;
         if(!pattern.test(fieldControlElement.value.trim())){
-            errorMessages.push(fieldControlElement.title)
+            return;
         }
     }
 
@@ -65,7 +65,7 @@ class AddRecipeForm extends FormsValidation {
             const pattern = /^[A-Za-z0-9+\-,.%:;() ]+(,[A-Za-z0-9+\-,.%:;() ]+)*$/;
 
             if (!value) {
-                showIngredientError('Ingredient cannot be empty');
+
                 return;
             }
             if (!pattern.test(value)) {
@@ -135,7 +135,8 @@ class AddRecipeForm extends FormsValidation {
     ImagePreview() {
         const imagePreview = document.getElementById('imagePreview');
         const imageInput = document.getElementById('recipeImage');
-
+        const removeBtn =document.getElementById('removeImageBtn');
+        const previewWrapper = document.getElementById('imagePreviewWrapper');
         if (imageInput && imagePreview) {
             imageInput.addEventListener('change', () => {
                 const file = imageInput.files[0];
@@ -143,13 +144,18 @@ class AddRecipeForm extends FormsValidation {
                     const reader = new FileReader();
                     reader.onload = e => {
                         imagePreview.src = e.target.result;
-                        imagePreview.style.display = 'block';
+                        previewWrapper.style.display ='block';
                     };
                     reader.readAsDataURL(file);
                 } else {
                     imagePreview.style.display = 'none';
                     imagePreview.src = '';
                 }
+            });
+            removeBtn.addEventListener('click',()=>{
+               imageInput.value='';
+               imagePreview.src='';
+               previewWrapper.style.display='none';
             });
         }
     }

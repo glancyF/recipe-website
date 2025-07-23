@@ -6,7 +6,7 @@ include_once("../includes/header.php");
 
 <div class="form-wrapper">
     <form class="AddForm" method="post" enctype="multipart/form-data" novalidate data-js-form>
-        <p class="field">
+        <div class="field">
             <label class="field__label" for="recipeImage">Upload image</label>
             <input
             class="field__control"
@@ -19,9 +19,15 @@ include_once("../includes/header.php");
             aria-errormessage="recipeImage-errors"
             accept=".jpg,.jpeg,.png"
             />
+        <div class="image-preview-wrapper" id="imagePreviewWrapper">
+            <!-- v js potom pridavam -->
             <img id="imagePreview" alt="Image preview" />
+            <button type="button" id="removeImageBtn" aria-label="Remove image">
+                <i class="fa fa-times"></i> <!-- ИСПРАВИЛ -->
+            </button>
+        </div>
         <span class="field__errors" id="recipeImage-errors" data-js-form-field-errors></span>
-        </p>
+            </div>
 
         <p class="field">
             <label class="field__label" for="name">Title</label>
@@ -43,7 +49,7 @@ include_once("../includes/header.php");
             <textarea class="field__control" id="description" name="description" minlength="10" maxlength="300" required></textarea>
             <span class="field__errors" id="description-errors" data-js-form-field-errors></span>
         </p>
-        <p class="field">
+        <div class="field" id="ingredientsField">
             <label class="field__label" for="IngredientInput">Ingredients</label>
             <div class="Ingredients-wrapper">
                 <div class="ingredients-input">
@@ -52,6 +58,7 @@ include_once("../includes/header.php");
                     id="IngredientInput"
                     class="field__control"
                     placeholder="Add ingredient.."
+                    required
                     />
                     <button type="button" id="addIngredientBtn" aria-label="Add ingredient">
                         <i class="fa fa-plus"></i>
@@ -60,10 +67,10 @@ include_once("../includes/header.php");
             <ul id="ingredientsList" class="ingredients-list">
                 <!-- dynamicky pomoci js delam to -->
             </ul>
-            <input type="hidden" name="ingredients" id="ingredientsHiddenInput" required />
+            <input type="hidden" name="ingredients" id="ingredientsHiddenInput"  />
            </div>
         <span class="field__errors" id="IngredientInput-errors" data-js-form-field-errors></span>
-        </p>
+        </div>
         <p class="field">
             <label class="field__label" for="instruction">Instruction</label>
             <textarea class="field__control" id="instruction" name="instruction" required minlength="20" maxlength="5000"></textarea>
@@ -75,7 +82,7 @@ include_once("../includes/header.php");
                     name="category"
                     id="category"
                     required>
-
+                <option value="" disabled selected>Select category</option>
                 <option value="breakfast">Breakfast</option>
                 <option value="lunch">Lunch</option>
                 <option value="dinner">Dinner </option>
