@@ -12,7 +12,7 @@ class AddRecipeForm extends FormsValidation {
             errorMessages.push('Image is required');
             return;
         }
-        const maxSizeMB = 5;
+        const maxSizeMB = 2;
         const maxSizeBytes = maxSizeMB * 1024*1024;
 
         const validTypes =['image/jpeg','image/png','image/jpg'];
@@ -26,7 +26,7 @@ class AddRecipeForm extends FormsValidation {
     controlName(fieldControlElement,errorMessages){
         const pattern = /^[A-Za-z\s]+$/;
         if(!pattern.test(fieldControlElement.value.trim())){
-            return;
+            errorMessages.push()
         }
     }
 
@@ -72,6 +72,12 @@ class AddRecipeForm extends FormsValidation {
                 showIngredientError('Ingredient contains invalid characters');
                 return;
             }
+            const existingIngredients =[...list.querySelectorAll('.ingredient-text')]
+                .map(el => el.textContent.trim().toLowerCase());
+            if(existingIngredients.includes(value.toLowerCase())){
+                showIngredientError("Ingredient already added");
+                return;
+            }
             clearIngredientError();
 
            const li = document.createElement('li');
@@ -84,6 +90,7 @@ class AddRecipeForm extends FormsValidation {
         list.appendChild(li)
         input.value='';
         updateHidden();
+        input.required = false;
         });
         list?.addEventListener('click', (e) =>{
             const {target} = e;
@@ -92,6 +99,10 @@ class AddRecipeForm extends FormsValidation {
                const li = target.closest('li');
                li.remove();
                updateHidden();
+               if (list.querySelectorAll('li').length === 0) {
+                   input.required = true;
+               }
+
            }
         });
     }
@@ -120,7 +131,12 @@ class AddRecipeForm extends FormsValidation {
         const errors = fieldControlElement.validity
         const errorMessages = []
         this.Controls(fieldControlElement,errorMessages)
-
+        if(fieldControlElement.id === 'IngredientInput'){
+            if(!fieldControlElement.value.trim())
+            {
+                errorMessages.push('Please add at least one ingredient');
+            }
+        }
         Object.entries(this.errorMessages).forEach( ([errorType,getErrorMessage])=> {
             if(errors[errorType])
             {
@@ -161,7 +177,7 @@ class AddRecipeForm extends FormsValidation {
     }
 
     init() {
-        super.bindEvents();
+        super.init();
         this.bindIngredientControls();
         this.ImagePreview();
     }
@@ -170,12 +186,11 @@ class AddRecipeForm extends FormsValidation {
         return '../AddRecipe/add_recipe.php'
     }
     getSuccessRedirect(){
-        return '../main/main.php';
+        return '../main/index.php';
     }
 
-}
 
-document.addEventListener('DOMContentLoaded', () => {
-   const form = new AddRecipeForm();
-   form.init()
-});
+}
+new AddRecipeForm();
+
+

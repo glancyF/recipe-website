@@ -63,13 +63,14 @@ include_once("../includes/header.php");
                     <button type="button" id="addIngredientBtn" aria-label="Add ingredient">
                         <i class="fa fa-plus"></i>
                     </button>
+                    <span class="field__errors" id="IngredientInput-errors" data-js-form-field-errors></span>
                 </div>
             <ul id="ingredientsList" class="ingredients-list">
                 <!-- dynamicky pomoci js delam to -->
             </ul>
             <input type="hidden" name="ingredients" id="ingredientsHiddenInput"  />
            </div>
-        <span class="field__errors" id="IngredientInput-errors" data-js-form-field-errors></span>
+
         </div>
         <p class="field">
             <label class="field__label" for="instruction">Instruction</label>
@@ -102,7 +103,7 @@ include_once("../includes/header.php");
 
 
 </div>
-<script src="add_recipe.js" type="module"></script>
+<script src="/AddRecipe/add_recipe.js" type="module"></script>
 
 <?php
 include_once("../includes/footer.php");

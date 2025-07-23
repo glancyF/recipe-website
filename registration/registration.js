@@ -20,11 +20,12 @@ export class FormsValidation {
     }
     manageErrors(fieldControlElement,errorMessages) {
         // необязательная проверка, так как в случае отсутствия ошибок, мэп обновит поле. Оставленно во избежание мерцаний или залипаний ДОМ, и якобы оптимизации
-        const fieldErrorsElement = fieldControlElement.parentElement.querySelector(this.selectors.fieldErrors)
+        const fieldErrorsElement = fieldControlElement.parentElement?.querySelector(this.selectors.fieldErrors)
         if(errorMessages.length === 0){
             fieldErrorsElement.innerHTML = ''
             return
         }
+        if (!fieldErrorsElement) return;
         fieldErrorsElement.innerHTML = errorMessages
             .map((message) => `<span class="field__errors">${message}</span>`)
             .join('')
@@ -94,6 +95,7 @@ export class FormsValidation {
         return '/main/index.php';
     }
     async onSubmit(event) {
+        event.preventDefault();
 
         const { target } = event;
         const isFormElement = target.matches(this.selectors.form);
@@ -123,7 +125,7 @@ export class FormsValidation {
             return;
         }
 
-        event.preventDefault();
+
 
         const formData = new FormData(target);
         const submitButton = target.querySelector('button[type=submit]');
