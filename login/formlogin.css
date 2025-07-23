@@ -1,0 +1,85 @@
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 160px);
+}
+form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2em;
+    max-width: 500px;
+    width: 100%;
+    margin: 30px;
+    padding: 40px;
+    border: 6px solid coral;
+    background-color: cornsilk;
+    border-radius: 15px;
+    font-size: 1.1rem;
+}
+input, button {
+    border: 3px solid darksalmon;
+    border-radius: 5px;
+    transition-duration: 0.2s;
+    padding: 0.75em 1em;
+    font-size: 1.05rem;
+}
+:is(input, button):focus {
+    outline: none;
+    border-color: slateblue;
+}
+form button {
+    background-color: darksalmon;
+    color: white;
+    font-weight: bold;
+    padding: 1em 1.5em;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.4rem;
+    width: fit-content;
+    align-self: center;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+form button:hover {
+    background-color: #c66b5c;
+}
+.field {
+    display: flex;
+    flex-direction: column;
+    margin-block: 0;
+}
+.field:has([required]) .field__label::after
+ {
+    content: "*";
+    padding-inline: 0.25em;
+    color: red;
+}
+.field__errors {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.4em;
+    margin-top: 0.5em;
+    font-size: 0.8em;
+    color: red;
+    line-height: 1.25;
+    min-height: 1.2em; /* Примерная высота одной строки ошибки */
+    visibility: visible;
+}
+.field__errors:empty {
+
+    visibility: hidden;
+}
+
+.redirect-text {
+
+    text-align: center;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.redirect-text a {
+    color: #f97316;
+    font-weight: bold;
+    text-decoration: underline;
+}

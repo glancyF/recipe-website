@@ -1,0 +1,36 @@
+
+
+/* Блок с главным рецептом */
+.recipes-main {
+    display: flex;
+    max-width: 900px;
+    margin: 2rem auto;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.recipes-main-image {
+    width: 300px;
+    object-fit: cover;
+}
+.recipe-main-content {
+    padding: 1rem;
+}
+.recipe-main-content h2 {
+    margin-bottom: 0.5rem;
+}
+.recipes-main-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #0077cc;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+}
+.recipes-main-button:hover {
+    background-color: #005fa3;
+}
+
+
