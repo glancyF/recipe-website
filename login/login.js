@@ -3,7 +3,7 @@ import {FormsValidation} from "../registration/registration.js";
 class LoginValidation extends FormsValidation{
     constructor() {
         super();
-
+        // this._eventsBound = false; подумай завтра на счет этого!
     }
     init() {
         this.bindEvents();

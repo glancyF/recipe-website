@@ -6,6 +6,7 @@ $extra_css = '
     <link rel="stylesheet" href="/registration/formregister.css">
     <link rel="stylesheet" href="/profile/settings/settings-styles.css">
     <link rel="stylesheet" href="/profile/password_change/password_change-styles.css">
+    <link rel="stylesheet" href="/profile/posts/post-style.css">
 ';
 session_start();
 include "../includes/header.php";

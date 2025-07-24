@@ -38,7 +38,7 @@ include_once("../includes/header.php");
             required
             minlength="3"
             maxlength="100"
-            pattern="^[A-Za-z\s]+$"
+            pattern="^[A-Za-z\s,]+$"
             title="Name must contain only letters and spaces"
             aria-errormessage="name-errors"
             />
@@ -58,6 +58,7 @@ include_once("../includes/header.php");
                     id="IngredientInput"
                     class="field__control"
                     placeholder="Add ingredient.."
+                    maxlength="50"
                     required
                     />
                     <button type="button" id="addIngredientBtn" aria-label="Add ingredient">

@@ -1,0 +1,56 @@
+document.addEventListener('DOMContentLoaded',()=>{
+   const container = document.getElementById('recipesContainer');
+   const pagination = document.getElementById('pagination');
+   let currentPage = 1;
+
+   async function fetchRecipes(page){
+       const response = await fetch(`/profile/posts/post.php?page=${page}`,{
+           credentials: 'include'
+       });
+       const data = await response.json();
+
+       if(data.status !== 'success'){
+           container.innerHTML = '<p>Failed to load recipes.</p>'
+           return;
+       }
+       renderRecipes(data.recipes);
+       renderPagination(data.total, data.page, data.limit);
+   }
+   function renderRecipes(recipes){
+       container.innerHTML='';
+       if(recipes.length ===0){
+           container.innerHTML = '<p>No recipes found.</p>';
+           return;
+       }
+       recipes.forEach(recipe =>{
+           const card = document.createElement('div');
+           card.classList.add('recipe-card');
+           card.innerHTML = `
+                <img src="/uploads/${recipe.image_path}" alt="Image">
+                <h3>${recipe.name}</h3>
+                <p>${recipe.description}</p>
+                <span class="category">${recipe.category}</span>
+                <p class="date">${new Date(recipe.created_at).toLocaleDateString()}</p>
+                <div class="view"> <a href="../../recipes/recipes.php?id=${recipe.id}">View</a></div>
+            `;
+           container.appendChild(card);
+       });
+   }
+
+   function renderPagination(total,currentPage,limit){
+       const totalPages = Math.ceil(total/limit);
+
+       pagination.innerHTML='';
+
+       for (let i =1;i <=totalPages; i++){
+           const btn=document.createElement('button');
+           btn.textContent = i;
+           btn.disabled = i ===currentPage;
+           btn.addEventListener('click',() =>{
+              fetchRecipes(i);
+           });
+           pagination.appendChild(btn);
+       }
+   }
+   fetchRecipes(currentPage);
+});
