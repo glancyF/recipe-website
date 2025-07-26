@@ -26,6 +26,9 @@ document.addEventListener('DOMContentLoaded',()=>{
            const card = document.createElement('div');
            card.classList.add('recipe-card');
            card.innerHTML = `
+                <div class="card-header">
+                    <i class="fas fa-trash delete-icon" data-id="${recipe.id}" title="Delete"></i>
+                </div>             
                 <img src="/uploads/${recipe.image_path}" alt="Image">
                 <h3>${recipe.name}</h3>
                 <p>${recipe.description}</p>
@@ -34,6 +37,8 @@ document.addEventListener('DOMContentLoaded',()=>{
                 <div class="view"> <a href="../../recipes/recipes.php?id=${recipe.id}">View</a></div>
             `;
            container.appendChild(card);
+
+
        });
    }
 
@@ -53,4 +58,27 @@ document.addEventListener('DOMContentLoaded',()=>{
        }
    }
    fetchRecipes(currentPage);
+
+
+    container.addEventListener('click',async (e)=>{
+        if(e.target.classList.contains('delete-icon')){
+            const id=e.target.dataset.id;
+            if(confirm('Are you sure you want to delete this recipe?')){
+                const res = await fetch(`/profile/posts/delete.php?id=${id}`,{
+                    method: 'DELETE',
+                    credentials: 'include'
+                });
+                const result = await res.json()
+                if(result.status ==='success'){
+                    fetchRecipes(currentPage);
+
+                }
+                else{
+                    alert('Failed to delete recipe');
+                }
+            }
+        }
+    });
 });
+
+

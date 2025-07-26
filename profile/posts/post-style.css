@@ -134,3 +134,29 @@ h2 {
     background-color: #ccc;
     cursor: not-allowed;
 }
+
+.recipe-card {
+    position: relative; /* Нужно, чтобы абсолютное позиционирование работало внутри */
+    padding-bottom: 2rem; /* Чтобы иконка не перекрывалась контентом */
+}
+
+.card-header {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    background: none; /* Убрать возможные отступы и фон */
+    box-shadow: none;
+    padding: 0;
+    display: block; /* Больше не нужно flex, если только не используешь для другого */
+}
+
+.delete-icon {
+    color: #d9534f;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: color 0.2s ease;
+}
+
+.delete-icon:hover {
+    color: #c9302c;
+}
