@@ -85,13 +85,14 @@
 }
 
 .view {
-
+    justify-content: flex-end;
     position: absolute;
     bottom: 1rem;
     left: 1rem;
     display: flex;
     align-items: center;
-    margin: 0;
+    margin-top: 1rem;
+    padding-top: 0.5rem;
 }
 
 .view a {
@@ -176,4 +177,7 @@ h2 {
 .category.highlight-category {
     color: rgba(250, 67, 0, 0.94);
     font-weight: 600;
+}
+.recipe-card .date {
+    margin-bottom: 0.4rem;
 }
