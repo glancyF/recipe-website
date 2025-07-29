@@ -1,6 +1,6 @@
 import {FormsValidation} from "../registration/registration.js";
 
-class AddRecipeForm extends FormsValidation {
+export class AddRecipeForm extends FormsValidation {
     constructor() {
         super();
 
@@ -183,14 +183,14 @@ class AddRecipeForm extends FormsValidation {
     }
 
     getEndpoint() {
-        return '../AddRecipe/add_recipe.php'
+        return '/AddRecipe/add_recipe.php';
     }
     getSuccessRedirect(){
-        return '../main/index.php';
+        return '/main/index.php';
     }
 
 
 }
-new AddRecipeForm();
+
 
 

@@ -104,7 +104,7 @@ include_once("../includes/header.php");
 
 
 </div>
-<script src="/AddRecipe/add_recipe.js" type="module"></script>
+<script src="/AddRecipe/add_recipe_init.js" type="module"></script>
 
 <?php
 include_once("../includes/footer.php");

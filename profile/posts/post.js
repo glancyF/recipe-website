@@ -28,11 +28,15 @@ document.addEventListener('DOMContentLoaded',()=>{
            card.innerHTML = `
                 <div class="card-header">
                     <i class="fas fa-trash delete-icon" data-id="${recipe.id}" title="Delete"></i>
-                </div>             
+                </div>
+                <a href="/profile/posts/edit.php?id=${recipe.id}">
+                    <i class="fas fa-edit"></i>
+                </a>             
                 <img src="/uploads/${recipe.image_path}" alt="Image">
                 <h3>${recipe.name}</h3>
                 <p>${recipe.description}</p>
                 <span class="category">${recipe.category}</span>
+                
                 <p class="date">${new Date(recipe.created_at).toLocaleDateString()}</p>
                 <div class="view"> <a href="../../recipes/recipes.php?id=${recipe.id}">View</a></div>
             `;
