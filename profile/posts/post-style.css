@@ -83,15 +83,20 @@
     text-decoration: none;
     font-size: 0.9rem;
 }
+
 .view {
+
+    position: absolute;
+    bottom: 1rem;
+    left: 1rem;
     display: flex;
-    justify-content: flex-end;
-    margin-top: auto;
+    align-items: center;
+    margin: 0;
 }
 
 .view a {
     text-decoration: none;
-    color: #5b8dfd;
+    color: #f36d02;
     font-weight: 500;
     font-size: 0.9rem;
     transition: color 0.2s ease;
@@ -137,26 +142,38 @@ h2 {
 
 .recipe-card {
     position: relative; /* Нужно, чтобы абсолютное позиционирование работало внутри */
-    padding-bottom: 2rem; /* Чтобы иконка не перекрывалась контентом */
+   /* padding-bottom: 2rem;  Чтобы иконка не перекрывалась контентом */
+    padding: 1.5rem 1rem 2rem 1rem;
 }
 
 .card-header {
     position: absolute;
-    bottom: 0.5rem;
-    left: 0.5rem;
-    background: none; /* Убрать возможные отступы и фон */
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    gap: 1rem;
+    background: none;
     box-shadow: none;
     padding: 0;
-    display: block; /* Больше не нужно flex, если только не используешь для другого */
-}
 
-.delete-icon {
-    color: #d9534f;
-    cursor: pointer;
+}
+.delete-icon,.fa-edit {
     font-size: 1.1rem;
+    cursor: pointer;
+    color: #a69d9d;
     transition: color 0.2s ease;
+    padding: 0 0.2rem;
+
 }
 
 .delete-icon:hover {
     color: #c9302c;
+}
+
+.fa-edit:hover {
+    color: #f36d02;
+}
+.category.highlight-category {
+    color: rgba(250, 67, 0, 0.94);
+    font-weight: 600;
 }

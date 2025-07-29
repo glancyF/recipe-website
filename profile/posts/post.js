@@ -27,24 +27,31 @@ document.addEventListener('DOMContentLoaded',()=>{
            card.classList.add('recipe-card');
            card.innerHTML = `
                 <div class="card-header">
+                    <a href="/profile/posts/edit.php?id=${recipe.id}" title="Edit">
+                    <i class="fas fa-edit"></i></a>  
                     <i class="fas fa-trash delete-icon" data-id="${recipe.id}" title="Delete"></i>
+                   
                 </div>
-                <a href="/profile/posts/edit.php?id=${recipe.id}">
-                    <i class="fas fa-edit"></i>
-                </a>             
+                           
                 <img src="/uploads/${recipe.image_path}" alt="Image">
-                <h3>${recipe.name}</h3>
-                <p>${recipe.description}</p>
-                <span class="category">${recipe.category}</span>
-                
+                <h3>${escapeHtml(recipe.name)}</h3>
+                <p>${escapeHtml(recipe.description)}</p>
+                <span class="category ${recipe.category === 'lunch' ? 'highlight-category' : ''}">
+                    ${escapeHtml(recipe.category)}
+                </span>
                 <p class="date">${new Date(recipe.created_at).toLocaleDateString()}</p>
-                <div class="view"> <a href="../../recipes/recipes.php?id=${recipe.id}">View</a></div>
+                <div class="view"> <a href="/recipes/recipes.php?id=${recipe.id}">View</a></div>
             `;
            container.appendChild(card);
 
 
        });
    }
+    function escapeHtml(text) {
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
 
    function renderPagination(total,currentPage,limit){
        const totalPages = Math.ceil(total/limit);
@@ -56,7 +63,8 @@ document.addEventListener('DOMContentLoaded',()=>{
            btn.textContent = i;
            btn.disabled = i ===currentPage;
            btn.addEventListener('click',() =>{
-              fetchRecipes(i);
+              currentPage = i;
+              fetchRecipes(currentPage)
            });
            pagination.appendChild(btn);
        }
