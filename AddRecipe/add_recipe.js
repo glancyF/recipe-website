@@ -43,10 +43,10 @@ export class AddRecipeForm extends FormsValidation {
         const list = document.getElementById('ingredientsList');
         const hiddenInput = document.getElementById('ingredientsHiddenInput');
         const updateHidden = () => {
-          const ingredients = [...list.querySelectorAll('li')]
-              .map(li => li.querySelector('.ingredient-text')?.textContent.trim())
-              .filter(Boolean);
-          hiddenInput.value = ingredients.join(';');
+            const ingredients = [...list.querySelectorAll('li')]
+                .map(li => li.querySelector('.ingredient-text')?.textContent.trim())
+                .filter(Boolean);
+            hiddenInput.value = ingredients.join(';');
         };
 
         const showIngredientError = (message) => {
@@ -61,7 +61,7 @@ export class AddRecipeForm extends FormsValidation {
         }
 
         addBtn?.addEventListener('click',()=> {
-           const value = input.value.trim();
+            const value = input.value.trim();
             const pattern = /^[A-Za-z0-9+\-,.%:;() ]+(,[A-Za-z0-9+\-,.%:;() ]+)*$/;
 
             if (!value) {
@@ -80,30 +80,30 @@ export class AddRecipeForm extends FormsValidation {
             }
             clearIngredientError();
 
-           const li = document.createElement('li');
+            const li = document.createElement('li');
             li.innerHTML = `
             <span class="ingredient-text">${value}</span>
             <button type="button" class="remove-ingredient" aria-label="Remove ingredient">
                 <i class="fa fa-times"></i>
             </button>
         `;
-        list.appendChild(li)
-        input.value='';
-        updateHidden();
-        input.required = false;
+            list.appendChild(li)
+            input.value='';
+            updateHidden();
+            input.required = false;
         });
         list?.addEventListener('click', (e) =>{
             const {target} = e;
             if(target.closest('.remove-ingredient'))
-           {
-               const li = target.closest('li');
-               li.remove();
-               updateHidden();
-               if (list.querySelectorAll('li').length === 0) {
-                   input.required = true;
-               }
+            {
+                const li = target.closest('li');
+                li.remove();
+                updateHidden();
+                if (list.querySelectorAll('li').length === 0) {
+                    input.required = true;
+                }
 
-           }
+            }
         });
     }
 
@@ -169,17 +169,33 @@ export class AddRecipeForm extends FormsValidation {
                 }
             });
             removeBtn.addEventListener('click',()=>{
-               imageInput.value='';
-               imagePreview.src='';
-               previewWrapper.style.display='none';
+                imageInput.value='';
+                imagePreview.src='';
+                previewWrapper.style.display='none';
             });
         }
+    }
+    ResetChanges(){
+        const form = document.querySelector('form');
+        if(!form) return;
+        form.addEventListener('reset',()=>{
+           const list = document.getElementById('ingredientsList');
+           const hiddenInput = document.getElementById('ingredientsHiddenInput');
+           const input = document.getElementById('IngredientInput');
+            if (list) list.innerHTML = '';
+            if (hiddenInput) hiddenInput.value = '';
+            if (input) {
+                input.value = '';
+                input.required = true;
+            }
+        });
     }
 
     init() {
         super.init();
         this.bindIngredientControls();
         this.ImagePreview();
+        this.ResetChanges();
     }
 
     getEndpoint() {
@@ -191,6 +207,5 @@ export class AddRecipeForm extends FormsValidation {
 
 
 }
-
 
 
