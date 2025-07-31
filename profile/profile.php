@@ -16,8 +16,7 @@ include "../includes/header.php";
         <aside class="profile-sidebar">
             <ul class="menu">
                 <li><a href="?section=overview">Overview</a></li>
-                <li><a href="?section=posts">Favourites</a></li>
-                <li><a href="?section=likes">Likes</a></li>
+                <li><a href="?section=posts">My recipes</a></li>
                 <li><a href="?section=settings">Settings</a></li>
                 <li><a href="?section=change_pass">Change password</a></li>
                 <li><a href="../profile/logout.php">Logout</a></li>
