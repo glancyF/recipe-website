@@ -8,7 +8,12 @@ if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
 
 $recipeId = (int)$_GET['id'];
 
-$stmt = $conn->prepare("SELECT * FROM recipes WHERE id = ? ");
+$stmt = $conn->prepare("
+    SELECT r.*, u.username 
+    FROM recipes r 
+    JOIN users u ON r.user_id = u.id 
+    WHERE r.id = ?
+");
 if(!$stmt){
     die("Prepare failed: " . $conn->error);
 }
