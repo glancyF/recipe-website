@@ -23,7 +23,7 @@ $loggedIn = isset($_COOKIE['auth_token']);
     <nav>
         <ul class="nav">
             <li><a href="/main/index.php"><i class="main"></i>
-                <img src="/images/logo.png" alt="Logo icon" class="logo">
+                <img src="/images/logo2.png" alt="Logo icon" class="logo">
                 </a></li>
             <?php if ($loggedIn): ?>
             <li><a href="/AddRecipe/addRecipe.php"><i class="ad-recipe"></i>Add a recipe</a></li>
