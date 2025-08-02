@@ -94,7 +94,11 @@
     margin-bottom: 1rem;
 
 }
-
+.profile-sidebar .menu a:hover,
+.profile-sidebar .menu a.active {
+    background-color: var(--color-green-dark);
+    color: #fff;
+}
 .profile-info {
     list-style: none;
     padding: 0;

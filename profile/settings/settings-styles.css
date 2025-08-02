@@ -1,3 +1,5 @@
+@import url("/colors.css");
+
 .form-wrapper {
     display: flex;
     justify-content: center;
@@ -5,146 +7,119 @@
     min-height: calc(100vh - 160px);
     padding: 2rem;
 }
-.field__label-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 0.3em;
-}
 
+/* Универсальная форма (и settings, и password) */
 .settingsForm {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
-    width: 480px;
-    min-width: 480px;
+    gap: 2rem;
     max-width: 480px;
-    background-color: cornsilk;
-    border: 4px solid coral;
-    border-radius: 15px;
-
+    width: 480px;
+    margin: 2rem auto;
+    padding: 2.5rem 2rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
     font-size: 1rem;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-    padding-top: 3rem;
-    padding-bottom: 3rem;
-
 }
+
+/* Поля */
 .field {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    position: relative;
 }
 
 .field__label {
     font-weight: bold;
-    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
 }
 
-input[type="text"],
-input[type="email"] {
+.field:has([required]) .field__label::after {
+    content: "*";
+    color: red;
+    margin-left: 0.3em;
+}
+
+/* Инпуты */
+input, button, select, fieldset {
+    border: 2px solid var(--color-gray);
+    border-radius: 8px;
     padding: 0.75em 1em;
     font-size: 1.05rem;
-    border: 2px solid darksalmon;
-    border-radius: 6px;
-    background-color: #fff;
-    transition: border-color 0.2s ease;
+    background-color: var(--color-whiteish);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
 }
-input:focus{
+
+input:focus, select:focus {
     outline: none;
-    border-color: slateblue;
+    border-color: var(--color-green-dark);
+    background-color: #fff;
 }
 
-
-
-.radios {
-    gap:0.5rem;
-    padding: 0;
-    position: relative;
-    flex-direction: column;
-
-}
-.radios__legend{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    font-weight: bold;
-    font-size: 1.05rem;
-    margin-bottom: 0.3rem;
-    left: -1px;
-
-}
-.radios__label{
-    margin-right: 1em;
-    font-size: 1rem;
-
-}
-.radios__control {
-    margin-right: 0.4em;
-    left: -1px;
-}
 input[disabled] {
-    background-color: #f9f9f9;
+    background-color: var(--color-white);
     color: #555;
 }
+
+/* Ошибки */
+.field__errors {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    margin-top: 0.5em;
+    font-size: 0.85rem;
+    color: red;
+    line-height: 1.4;
+    min-height: 1.2em;
+    transition: opacity 0.2s ease-in-out;
+}
+.field__errors:empty {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    pointer-events: none;
+}
+.field__errors span {
+    display: block;
+}
+
+
 
 .field{
     position: relative;
 }
+/* Иконка редактирования — универсальная */
 .fa-pen {
     position: absolute;
-    top: -12px;
-    right: 8px;
-    background-color: cornsilk;
-    padding: 0.3em;
+    top: -0.5rem; /* над полем */
+    right: 0.25rem;
+
+    background-color: var(--color-whiteish);
+    padding: 0.35em;
     border-radius: 50%;
     font-size: 1rem;
     color: gray;
     cursor: pointer;
-    transition: color 0.2s ease-in-out;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
     z-index: 2;
 }
+
 .fa-pen:hover {
     transform: scale(1.1);
-    color: #d94700;
+    color: var(--color-green-dark);
 }
 
-
-.radios__legend .fa-pen{
-    top:0;
-    right: 0;
-}
-.radios .fa-pen {
-    position: absolute;
-    top: -1.2rem;   /* можно подправить по вкусу */
-    right: 0.2rem;
-    background-color: cornsilk;
-    padding: 0.3em;
-    border-radius: 50%;
-    font-size: 1rem;
-    color: gray;
-    cursor: pointer;
-    transition: color 0.2s ease-in-out;
-    z-index: 2;
-}
-.radios .fa-pen:hover {
-    transform: scale(1.1);
-    color: #d94700;
-
-}
-/* Выровнять кнопки */
-.reset-button,
-.submit-button {
-    display: flex;
-    justify-content: center;
-}
-
-.reset-button button,
-.submit-button button {
-    background-color: darksalmon;
+/* Кнопки */
+form button, .reset-button button, .submit-button button {
+    background-color: var(--color-green-dark);
     color: white;
     font-weight: bold;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     font-size: 1.25rem;
     width: 100%;
     max-width: 300px;
@@ -152,18 +127,85 @@ input[disabled] {
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
 }
-.field__errors {
-    display: block;
-    flex-direction: column;
-    row-gap: 0.4em;
-    margin-top: 0.5em;
-    font-size: 0.8em;
-    color: red;
-    line-height: 1.25;
-    min-height: 1.6em; /* Примерная высота одной строки ошибки */
-    visibility: visible;
+form button:hover, .reset-button button:hover, .submit-button button:hover {
+    background-color: #365d1e;
 }
-.field__errors:empty {
+.reset-button, .submit-button {
+    display: flex;
+    justify-content: center;
+}
 
-    visibility: hidden;
+/* Радиокнопки */
+.radios {
+    position: relative; /* Нужно, чтобы .fa-pen в .radios позиционировалась от нее */
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 0.5rem;
+    padding-top: 1.2rem; /* небольшой отступ сверху для иконки */
+}
+
+.radios .fa-pen {
+    position: absolute;
+    top: -1.25rem;
+    right: 0.25rem;
+    background-color: var(--color-whiteish);
+    padding: 0.35em;
+    border-radius: 50%;
+    font-size: 1rem;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    z-index: 2;
+}
+
+.radios .fa-pen:hover {
+    transform: scale(1.1);
+    color: var(--color-green-dark);
+}
+.radios__control {
+    vertical-align: middle;
+    transform: translateY(1px);
+}
+.radios__label {
+    font-size: 1rem;
+    cursor: pointer;
+}
+.radios:has(input[required]) .radios__legend::after {
+    content: " *";
+    color: red;
+    padding-left: 0.25em;
+}
+.radios .field__errors {
+    flex-basis: 100%;
+    margin-top: 0.2rem;
+}
+
+/* Чекбокс */
+.checkbox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+}
+.checkbox__label {
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: auto;
+}
+.checkbox__control {
+    margin-right: auto;
+}
+.checkbox:has(input[required]) .checkbox__label::after {
+    content: " *";
+    color: red;
+    padding-left: 0.25em;
+}
+.checkbox .field__errors {
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+    color: red;
+    line-height: 1.4;
 }

@@ -9,16 +9,17 @@ $extra_css = '
     <link rel="stylesheet" href="/profile/posts/post-style.css">
 ';
 session_start();
+$section = $_GET['section'] ?? 'overview';
 include "../includes/header.php";
 ?>
     <div class="profile-wrapper">
     <div class="profile-container">
         <aside class="profile-sidebar">
             <ul class="menu">
-                <li><a href="?section=overview">Overview</a></li>
-                <li><a href="?section=posts">My recipes</a></li>
-                <li><a href="?section=settings">Settings</a></li>
-                <li><a href="?section=change_pass">Change password</a></li>
+                <li><a href="?section=overview" class="<?= $section === 'overview' ? 'active' : '' ?>">Overview</a></li>
+                <li><a href="?section=posts" class="<?= $section === 'posts' ? 'active' : '' ?>">My recipes</a></li>
+                <li><a href="?section=settings" class="<?= $section === 'settings' ? 'active' : '' ?>">Settings</a></li>
+                <li><a href="?section=change_pass" class="<?= $section === 'change_pass' ? 'active' : '' ?>">Change password</a></li>
                 <li><a href="../profile/logout.php">Logout</a></li>
             </ul>
         </aside>

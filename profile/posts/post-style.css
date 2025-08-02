@@ -97,7 +97,7 @@
 
 .view a {
     text-decoration: none;
-    color: #f36d02;
+    color: var(--color-green-dark);
     font-weight: 500;
     font-size: 0.9rem;
     transition: color 0.2s ease;
@@ -172,12 +172,9 @@ h2 {
 }
 
 .fa-edit:hover {
-    color: #f36d02;
+    color: var(--color-green-dark);
 }
-.category.highlight-category {
-    color: rgba(250, 67, 0, 0.94);
-    font-weight: 600;
-}
+
 .recipe-card .date {
     margin-bottom: 0.4rem;
 }
