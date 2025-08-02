@@ -3,134 +3,151 @@
     justify-content: center;
     align-items: center;
     min-height: calc(100vh - 160px);
+    padding: 2rem;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    row-gap: 2em;
+    gap: 2rem;
     max-width: 500px;
     width: 100%;
-    margin: 30px;
-    padding: 40px;
-    border: 6px solid coral;
-    background-color: cornsilk;
-    border-radius: 15px;
-    font-size: 1.1rem;
+    margin: 2rem auto;
+    padding: 3rem 2.5rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
 }
 
-input, button, fieldset, select {
-    border: 3px solid darksalmon;
-    border-radius: 5px;
-    transition-duration: 0.2s;
+input,
+button,
+select,
+fieldset {
+    border: 2px solid var(--color-gray);
+    border-radius: 8px;
     padding: 0.75em 1em;
     font-size: 1.05rem;
+    background-color: var(--color-whiteish);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
-:is(input:not(.radios__control, .checkbox__control), button):is(:hover, :focus),
-:is(.radios__label, .checkbox__label):hover {
-    background-color: wheat;
-}
-
-:is(input, button, select):focus {
+input:focus,
+select:focus {
     outline: none;
-    border-color: slateblue;
+    border-color: var(--color-green-dark);
+    background-color: #fff;
 }
 
 form button {
-    background-color: darksalmon;
-    color: white;
+    background-color: var(--color-green-dark);
+    color: #fff;
     font-weight: bold;
-    padding: 1.2em 2em;
+    padding: 1rem 2rem;
     border: none;
-    border-radius: 6px;
-    font-size: 1.4rem;
-    width: fit-content;
-    align-self: center;
+    border-radius: 8px;
+    font-size: 1.25rem;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
 }
+
 form button:hover {
-    background-color: #c66b5c;
+    background-color: var(--color-green-dark);
 }
-
-
-
 
 .field {
     display: flex;
     flex-direction: column;
-    margin-block: 0;
 }
 
-.field:has([required]) .field__label::after,
-.radios:has(input[required]) .radios__legend::after {
+.field__label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.field:has([required]) .field__label::after {
     content: "*";
-    padding-inline: 0.25em;
     color: red;
+    margin-left: 0.3em;
 }
 
 .field__errors {
     display: flex;
     flex-direction: column;
-    row-gap: 0.4em;
+    gap: 0.4em;
     margin-top: 0.5em;
-    font-size: 0.8em;
+    font-size: 0.85rem;
     color: red;
-    line-height: 1.25;
-    min-height: 1.4em; /* Примерная высота одной строки ошибки */
-    visibility: visible;
+    line-height: 1.4;
 }
-.field__errors:empty {
-
-    visibility: hidden;
+.field__errors span {
+    display: block;
 }
-
-.radios {
-    padding: 10px;
-}
-
-.radios__control {
-    margin-right: 0;
-}
-.radios__control:first-of-type {
-    margin-left: 0;
+.checkbox {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
-.radios__label, .checkbox__label {
-    padding: 5px;
-    border: 2px solid transparent;
-    border-radius: 5px;
+.checkbox__label {
+    order: -1; /* Сначала текст, потом чекбокс */
+    font-weight: 600;
     cursor: pointer;
-    transition-duration: 0.2s;
+    left:-3px;
+    margin-right: auto;
 }
-.radios__control:focus-visible + .radios__label,
-.radios__control:focus[aria-invalid="true"] + .radios__label,
-.checkbox__control:focus-visible + .checkbox__label {
-    border-color: slateblue;
+
+.checkbox__control {
+    left:-3px;
+    margin-right: auto; /* чтобы прижать чекбокс к левому краю */
+
+}
+.radios {
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0 0 0.3rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: center;
+}
+.radios__control {
+    margin-right: 0.25rem;
+}
+.radios__label {
+    margin-right: 1rem;
+    cursor: pointer;
+
+}
+.radios:has(input[required]) .radios__legend::after,
+.checkbox:has(input[required]) .checkbox__label::after {
+    content: " *";
+    color: red;
+    padding-left: 0.25em;
+}
+
+.radios .field__errors,
+.checkbox .field__errors {
+    flex-basis: 100%;
+    margin-top: 0.2rem;
 }
 
 .checkbox {
-    flex-wrap: wrap;
-    flex-direction: row;
-    column-gap: 0.25em;
-}
-.checkbox .field__error {
-    flex-basis: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
 }
 
-.radios__legend {
-    transition-duration: 0.2s;
-    position: relative;
-    font-size: 1.10rem;
-    left: -10px;
-}
-.radios__label, .radios__control {
-    position: relative;
-    left: -10px;
-    font-size: 1.10rem;
-}
-/*вверху идет переопределение когда убираешь синия рамка здесь просто перезаписываем*/
-fieldset {
-    border: none;
+.checkbox .field__errors {
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+    color: red;
+    line-height: 1.4;
 }

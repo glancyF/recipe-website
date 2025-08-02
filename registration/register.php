@@ -91,6 +91,7 @@ include "../includes/header.php";
         <span  class="field__errors"  id="gender-errors" data-js-form-field-errors></span>
     </fieldset>
     <div class="field checkbox">
+        <label class="field__label checkbox__label" for="agreement">Agree with the requirements</label>
         <input
               class="checkbox__control"
               id="agreement"
@@ -99,7 +100,6 @@ include "../includes/header.php";
               required
               aria-errormessage="agreement-errors"
         />
-        <label class="field__label checkbox__label" for="agreement">Agree with the requirements</label>
         <span  class="field__errors"  id="agreement-errors" data-js-form-field-errors></span>
     </div>
    <button type="submit">Register</button>
