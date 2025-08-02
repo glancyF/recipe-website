@@ -11,7 +11,7 @@ $extra_css = '
 session_start();
 include "../includes/header.php";
 ?>
-
+    <div class="profile-wrapper">
     <div class="profile-container">
         <aside class="profile-sidebar">
             <ul class="menu">
@@ -29,6 +29,7 @@ include "../includes/header.php";
             loadSection($section);
             ?>
         </main>
+    </div>
     </div>
 
 <?php
