@@ -1,0 +1,13 @@
+:root{
+    --color-green-dark: #476622;
+    --color-green-light: #a8d06f;
+    --color-green-pale: #d7e5d2;
+    --color-whiteish: #e6f0f2;
+    --color-gray: #94a8af;
+    --color-text-dark: #2b2b2b;
+    --color-text-light: #ffffff;
+    --color-white: #ffffff;
+    --background-image-url: url("/images/Back2.jpg");
+    --background-color: #e6f0f2;
+    --background-mode: image;
+}
