@@ -94,10 +94,14 @@
     margin-bottom: 1rem;
 
 }
-.profile-sidebar .menu a:hover,
+/* тут были последние измения*/
 .profile-sidebar .menu a.active {
     background-color: var(--color-green-dark);
     color: #fff;
+}
+.profile-sidebar .menu a:hover{
+    background-color: rgba(71, 102, 34, 0.27);
+    color: var(--color-text-dark);
 }
 .profile-info {
     list-style: none;
