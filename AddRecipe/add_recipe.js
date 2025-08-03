@@ -131,7 +131,7 @@ export class AddRecipeForm extends FormsValidation {
         const errors = fieldControlElement.validity
         const errorMessages = []
         this.Controls(fieldControlElement,errorMessages)
-        if(fieldControlElement.id === 'IngredientInput'){
+        if(fieldControlElement.id === 'ingredientsHiddenInput'){
             if(!fieldControlElement.value.trim())
             {
                 errorMessages.push('Please add at least one ingredient');
