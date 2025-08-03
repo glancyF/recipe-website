@@ -59,17 +59,18 @@ include_once("../includes/header.php");
                     class="field__control"
                     placeholder="Add ingredient.."
                     maxlength="50"
-                    required
+
                     />
                     <button type="button" id="addIngredientBtn" aria-label="Add ingredient">
                         <i class="fa fa-plus"></i>
                     </button>
-                    <span class="field__errors" id="IngredientInput-errors" data-js-form-field-errors></span>
+
                 </div>
+                <span class="field__errors" id="IngredientInput-errors" data-js-form-field-errors></span>
             <ul id="ingredientsList" class="ingredients-list">
                 <!-- dynamicky pomoci js delam to -->
             </ul>
-            <input type="hidden" name="ingredients" id="ingredientsHiddenInput"  />
+            <input type="hidden" name="ingredients" id="ingredientsHiddenInput" required  />
            </div>
 
         </div>
