@@ -24,6 +24,10 @@ include "../recipes/recipe.php";
         <span class="updated">Last update <?= date("F j, Y", strtotime($recipe['updated_at'])) ?>
     </span>
     </div>
+    <div class="like-container" data-id="<?= htmlspecialchars($recipe['id']) ?>">
+        <i class="fa fa-heart<?= $recipe['liked'] ? ' liked' : '' ?>"></i>
+        <span class="like-count"><?= $recipe['like_count'] ?></span>
+    </div>
     <?php if (!empty($recipe['image_path'])): ?>
         <img src="/uploads/<?= htmlspecialchars($recipe['image_path']) ?>" alt="Recipe image">
     <?php endif; ?>
