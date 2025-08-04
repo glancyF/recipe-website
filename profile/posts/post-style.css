@@ -178,3 +178,50 @@ h2 {
 .recipe-card .date {
     margin-bottom: 0.4rem;
 }
+
+.like-container {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.like-container:hover {
+    background-color: rgba(255,255,255,1);
+}
+
+.like-container .fa-heart {
+    color: #aaa;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.like-container .fa-heart.liked {
+    color: #e74c3c;
+    transform: scale(1.2);
+}
+
+.like-count {
+    font-weight: 600;
+    color: #333;
+}
+.image-container {
+    position: relative;
+}
+
+.image-container img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}

@@ -32,8 +32,13 @@ document.addEventListener('DOMContentLoaded',()=>{
                     <i class="fas fa-trash delete-icon" data-id="${recipe.id}" title="Delete"></i>
                    
                 </div>
-                           
+                <div class="image-container">
                 <img src="/uploads/${recipe.image_path}" alt="Image">
+                <div class="like-container" data-id="${recipe.id}">
+                <i class="fa fa-heart${recipe.liked ? ' liked' : ''}"></i>
+                <span class="like-count">${recipe.like_count}</span>
+                </div>
+                </div>
                 <h3>${escapeHtml(recipe.name)}</h3>
                 <p>${escapeHtml(recipe.description)}</p>
                 <span class="category ${recipe.category === 'lunch' ? 'highlight-category' : ''}">
@@ -41,6 +46,8 @@ document.addEventListener('DOMContentLoaded',()=>{
                 </span>
                 <p class="date">${new Date(recipe.created_at).toLocaleDateString()}</p>
                 <div class="view"> <a href="/recipes/recipes.php?id=${recipe.id}">View</a></div>
+                
+                
             `;
            container.appendChild(card);
 
@@ -91,6 +98,29 @@ document.addEventListener('DOMContentLoaded',()=>{
             }
         }
     });
+
+
+    LikeClicker(container)
+
 });
 
-
+export function LikeClicker(container){
+    container.addEventListener('click',async (e) =>{
+        if (e.target.classList.contains('fa-heart')) {
+            const likeIcon = e.target;
+            const card = likeIcon.closest('.like-container');
+            const recipeId = card.dataset.id;
+            const res = await fetch(`/likes/toggle_like.php?id=${recipeId}`,{
+                method: 'POST',
+                credentials: 'include'
+            });
+            const result = await res.json();
+            if(result.status ==='success') {
+                likeIcon.classList.toggle('liked',result.liked);
+                card.querySelector('.like-count').textContent = result.like_count;
+            } else{
+                alert('Failed to like the recipe');
+            }
+        }
+    });
+}
