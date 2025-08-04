@@ -91,7 +91,8 @@
 .meta {
     display: flex;
     flex-wrap: wrap;
-    gap: 1.2rem;
+    justify-content: space-between;
+    gap: 1rem;
     margin: 0.5rem 0 1.5rem;
     font-size: 0.95rem;
     color: #666;
@@ -101,4 +102,32 @@
 .meta i {
     margin-right: 0.4rem;
     color: var(--color-gray);
+}
+.like-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 16px;
+    padding: 4px 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.like-container .fa-heart {
+    color: #aaa;
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.like-container .fa-heart.liked {
+    color: #e74c3c;
+    transform: scale(1.2);
+}
+
+.like-count {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
 }

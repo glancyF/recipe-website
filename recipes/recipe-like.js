@@ -1,6 +1,8 @@
-import {LikeClicker} from "../profile/posts/post.js";
+import {LikeClicker} from "/likes/likeClicker.js";
 
 document.addEventListener('DOMContentLoaded',()=>{
    const container = document.querySelector('.recipe-page');
-   LikeClicker(container);
+   if(container){
+       LikeClicker(container);
+   }
 });

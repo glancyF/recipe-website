@@ -5,7 +5,9 @@ require_once __DIR__ . '/../db.php';
 if (!isset($_GET['id']) || !is_numeric($_GET['id'])) {
     die('No valid recipe selected!');
 }
-
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 $recipeId = (int)$_GET['id'];
 
 $stmt = $conn->prepare("
@@ -29,17 +31,16 @@ if(!$recipe){
 $stmtLikes = $conn->prepare("SELECT COUNT(*) as total FROM recipe_likes WHERE recipe_id = ?");
 $stmtLikes->bind_param("i", $recipeId);
 $stmtLikes->execute();
-$likeRow = $stmtLikes->get_result()->fetch_assoc();
-$recipe['like_count'] = (int)$likeRow['total'];
+$resLikes = $stmtLikes->get_result()->fetch_assoc();
+$recipe['like_count'] = (int)$resLikes['total'];
 
-// Проверка, лайкнул ли текущий пользователь
 $recipe['liked'] = false;
 if (isset($_SESSION['user_id'])) {
-    $userId = $_SESSION['user_id'];
     $stmtCheck = $conn->prepare("SELECT 1 FROM recipe_likes WHERE user_id = ? AND recipe_id = ?");
-    $stmtCheck->bind_param("ii", $userId, $recipeId);
+    $stmtCheck->bind_param("ii", $_SESSION['user_id'], $recipeId);
     $stmtCheck->execute();
-    $recipe['liked'] = $stmtCheck->get_result()->num_rows > 0;
+    $liked = $stmtCheck->get_result()->num_rows > 0;
+    $recipe['liked'] = $liked;
 }
 
 $ingredients = array_filter(array_map('trim', explode(';', $recipe['ingredients'])));
