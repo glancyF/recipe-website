@@ -6,6 +6,6 @@
     <div id="recipesContainer" class="recipe-grid"></div>
     <div id="pagination" class="pagination-controls fixed-bottom"></div>
 </div>
-<script src="/profile/posts/post.js"></script>
+<script src="/profile/posts/post.js" type="module"></script>
 
 
