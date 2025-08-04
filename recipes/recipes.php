@@ -45,7 +45,7 @@ include "../recipes/recipe.php";
     <h3>Instructions:</h3>
     <p class="instruction"><?= nl2br(htmlspecialchars($recipe['instruction'])) ?></p>
 </div>
-
+<script src="recipe-like.js" type="module"></script>
 <?php
 include "../includes/footer.php";
 ?>
