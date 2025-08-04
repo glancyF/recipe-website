@@ -2,7 +2,7 @@
 
 function loadSection($section)
 {
-    $allowed_sections = ['overview', 'posts', 'likes', 'settings','change_pass'];
+    $allowed_sections = ['overview', 'posts', 'settings','change_pass'];
     $base_path = __DIR__ . '/../profile/sections/';
     $filename = $base_path . basename($section) . '.php';
 

@@ -1,5 +1,35 @@
 
 @import url("/colors.css");
+
+.overview-box {
+    max-width: 600px;
+    width: 600px;
+
+
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.8); /* белый полупрозрачный фон */
+    backdrop-filter: blur(4px);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    /* поднять вверх */
+    margin: 2rem auto 0;
+    font-family: 'Segoe UI', sans-serif;
+
+}
+
+.profile-info {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.4rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.profile-info li {
+    margin-bottom: 0.75rem;
+}
+
 .profile-wrapper {
     position: relative;
     min-height: 100vh;
@@ -103,20 +133,7 @@
     background-color: rgba(71, 102, 34, 0.27);
     color: var(--color-text-dark);
 }
-.profile-info {
-    list-style: none;
-    padding: 0;
-    font-size: 2rem;
-    line-height: 1.8;
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-    position: absolute;
-    top: 50%;
-    left: 56%;
-    transform: translate(-50%, -50%);
 
-}
 .profile-info li {
     margin-bottom: 0.8rem;
 }
