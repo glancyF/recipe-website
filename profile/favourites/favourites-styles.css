@@ -1,25 +1,43 @@
-.favorites-section {
-    margin-top: 3rem;
-}
+
+
 .recipes-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
-.pagination {
-    margin-top: 1.5rem;
-    text-align: center;
+
+.pagination-controls.fixed-bottom {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
 }
-.pagination button {
-    margin: 0 4px;
-    padding: 8px 12px;
+
+.pagination-controls button {
+    padding: 0.5rem 0.9rem;
+    background-color: #5b8dfd;
     border: none;
-    background: #94a8af;
-    color: #fff;
-    border-radius: 8px;
+    border-radius: 6px;
+    color: white;
     cursor: pointer;
+    transition: background-color 0.2s ease;
+    margin: 0 4px;
 }
-.pagination button:disabled {
-    background: #ccc;
+
+.pagination-controls button:hover {
+    background-color: #3a6ee8;
+}
+
+.pagination-controls button:disabled {
+    background-color: #ccc;
     cursor: not-allowed;
+}
+
+.content-area h2 {
+    margin-left: 2rem;
 }
