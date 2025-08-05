@@ -21,6 +21,12 @@ require_once __DIR__ . '/../../includes/authorization.php';
     <div class="top-liked-recipe">
         <h2>Most Liked Recipe</h2>
         <div class="recipe-card">
+            <div class="card-header">
+                <a href="/profile/posts/edit.php?id=<?= htmlspecialchars($topRecipe['id'])?>" title="Edit">
+                    <i class="fas fa-edit"></i></a>
+                <i class="fas fa-trash delete-icon" data-id="<?= htmlspecialchars($topRecipe['id'])?>" title="Delete"></i>
+
+            </div>
             <div class="image-container">
                 <img src="/uploads/<?= htmlspecialchars($topRecipe['image_path']) ?>" alt="Recipe image">
                 <div class="like-container" data-id="<?= htmlspecialchars($topRecipe['id']) ?>">
