@@ -1,0 +1,25 @@
+.favorites-section {
+    margin-top: 3rem;
+}
+.recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 2rem;
+}
+.pagination {
+    margin-top: 1.5rem;
+    text-align: center;
+}
+.pagination button {
+    margin: 0 4px;
+    padding: 8px 12px;
+    border: none;
+    background: #94a8af;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.pagination button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
