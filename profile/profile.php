@@ -7,6 +7,7 @@ $extra_css = '
     <link rel="stylesheet" href="/profile/settings/settings-styles.css">
     <link rel="stylesheet" href="/profile/password_change/password_change-styles.css">
     <link rel="stylesheet" href="/profile/posts/post-style.css">
+    <link rel="stylesheet" href="/profile/overview/mostLikedRecipe-styles.css">
 ';
 session_start();
 $section = $_GET['section'] ?? 'overview';
