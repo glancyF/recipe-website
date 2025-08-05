@@ -1,0 +1,122 @@
+.top-liked-recipe {
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.top-liked-recipe h2 {
+    font-size: 1.6rem;
+    color: var(--color-green-dark);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.top-recipe-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem 1rem 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    position: relative;
+    transition: transform 0.2s ease;
+}
+
+.top-recipe-card:hover {
+    transform: translateY(-4px);
+}
+
+.top-recipe-card .image-container {
+    position: relative;
+}
+
+.top-recipe-card .image-container img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.top-recipe-card h3 {
+    margin: 0.3rem 0;
+    font-size: 1.1rem;
+    font-weight: bold;
+    word-break: break-word;
+}
+
+.top-recipe-card p {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.4;
+    max-height: 4.2em;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+.top-meta {
+    font-size: 0.85rem;
+    color: #777;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.top-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Лайк */
+.top-recipe-card .like-container {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background-color: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.top-recipe-card .like-container:hover {
+    background-color: rgba(255,255,255,1);
+}
+
+.top-recipe-card .fa-heart {
+    color: #aaa;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.top-recipe-card .fa-heart.liked {
+    color: #e74c3c;
+    transform: scale(1.2);
+}
+
+.top-recipe-card .like-count {
+    font-weight: 600;
+    color: #333;
+}
+
+.top-recipe-card .view {
+    margin-top: 0.5rem;
+}
+
+.top-recipe-card .view a {
+    text-decoration: none;
+    color: var(--color-green-dark);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.top-recipe-card .view a:hover {
+    color: #3a6ee8;
+}
