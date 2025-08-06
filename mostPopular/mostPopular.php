@@ -4,11 +4,13 @@ $extra_css='<link rel="stylesheet" type="text/css" href="/mostPopular/mostPopula
 include '../includes/header.php';
 ?>
 
-<div class="popular-section">
-    <h1>Most Popular Recipes</h1>
-    <div id="popularRecipesContainer" class="recipes-grid"></div>
-    <div id="popularPagination" class="pagination"></div>
-</div>
+    <div class="popular-section">
+        <h1>Most Popular Recipes</h1>
+        <div class="popular-wrapper">
+            <div id="popularRecipesContainer" class="recipes-grid"></div>
+            <div id="popularPagination" class="pagination fixed-bottom"></div>
+        </div>
+    </div>
 
 <script src="/mostPopular/mostPopular.js" type="module"></script>
 
