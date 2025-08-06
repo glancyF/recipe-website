@@ -4,7 +4,7 @@ require_once __DIR__ . '/../db.php';
 header('Content-type: application/json');
 
 $page =isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$limit = 10;
+$limit = 8;
 $offset=($page-1)*$limit;
 $query = "SELECT r.id, r.name, r.description, r.category, r.image_path, r.created_at,
        u.username,
@@ -28,7 +28,7 @@ foreach ($recipes as &$recipe) {
     $recipe['liked'] = false;
 
     if($user_id){
-        $stmtCheck = $conn->prepare("SELECT 50 FROM recipe_likes WHERE user_id = ? AND recipe_id = ?");
+        $stmtCheck = $conn->prepare("SELECT 40 FROM recipe_likes WHERE user_id = ? AND recipe_id = ?");
         $stmtCheck->bind_param('ii', $user_id, $recipeId);
         $stmtCheck->execute();
         $liked = $stmtCheck->get_result()->num_rows >0;

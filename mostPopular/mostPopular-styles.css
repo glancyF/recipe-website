@@ -103,7 +103,7 @@
     margin: 0 1rem;
     font-size: 0.85rem;
     font-weight: 600;
-    color: #476622;
+    color: #777;
 }
 
 /* Автор и дата */
@@ -122,7 +122,7 @@
 
 .recipe-card .view a {
     font-size: 0.9rem;
-    color: #476622;
+    color: var(--color-green-dark);
     text-decoration: none;
     font-weight: 600;
 }
