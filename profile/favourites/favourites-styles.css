@@ -41,3 +41,10 @@
 .content-area h2 {
     margin-left: 2rem;
 }
+.recipe-card .meta {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1rem 1rem;
+    font-size: 0.8rem;
+    color: #777;
+}

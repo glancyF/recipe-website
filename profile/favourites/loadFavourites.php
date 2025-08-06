@@ -12,13 +12,24 @@ $user_id = $_SESSION['user_id'];
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 4;
 $offset = ($page - 1) * $limit;
-$query = "SELECT r.id, r.name, r.description, r.category, r.image_path, r.created_at,
-             (SELECT COUNT(*) FROM recipe_likes WHERE recipe_id = r.id) AS like_count
-          FROM recipes r
-          JOIN recipe_likes rl ON r.id = rl.recipe_id
-          WHERE rl.user_id = ?
-          ORDER BY like_count DESC
-          LIMIT ? OFFSET ?";
+$query = $query = $query = "
+    SELECT 
+        r.id,
+        r.user_id,
+        r.name, 
+        r.description, 
+        r.category, 
+        r.image_path, 
+        r.created_at,
+        u.username,
+        (SELECT COUNT(*) FROM recipe_likes WHERE recipe_id = r.id) AS like_count
+    FROM recipes r
+    JOIN recipe_likes rl ON r.id = rl.recipe_id
+    JOIN users u ON r.user_id = u.id
+    WHERE rl.user_id = ?
+    ORDER BY like_count DESC
+    LIMIT ? OFFSET ?
+";
 
 $stmt = $conn->prepare($query);
 $stmt->bind_param("iii", $user_id, $limit, $offset);
