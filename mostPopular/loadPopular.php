@@ -1,12 +1,15 @@
 <?php
 global $conn;
 require_once __DIR__ . '/../db.php';
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
 header('Content-type: application/json');
 
 $page =isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 9;
 $offset=($page-1)*$limit;
-$query = "SELECT r.id, r.name, r.description, r.category, r.image_path, r.created_at,
+$query = "SELECT r.id, r.user_id,r.name, r.description, r.category, r.image_path, r.created_at,
        u.username,
        (SELECT COUNT(*) FROM recipe_likes WHERE recipe_id = r.id) AS like_count
 FROM recipes r
@@ -20,7 +23,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 $recipes = $result->fetch_all(MYSQLI_ASSOC);
 
-session_start();
+
 $user_id = $_SESSION['user_id'] ?? null;
 
 foreach ($recipes as &$recipe) {
@@ -28,7 +31,7 @@ foreach ($recipes as &$recipe) {
     $recipe['liked'] = false;
 
     if($user_id){
-        $stmtCheck = $conn->prepare("SELECT 45 FROM recipe_likes WHERE user_id = ? AND recipe_id = ?");
+        $stmtCheck = $conn->prepare("SELECT 1 FROM recipe_likes WHERE user_id = ? AND recipe_id = ?");
         $stmtCheck->bind_param('ii', $user_id, $recipeId);
         $stmtCheck->execute();
         $liked = $stmtCheck->get_result()->num_rows >0;

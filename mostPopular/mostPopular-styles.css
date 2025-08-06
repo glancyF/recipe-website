@@ -44,6 +44,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 }
 
 .recipe-card:hover {
@@ -128,7 +129,17 @@
     font-size: 0.8rem;
     color: #777;
 }
+.recipe-card .bottom-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1rem 1rem;
+}
 
+.card-header {
+    display: flex;
+    gap: 1rem;
+}
 .recipe-card .view {
     margin: 0 1rem 1rem;
     text-align: right;
@@ -170,4 +181,22 @@
 .pagination button:disabled {
     background-color: #c3c3c3;
     cursor: default;
+}
+
+
+.delete-icon,.fa-edit {
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #a69d9d;
+    transition: color 0.2s ease;
+    padding: 0 0.2rem;
+
+}
+
+.delete-icon:hover {
+    color: #c9302c;
+}
+
+.fa-edit:hover {
+    color: var(--color-green-dark);
 }

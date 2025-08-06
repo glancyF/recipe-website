@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pageTitle = "Most popular Recipes";
 $extra_css='<link rel="stylesheet" type="text/css" href="/mostPopular/mostPopular-styles.css">';
 include '../includes/header.php';
@@ -11,7 +12,9 @@ include '../includes/header.php';
             <div id="popularPagination" class="pagination fixed-bottom"></div>
         </div>
     </div>
-
+    <script>
+        window.currentUserId = <?= isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : 'null' ?>;
+    </script>
 <script src="/mostPopular/mostPopular.js" type="module"></script>
 
 <?php
