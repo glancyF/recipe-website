@@ -26,6 +26,7 @@ $loggedIn = isset($_COOKIE['auth_token']);
                 <img src="/images/logo2.png" alt="Logo icon" class="logo">
                 </a></li>
             <li><a href="/mostPopular/mostPopular.php"><i class="most-popular"></i>Most popular</a></li>
+            <li><a href="/allRecipes/allRecipe.php"><i class="all-recipes"></i>All recipes</a></li>
             <?php if ($loggedIn): ?>
             <li><a href="/AddRecipe/addRecipe.php"><i class="ad-recipe"></i>Add a recipe</a></li>
             <li><a href="/profile/profile.php"><i class="login"></i>My Account</a></li>
