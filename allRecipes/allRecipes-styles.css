@@ -5,7 +5,11 @@
     font-family: sans-serif;
     color: #333;
 }
-
+.all-recipes-section {
+    max-width: 1100px; /* или 1100px, как в popular-section */
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
 .all-recipes-section h1 {
     text-align: center;
     font-size: 2rem;
