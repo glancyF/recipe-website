@@ -1,5 +1,6 @@
 import {LikeClicker} from "../likes/likeClicker.js";
-
+import { escapeHtml, renderPagination } from "../utils/recipeHelper.js";
+import {bindDeleteHandler} from "../utils/deleHandler.js";
 
 document.addEventListener('DOMContentLoaded',()=>{
    const container = document.getElementById('allRecipesContainer');
@@ -15,7 +16,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             return;
         }
         renderRecipes(data.recipes);
-        renderPagination(data.total,data.page,data.limit);
+        renderPagination(pagination,data.total,data.page,data.limit,fetchRecipes);
     }
     function renderRecipes(recipes){
         container.innerHTML='';
@@ -45,7 +46,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     <div class="bottom-actions">
         ${isOwner ? `
-        <div class="card-header">
+         <div class="card-header">
             <a href="/profile/posts/edit.php?id=${recipe.id}" title="Edit">
                 <i class="fas fa-edit"></i>
             </a>
@@ -61,25 +62,9 @@ document.addEventListener('DOMContentLoaded',()=>{
         LikeClicker(container);
     }
 
-    function renderPagination(total,currentPage,limit){
-        const totalPages = Math.ceil(total/limit);
-        pagination.innerHTML='';
-        for (let i =1;i<=totalPages;i++){
-            const btn = document.createElement('button');
-            btn.textContent=i;
-            btn.disabled= i===currentPage;
-            btn.addEventListener('click',()=>{
-               fetchRecipes(i);
-            });
-            pagination.appendChild(btn);
-        }
-    }
+    bindDeleteHandler(container, () => fetchRecipes(currentPage));
 
-    function escapeHtml(text){
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-    }
+
     fetchRecipes(currentPage);
 
 });

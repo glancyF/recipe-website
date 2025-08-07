@@ -1,4 +1,6 @@
 import {LikeClicker} from "../likes/likeClicker.js";
+import { escapeHtml, renderPagination } from "../utils/recipeHelper.js";
+import {bindDeleteHandler} from "../utils/deleHandler.js";
 
 document.addEventListener('DOMContentLoaded',()=>{
    const container = document.getElementById('popularRecipesContainer');
@@ -14,7 +16,7 @@ document.addEventListener('DOMContentLoaded',()=>{
            return;
        }
        renderRecipes(data.recipes);
-       renderPagination(data.total,data.page,data.limit);
+       renderPagination(pagination,data.total,data.page,data.limit,fetchRecipes);
    }
 
    function renderRecipes(recipes){
@@ -61,40 +63,8 @@ document.addEventListener('DOMContentLoaded',()=>{
        });
        LikeClicker(container);
    }
-   function renderPagination(total,currentPage,limit) {
-       const totalPages = Math.ceil(total/limit);
-       pagination.innerHTML='';
-       for (let i =1; i<= totalPages; i++){
-           const btn = document.createElement('button');
-           btn.textContent =i;
-           btn.disabled = i===currentPage;
-           btn.addEventListener('click',()=>{
-               fetchRecipes(i);
-           });
-           pagination.appendChild(btn);
-       }
-   }
-   function escapeHtml(text){
-       const div = document.createElement('div');
-       div.textContent=text;
-       return div.innerHTML;
-   }
-    container.addEventListener('click', async (e) => {
-        if (e.target.classList.contains('delete-icon')) {
-            const id = e.target.dataset.id;
-            if (confirm('Are you sure you want to delete this recipe?')) {
-                const res = await fetch(`/profile/posts/delete.php?id=${id}`, {
-                    method: 'DELETE',
-                    credentials: 'include'
-                });
-                const result = await res.json();
-                if (result.status === 'success') {
-                    fetchRecipes(currentPage); // перезагрузить список
-                } else {
-                    alert('Failed to delete recipe');
-                }
-            }
-        }
-    });
+
+
+    bindDeleteHandler(container, () => fetchRecipes(currentPage));
    fetchRecipes(currentPage);
 });

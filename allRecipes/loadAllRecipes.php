@@ -5,7 +5,7 @@ header('Content-Type: application/json');
 session_start();
 
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-$limit = 9;
+$limit = 12;
 $offset = ($page -1) * $limit;
 
 $query = "
