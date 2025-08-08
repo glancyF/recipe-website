@@ -11,8 +11,19 @@ $extra_css = '
     <link rel="stylesheet" href="/profile/favourites/favourites-styles.css">
 ';
 session_start();
+
 $section = $_GET['section'] ?? 'overview';
+require_once __DIR__ .'/../includes/isAdmin.php';
+$isAdmin = isAdmin();
+// ВОЗМОЖНО ВЫНЕСТИ В ОТДЕЛЬНЫЙ ФАЙЛ ПОДУМАЙ ЕЩЕ
+if ($section === 'admin' && !$isAdmin) {
+    header('Location: /profile/profile.php?section=overview', true, 302);
+    exit;
+}
+
+
 include "../includes/header.php";
+
 ?>
     <div class="profile-wrapper">
     <div class="profile-container">
@@ -23,12 +34,14 @@ include "../includes/header.php";
                 <li><a href="?section=favourites" class="<?= $section === 'favourites' ? 'active' : '' ?>">Favourites</a></li>
                 <li><a href="?section=settings" class="<?= $section === 'settings' ? 'active' : '' ?>">Settings</a></li>
                 <li><a href="?section=change_pass" class="<?= $section === 'change_pass' ? 'active' : '' ?>">Change password</a></li>
+                <?php if($isAdmin):?>
+                    <li><a href="?section=admin" class="<?= $section ==='admin' ? 'active' : '' ?>">Admin panel</a></li>
+                <?php endif;?>
                 <li><a href="../profile/logout.php">Logout</a></li>
             </ul>
         </aside>
         <main class="profile-main">
             <?php
-            $section = $_GET['section'] ?? 'overview';
             include "../includes/sections.php";
             loadSection($section);
             ?>
