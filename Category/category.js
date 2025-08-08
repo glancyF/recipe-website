@@ -75,7 +75,8 @@ document.addEventListener('DOMContentLoaded',()=>{
             container.appendChild(card);
         });
         LikeClicker(container);
-        bindDeleteHandler(container,()=> fetchRecipes(currentPage));
+
     }
+    bindDeleteHandler(container,()=> fetchRecipes(currentPage));
     fetchRecipes(currentPage);
 });

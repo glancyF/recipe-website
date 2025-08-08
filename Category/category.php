@@ -1,4 +1,5 @@
 <?php
+session_start();
 $pageTitle = "Category";
 $extra_css = '<link rel="stylesheet" href="/Category/category-styles.css">';
 include '../includes/header.php';
