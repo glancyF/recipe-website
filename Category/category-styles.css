@@ -1,0 +1,225 @@
+.category-section {
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    font-family: sans-serif;
+    color: #333;
+}
+
+.category-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.category-buttons button {
+    background-color: #f4f4f4;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.category-buttons button:hover {
+    background-color: #dceccd;
+}
+
+.category-buttons button.active {
+    background-color: var(--color-green-dark, #476622);
+    color: #fff;
+}
+
+.recipes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.recipe-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+}
+
+.recipe-card:hover {
+    transform: translateY(-4px);
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+}
+
+.recipe-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.like-container {
+    position: absolute;
+    bottom: 8px;
+    right: 8px;
+    background-color: rgba(255,255,255,0.9);
+    border-radius: 16px;
+    padding: 4px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.like-container .fa-heart {
+    color: #aaa;
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.like-container .fa-heart.liked {
+    color: #e74c3c;
+    transform: scale(1.2);
+}
+
+.like-count {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.recipe-card h3 {
+    margin: 1rem 1rem 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.recipe-card p {
+    margin: 0 1rem 0.5rem;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.4;
+    max-height: 4.2em;
+    overflow: hidden;
+}
+
+.recipe-card .category {
+    margin: 0 1rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #777;
+}
+
+.recipe-card .meta {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1rem 1rem;
+    font-size: 0.8rem;
+    color: #777;
+}
+
+.recipe-card .bottom-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 1rem 1rem;
+}
+
+.card-header {
+    display: flex;
+    gap: 1rem;
+}
+
+.recipe-card .view {
+    margin: 0 1rem 1rem;
+    text-align: right;
+}
+
+.recipe-card .view a {
+    font-size: 0.9rem;
+    color: var(--color-green-dark);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.recipe-card .view a:hover {
+    text-decoration: underline;
+}
+
+.pagination {
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.pagination button {
+    background-color: #f4f4f4;
+    border: none;
+    padding: 8px 14px;
+    margin: 0 4px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #333;
+    transition: background-color 0.3s ease;
+}
+
+.pagination button:hover:not(:disabled) {
+    background-color: #dceccd;
+}
+
+.pagination button:disabled {
+    background-color: #c3c3c3;
+    cursor: default;
+}
+
+.delete-icon, .fa-edit {
+    font-size: 1.1rem;
+    cursor: pointer;
+    color: #a69d9d;
+    transition: color 0.2s ease;
+    padding: 0 0.2rem;
+}
+
+.delete-icon:hover {
+    color: #c9302c;
+}
+
+.fa-edit:hover {
+    color: var(--color-green-dark);
+}
+
+.fixed-bottom {
+    position: static; /* было absolute */
+    margin-top: 1.5rem;
+    display: flex;
+    justify-content: center;
+}
+.category-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 140px); /* с учётом header/footer */
+    position: relative;
+    padding-bottom: 4rem; /* отступ под пагинацией */
+}
+#categoryPagination.fixed-bottom {
+    position: absolute;
+    bottom: 1rem;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+}
