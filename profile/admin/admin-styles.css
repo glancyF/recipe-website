@@ -1,0 +1,129 @@
+/* ---------- Общая обёртка профиля для якоря ---------- */
+.profile-main {
+    position: relative;      /* Якорь для absolute */
+    padding-bottom: 80px;    /* Место под пагинацию */
+}
+
+/* ---------- Админ: секция и таблица ---------- */
+.admin-users {
+    max-width: 1100px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    color: #333;
+}
+
+.admin-users h2 {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: var(--color-green-dark, #476622);
+}
+
+/* Таблица */
+.admin-users .users-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: rgba(255,255,255,0.9);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.admin-users .users-table thead th {
+    text-align: left;
+    padding: 12px 14px;
+    font-weight: 700;
+    background: #f7f7f7;
+    border-bottom: 1px solid #e6e6e6;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.admin-users .users-table tbody td {
+    padding: 12px 14px;
+    border-bottom: 1px solid #eee;
+    vertical-align: middle;
+    font-size: 0.95rem;
+}
+
+.admin-users .users-table tbody tr:nth-child(odd) { background: #fff; }
+.admin-users .users-table tbody tr:nth-child(even) { background: #fbfbfb; }
+.admin-users .users-table tbody tr:hover { background: #f3f8ed; }
+
+.admin-users .users-table td .muted {
+    color: #777;
+    font-size: .85rem;
+    margin-top: 2px;
+}
+
+/* ---------- Селект и кнопка Apply ---------- */
+.admin-users .status-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    padding: 8px 10px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    background: #fff;
+    font: inherit;
+    color: #333;
+    min-width: 120px;
+    transition: border-color .2s, box-shadow .2s, background-color .2s;
+}
+.admin-users .status-select:focus {
+    outline: none;
+    border-color: #9ec27f;
+    box-shadow: 0 0 0 3px rgba(71,102,34,.12);
+}
+.admin-users .status-select:disabled {
+    opacity: .6;
+    cursor: not-allowed;
+}
+
+.admin-users .apply-btn {
+    background-color: var(--color-green-dark, #476622);
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color .2s, transform .05s;
+}
+.admin-users .apply-btn:hover { background-color: #365017; }
+.admin-users .apply-btn:active { transform: translateY(1px); }
+.admin-users .apply-btn:disabled {
+    background-color: #c3c3c3;
+    cursor: default;
+}
+
+/* ---------- Пагинация ---------- */
+#usersPagination {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 1rem;
+}
+
+/* Закрепление внизу */
+#usersPagination.fixed-bottom {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+}
+
+#usersPagination button {
+    padding: .5rem .9rem;
+    background: #5b8dfd;
+    border: none;
+    border-radius: 6px;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color .2s;
+}
+#usersPagination button:hover { background: #3a6ee8; }
+#usersPagination button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
