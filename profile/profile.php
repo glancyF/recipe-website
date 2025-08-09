@@ -9,6 +9,7 @@ $extra_css = '
     <link rel="stylesheet" href="/profile/posts/post-style.css">
     <link rel="stylesheet" href="/profile/overview/mostLikedRecipe-styles.css">
     <link rel="stylesheet" href="/profile/favourites/favourites-styles.css">
+    <link rel="stylesheet" href="/profile/admin/admin-styles.css">
 ';
 session_start();
 

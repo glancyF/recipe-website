@@ -8,3 +8,4 @@
 </script>
 <script src="/profile/favourites/favourites.js" type="module"></script>
 
+<script type="module" src="/profile/admin/min-admin.js"></script>
