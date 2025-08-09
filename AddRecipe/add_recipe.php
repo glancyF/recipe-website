@@ -5,7 +5,7 @@ require_once "../db.php";
 header("Content-Type: application/json");
 function ControlRecipe($name,$description,$instruction,$category)
 {
-    if(strlen($name)<3 || strlen($name)>100 || !preg_match('/^[A-Za-z\s]+$/', $name) ){
+    if(strlen($name)<3 || strlen($name)>100 || !preg_match('/^[A-Za-z\s,]+$/', $name) ){
         echo json_encode(["status" => "error", "message" => "Invalid recipe name"]);
         exit;
     }
@@ -46,10 +46,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 
 
-    $name = trim(strip_tags($_POST["name"]));
-    $description = trim(strip_tags($_POST["description"]));
-    $ingredients = trim(strip_tags($_POST["ingredients"]));
-    $instruction = trim(strip_tags($_POST["instruction"]));
+    $name = trim($_POST["name"]);
+    $description = trim($_POST["description"]);
+    $ingredients = trim($_POST["ingredients"]);
+    $instruction = trim($_POST["instruction"]);
     $category = $_POST["category"] ?? '';
 
 
@@ -58,9 +58,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
     $image = $_FILES['recipeImage'];
-    $allowed_types = ['image/jpeg', 'image/png','image/jpg'];
     $maxSize = 2 * 1024 * 1024;
-    if(!in_array($image['type'], $allowed_types)) {
+    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+    $mime  = finfo_file($finfo, $image['tmp_name']);
+    finfo_close($finfo);
+
+    $allowed = ['image/jpeg', 'image/png','image/jpg'];
+    if (!in_array($mime, $allowed, true)) {
         echo json_encode(["status" => "error", "message" => "Invalid image type"]);
         exit;
     }
