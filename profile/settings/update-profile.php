@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     GetUserIdANDToken($conn,$user_id, $auth_token);
     $response = ["status" => "success", "message" => "Action completed"];
 
-    $new_username = trim(strip_tags($_POST["username"]));
+    $new_username = trim($_POST["username"]);
     $new_gender = $_POST["gender"] ?? "";
 
 

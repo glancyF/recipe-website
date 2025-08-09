@@ -1,6 +1,8 @@
 <?php
 $pageTitle = 'Add Recipe';
 $extra_css = '<link rel="stylesheet" href="/AddRecipe/addRecipe-styles.css">';
+include __DIR__ . '/../includes/authorization.php';
+$user = requireAuth();
 include_once("../includes/header.php");
 ?>
 
