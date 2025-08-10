@@ -156,33 +156,6 @@
     text-decoration: underline;
 }
 
-/* Пагинация */
-.pagination {
-    margin-top: 0;
-    text-align: center;
-}
-
-.pagination button {
-    background-color: #f4f4f4;
-    border: none;
-    padding: 8px 14px;
-    margin: 0 4px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-weight: 600;
-    color: #333;
-    transition: background-color 0.3s ease;
-}
-
-.pagination button:hover:not(:disabled) {
-    background-color: #dceccd;
-}
-
-.pagination button:disabled {
-    background-color: #c3c3c3;
-    cursor: default;
-}
-
 
 .delete-icon,.fa-edit {
     font-size: 1.1rem;

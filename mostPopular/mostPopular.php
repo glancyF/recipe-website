@@ -1,7 +1,8 @@
 <?php
 session_start();
 $pageTitle = "Most popular Recipes";
-$extra_css='<link rel="stylesheet" type="text/css" href="/mostPopular/mostPopular-styles.css">';
+$extra_css='<link rel="stylesheet" type="text/css" href="/mostPopular/mostPopular-styles.css">
+<link rel="stylesheet" href="/pagination.css">';
 include '../includes/header.php';
 ?>
 
