@@ -1,0 +1,66 @@
+.pagination-controls{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:.6rem;
+    flex-wrap:wrap;
+    margin-top:1rem;
+    font-family: inherit;
+}
+
+/* Кнопки */
+.pagination-controls button{
+    padding:.45rem .9rem;
+    background:#777777;
+    border:none;
+    border-radius:8px;
+    color:#fff;
+    font-weight:600;
+    cursor:pointer;
+    transition:background-color .2s, transform .05s, box-shadow .2s;
+    box-shadow:0 2px 8px rgba(0,0,0,.06);
+    min-width:64px;                 /* чтобы Prev/Next были одинаковые */
+}
+.pagination-controls button:hover{ background:var(--color-green-pale); }
+.pagination-controls button:active{ transform:translateY(1px); }
+.pagination-controls button:focus{ outline:none; box-shadow:0 0 0 3px rgba(71,102,34,.15); }
+
+/* Неактивные (на первой/последней стр.) — мягкий серый */
+.pagination-controls button:disabled{
+    background:#e9edf7;
+    color:var(--color-green-dark);
+    cursor:not-allowed;
+    box-shadow:none;
+}
+
+/* Индикатор "Page X of Y" как чип */
+.pagination-controls .page-indicator{
+    padding:.45rem .7rem;
+    background:#f6f8ff;
+    color:#555;
+    border-radius:999px;
+    font-weight:600;
+    line-height:1;
+}
+
+/* Блок перехода на страницу */
+.pagination-controls .jump-wrap{
+    display:inline-flex;
+    align-items:center;
+    gap:.35rem;
+}
+.pagination-controls .jump-wrap input{
+    width:72px;
+    height:36px;
+    padding:.4rem .5rem;
+    border:1px solid #d6dbe7;
+    border-radius:8px;
+    outline:none;
+    font:inherit;
+    text-align:center;
+    transition:border-color .2s, box-shadow .2s;
+}
+.pagination-controls .jump-wrap input:focus{
+    border-color:#9ec27f;
+    box-shadow:0 0 0 3px rgba(71,102,34,.12);
+}
