@@ -27,12 +27,13 @@ document.addEventListener('DOMContentLoaded',()=>{
           card.dataset.userId = recipe.user_id;
           card.className='recipe-card';
            const isOwner = recipe.user_id === window.currentUserId;
+           const isAdmin = Boolean(window.isAdmin);
 
            card.innerHTML = `
     <div class="meta">
         <span><i class="fa fa-user"></i> ${escapeHtml(recipe.username)}</span>
     </div>
-    ${isOwner ? `
+    ${(isOwner || isAdmin) ? `
     <div class="card-header">
         <a href="/profile/posts/edit.php?id=${recipe.id}" title="Edit">
             <i class="fas fa-edit"></i>
