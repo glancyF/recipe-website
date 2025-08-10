@@ -1,7 +1,8 @@
 <?php
 session_start();
 $pageTitle = "Category";
-$extra_css = '<link rel="stylesheet" href="/Category/category-styles.css">';
+$extra_css = '<link rel="stylesheet" href="/Category/category-styles.css">
+<link rel="stylesheet" href="/pagination.css">';
 include '../includes/header.php';
 ?>
 

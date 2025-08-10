@@ -1,7 +1,9 @@
 <?php
 session_start();
 $pageTitle ='All recipes';
-$extra_css = '<link rel="stylesheet" href="/allRecipes/allRecipes-styles.css">';
+$extra_css = '<link rel="stylesheet" href="/allRecipes/allRecipes-styles.css">
+<link rel="stylesheet" href="/pagination.css">
+';
 include "../includes/header.php";
 ?>
 

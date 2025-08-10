@@ -18,12 +18,17 @@ include "../includes/header.php";
         </div>
     </section>
 
+    <section class="more-info">
+        <p>Want to see more? You’ll find even more recipes on these pages:</p>
+    </section>
+
     <section class="home-cta">
         <a class="btn primary" href="/mostPopular/mostPopular.php">Most popular</a>
         <a class="btn" href="/allRecipes/allRecipe.php">All recipes</a>
         <a class="btn" href="/Category/category.php">Categories</a>
     </section>
 </main>
+
 <script>
     window.currentUserId = <?= (int)$_SESSION['user_id'] ?>;
     window.isAdmin = <?= json_encode(($_SESSION['status'] ?? '') === 'admin') ?>;
@@ -33,5 +38,3 @@ include "../includes/header.php";
 <?php
 include "../includes/footer.php";
 ?>
-
-
