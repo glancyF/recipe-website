@@ -1,31 +1,46 @@
 <?php
-global $conn;
-require_once  __DIR__ . "/../../db.php";
+declare(strict_types=1);
+
 session_start();
 header('Content-Type: application/json');
-if($_SERVER['REQUEST_METHOD'] !== 'DELETE'){
+require_once __DIR__ . '/../../db.php';
+
+if ($_SERVER['REQUEST_METHOD'] !== 'DELETE') {
     http_response_code(405);
-    echo json_encode(['status' => 'error', 'message' => 'Method not allowed']);
+    echo json_encode(['status'=>'error','message'=>'Method not allowed']);
     exit;
 }
 
+$userId  = (int)($_SESSION['user_id'] ?? 0);
+$isAdmin = (($_SESSION['status'] ?? '') === 'admin');
 
-$recipeId = $_GET['id'] ?? null;
-if (!isset($_SESSION['user_id']) || !$recipeId) {
-    http_response_code(403);
-    echo json_encode(['status' => 'error', 'message' => 'Unauthorized or invalid request']);
+if (!$userId) {
+    http_response_code(401);
+    echo json_encode(['status'=>'error','message'=>'Not authenticated']);
     exit;
 }
 
-$userId = $_SESSION['user_id'];
+$recipeId = (int)($_GET['id'] ?? 0);
+if ($recipeId <= 0) {
+    http_response_code(400);
+    echo json_encode(['status'=>'error','message'=>'Bad recipe id']);
+    exit;
+}
 
-$query = "DELETE FROM recipes WHERE id = ? and user_id = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("ii", $recipeId, $userId);
-$stmt->execute();
-if ($stmt->affected_rows > 0) {
-    echo json_encode(['status' => 'success']);
+// Если админ — удаляет любой рецепт, иначе только свой
+if ($isAdmin) {
+    $stmt = $conn->prepare("DELETE FROM recipes WHERE id = ?");
+    $stmt->bind_param("i", $recipeId);
 } else {
-    echo json_encode(['status' => 'error', 'message' => 'Recipe not found or not yours']);
+    $stmt = $conn->prepare("DELETE FROM recipes WHERE id = ? AND user_id = ?");
+    $stmt->bind_param("ii", $recipeId, $userId);
 }
+
+$stmt->execute();
+$ok = $stmt->affected_rows > 0;
 $stmt->close();
+
+echo json_encode([
+    'status'  => $ok ? 'success' : 'error',
+    'message' => $ok ? '' : 'Recipe not found or not allowed'
+]);
