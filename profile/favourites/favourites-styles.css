@@ -18,25 +18,6 @@
     justify-content: center;
 }
 
-.pagination-controls button {
-    padding: 0.5rem 0.9rem;
-    background-color: #5b8dfd;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.2s ease;
-    margin: 0 4px;
-}
-
-.pagination-controls button:hover {
-    background-color: #3a6ee8;
-}
-
-.pagination-controls button:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-}
 
 .content-area h2 {
     margin-left: 2rem;
