@@ -96,34 +96,28 @@
     cursor: default;
 }
 
-/* ---------- Пагинация ---------- */
-#usersPagination {
-    display: flex;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 1rem;
-}
 
-/* Закрепление внизу */
+
 #usersPagination.fixed-bottom {
     position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: 16px;
+    left: 0;
+    right: 0;          /* вместо left:50%/transform */
+    width: 100%;
+    transform: none;
     z-index: 2;
+    display: flex;
+    justify-content: center;
 }
 
-#usersPagination button {
-    padding: .5rem .9rem;
-    background: #5b8dfd;
-    border: none;
-    border-radius: 6px;
-    color: #fff;
-    cursor: pointer;
-    transition: background-color .2s;
+/* Одна строка, без переносов */
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    flex-wrap: nowrap;        /* было wrap */
 }
-#usersPagination button:hover { background: #3a6ee8; }
-#usersPagination button:disabled {
-    background: #ccc;
-    cursor: not-allowed;
-}
+
+
+
