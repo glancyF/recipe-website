@@ -15,6 +15,8 @@ include "../includes/header.php";
 </div>
 <script>
     window.currentUserId = <?= isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : 'null' ?>;
+    window.isAdmin = <?= json_encode(($_SESSION['status'] ?? '') === 'admin') ?>;
+    window.csrfToken = <?= json_encode($_SESSION['csrf_token'] ?? '') ?>;
 </script>
 <script src="/allRecipes/allRecipes.js" type="module"></script>
 

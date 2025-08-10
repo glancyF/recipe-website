@@ -1,25 +1,47 @@
 <?php
 global $conn;
-
 require_once __DIR__ . '/../../db.php';
+require_once __DIR__ . '/../../includes/isAdmin.php';
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-if(!isset($_SESSION['user_id'])){
-    die('Unauthorized access!');
-}
-if(!isset($_GET['id'])){
-    die('No recipe selected!');
+
+if (!isset($_SESSION['user_id'])) {
+    http_response_code(401);
+    echo 'Unauthorized access!';
+    exit;
 }
 
-$recipeId = (int)$_GET['id'];
-$userId = $_SESSION['user_id'];
+$recipeId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
+if ($recipeId <= 0) {
+    http_response_code(400);
+    echo 'No recipe selected!';
+    exit;
+}
 
-$stmt = $conn->prepare("SELECT * FROM recipes WHERE id = ? AND user_id = ?");
-$stmt->bind_param("ii", $recipeId, $userId);
+$userId  = (int)$_SESSION['user_id'];
+$admin   = isAdmin();
+
+// Админ может открыть любой рецепт, обычный — только свой
+if ($admin) {
+    $stmt = $conn->prepare("SELECT * FROM recipes WHERE id = ? LIMIT 1");
+    $stmt->bind_param("i", $recipeId);
+} else {
+    $stmt = $conn->prepare("SELECT * FROM recipes WHERE id = ? AND user_id = ? LIMIT 1");
+    $stmt->bind_param("ii", $recipeId, $userId);
+}
+
 $stmt->execute();
-$result = $stmt->get_result();
-$recipe = $result->fetch_assoc();
-if(!$recipe){
-    die('Recipe not found!');
+$res    = $stmt->get_result();
+$recipe = $res->fetch_assoc();
+$stmt->close();
+
+if (!$recipe) {
+    http_response_code(404);
+    echo 'Recipe not found or access denied.';
+    exit;
 }
+
+// ... тут отрисовываешь форму/страницу редактирования, экранируя вывод:
+// <?= htmlspecialchars($recipe['name'], ENT_QUOTES, 'UTF-8') ?>

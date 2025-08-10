@@ -44,6 +44,7 @@ document.addEventListener('DOMContentLoaded',()=>{
             const card = document.createElement('div');
             card.className = 'recipe-card';
             const isOwner = recipe.user_id === window.currentUserId;
+            const isAdmin = Boolean(window.isAdmin);
             card.innerHTML = `
                 <div class="meta">
                     <span><i class="fa fa-user"></i> ${escapeHtml(recipe.username)}</span>
@@ -60,7 +61,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                 <span class="category">${escapeHtml(recipe.category)}</span>
                 <p class="date">${new Date(recipe.created_at).toLocaleDateString()}</p>
                 <div class="bottom-actions">
-                    ${isOwner ? `
+                    ${(isOwner || isAdmin) ? `
                         <div class="card-header">
                             <a href="/profile/posts/edit.php?id=${recipe.id}" title="Edit">
                                 <i class="fas fa-edit"></i>
