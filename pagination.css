@@ -64,3 +64,34 @@
     border-color:#9ec27f;
     box-shadow:0 0 0 3px rgba(71,102,34,.12);
 }
+
+
+@media (max-width: 743px){
+    .fixed-bottom {
+        position: static !important;
+        margin-top: 1rem;
+    }
+
+    .pagination-controls {
+        gap: .4rem .5rem;
+    }
+
+    .pagination-controls .page-indicator {
+        flex: 1 0 100%;
+        text-align: center;
+        order: 2;
+    }
+    .pagination-controls .jump-wrap {
+        flex: 1 0 100%;
+        justify-content: center;
+        order: 3;
+    }
+    .pagination-controls .btn-prev { order: 1; }
+    .pagination-controls .btn-next { order: 4; }
+
+    .profile-main,
+    .category-wrapper,
+    .all-recipes-wrapper {
+        padding-bottom: 2rem;
+    }
+}
