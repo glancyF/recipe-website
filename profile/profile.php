@@ -11,6 +11,7 @@ $extra_css = '
     <link rel="stylesheet" href="/profile/favourites/favourites-styles.css">
     <link rel="stylesheet" href="/profile/admin/admin-styles.css">
     <link rel="stylesheet" href="/pagination.css">
+    <link rel="stylesheet" href="/profile/print.css">
 ';
 session_start();
 

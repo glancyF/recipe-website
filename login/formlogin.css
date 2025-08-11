@@ -102,3 +102,79 @@ form button:hover {
     font-weight: bold;
     text-decoration: underline;
 }
+
+
+
+
+
+/* --- Мобильная адаптация --- */
+@media (max-width: 640px) {
+    .form-wrapper {
+        padding: 1rem;
+    }
+
+    form {
+        padding: 2rem 1.25rem;
+        gap: 1.5rem;
+        font-size: 1rem;
+    }
+
+    input,
+    button {
+        font-size: 1rem;
+        padding: 0.65em 0.9em;
+    }
+
+    form button {
+        width: 100%;
+        font-size: 1.1rem;
+    }
+
+    .redirect-text {
+        font-size: 1rem;
+    }
+}
+
+/* --- Печать --- */
+@media print {
+    header,
+    nav,
+    footer,
+    .redirect-text,
+    button {
+        display: none !important;
+    }
+
+    body {
+        background: #fff !important;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .form-wrapper {
+        padding: 0 !important;
+        min-height: auto !important;
+        display: block;
+    }
+
+    form {
+        box-shadow: none !important;
+        border: 1px solid #ccc !important;
+        background: #fff !important;
+        padding: 1rem !important;
+        max-width: 100% !important;
+        font-size: 12pt;
+    }
+
+    input {
+        border: 1px solid #aaa !important;
+        background: #fff !important;
+        font-size: 12pt;
+        padding: 0.5em !important;
+    }
+
+    .field__errors {
+        display: none !important;
+    }
+}
+
