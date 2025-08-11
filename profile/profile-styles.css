@@ -137,3 +137,119 @@
 .profile-info li {
     margin-bottom: 0.8rem;
 }
+
+
+
+/* --- Печать: "как на логине/регистрации": плоско и без меню --- */
+@media print {
+    @page { size: A4; margin: 15mm; }
+
+    /* спрятать все хром‑элементы интерфейса */
+    header, footer, nav,
+    .profile-sidebar,
+    .like-container, .card-header, .pagination,
+    .home-cta, .category-buttons,
+    button { display: none !important; }
+
+    html, body { background: #fff !important; }
+
+    .profile-wrapper {
+        position: static;
+        min-height: auto;
+        overflow: visible;
+    }
+
+    .profile-container {
+        box-shadow: none !important;
+        background: #fff !important;
+        border: 1px solid #000;
+        border-radius: 8px;
+        padding: 0;
+        margin: 0;
+    }
+
+    /* убрать блюр‑фон у ::before */
+    .profile-container::before { display: none !important; content: none !important; }
+
+    .profile-main {
+        padding: 10mm;
+    }
+
+    /* карточка обзора/секций без теней и с чёрными рамками */
+    .overview-box,
+    .admin-users .users-table,
+    .recipes-grid .recipe-card {
+        background: #fff !important;
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+    }
+
+    /* печатаем только активную секцию контента */
+    .profile-main > * { page-break-inside: avoid; break-inside: avoid; }
+
+    a { color: #000; text-decoration: underline; }
+    * { text-shadow: none !important; filter: none !important; }
+}
+
+/* ---- Мобилка: ≤480px ---- */
+@media (max-width: 480px) {
+    .profile-container{
+        flex-direction: column;
+        gap: .75rem;
+        padding: .75rem;
+        margin: 1rem auto;
+    }
+
+    /* сайдбар перестаёт быть узкой колонкой */
+    .profile-sidebar{
+        width: 100%;
+        border-right: 0;
+        border-radius: 12px;
+        padding: .75rem;
+        box-shadow: 0 1px 6px rgba(0,0,0,.06);
+    }
+
+    /* меню – в одну колонку, кнопки удобнее нажимать */
+    .profile-sidebar .menu{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: .5rem;
+    }
+    .profile-sidebar .menu a{
+        display: block;
+        width: 100%;
+        text-align: left;
+        padding: .7rem .9rem;
+        font-size: 1rem;
+        border-radius: 10px;
+    }
+
+    /* блок с данными тянется на всю ширину */
+    .profile-main{ width: 100%; }
+    .overview-box{
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 10px rgba(0,0,0,.06);
+    }
+
+    /* убрать размытую подложку внутри контейнера на мобиле,
+       чтобы не было засветов по краям */
+    .profile-container::before{ display:none; }
+    .view {
+        margin-top: 1rem;
+        padding-left: 0.25rem; /* небольшой отступ от левого края */
+    }
+    .date {
+        padding-bottom: 0.5rem;
+    }
+
+    .view a {
+        display: inline-block;
+        margin-top: 0.25rem;  /* отодвинуть чуть ниже даты */
+    }
+
+}
+

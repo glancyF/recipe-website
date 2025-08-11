@@ -29,3 +29,39 @@
     font-size: 0.8rem;
     color: #777;
 }
+
+
+
+/* ====== Мобилка / планшет ====== */
+@media (max-width: 900px) {
+    .recipes-grid {
+        grid-template-columns: 1fr;   /* одна колонка */
+        gap: 1rem;
+        padding: .5rem;
+    }
+    .content-area {
+        padding-bottom: 5rem;         /* запас под пагинацию */
+    }
+    /* пагинация в поток */
+
+    .recipes-card {
+        padding: 1rem;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+    .recipes-card img {
+        height: 200px;                /* чуть выше на мобиле */
+    }
+
+}
+
+/* ещё более узкие устройства */
+@media (max-width: 540px) {
+    .recipes-card h3 { font-size: 1rem; }
+    .recipes-card p  { font-size: .95rem; -webkit-line-clamp: 4; }
+    .recipes-card img { height: 180px; }
+
+}
+
+
+
