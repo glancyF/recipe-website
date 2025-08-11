@@ -2,6 +2,7 @@
 global $conn;
 session_start();
 require_once "../db.php";
+include __DIR__ . '/../utils/IngredientsControl.php';
 header("Content-Type: application/json");
 function ControlRecipe($name,$description,$instruction,$category)
 {
@@ -23,6 +24,7 @@ function ControlRecipe($name,$description,$instruction,$category)
         exit;
     }
 }
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_id = $_SESSION['user_id'] ?? null;
     $auth_token = $_COOKIE['auth_token'] ?? null;
@@ -48,7 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $name = trim($_POST["name"]);
     $description = trim($_POST["description"]);
-    $ingredients = trim($_POST["ingredients"]);
+    $ingredientsRaw = trim($_POST["ingredients"]);
+    $ingredients = validateIngredients($ingredientsRaw);
     $instruction = trim($_POST["instruction"]);
     $category = $_POST["category"] ?? '';
 

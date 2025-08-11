@@ -13,6 +13,7 @@ export function LikeClicker(container){
                 likeIcon.classList.toggle('liked', result.liked);
                 card.querySelector('.like-count').textContent = result.like_count;
             } else {
+                window.location.href='/login/auth.php';
                 alert('Failed to like the recipe, if you unauthorized or don`t have account yet, please log in or create an account');
             }
         }
