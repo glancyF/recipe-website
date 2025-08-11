@@ -1,187 +1,230 @@
-import {FormsValidation} from "../registration/registration.js";
+import { FormsValidation } from "../registration/registration.js";
 
 export class AddRecipeForm extends FormsValidation {
+    // ЕДИНЫЕ КОНСТАНТЫ — используем везде
+    static MAX_INGREDIENTS = 86;
+    static MAX_IMAGE_MB    = 2;
+    static ING_PATTERN     = /^[A-Za-z0-9+\-,.%:;() ]+(,[A-Za-z0-9+\-,.%:;() ]+)*$/;
+
     constructor() {
         super();
-
     }
 
-    controlRecipeImage(fieldControlElement,errorMessages){
-        const file = fieldControlElement.files[0]
-        if(!file){
-            errorMessages.push('Image is required');
+
+    controlRecipeImage(fieldControlElement, errorMessages) {
+        const file = fieldControlElement.files[0];
+        if (!file) {
+            errorMessages.push("Image is required");
             return;
         }
-        const maxSizeMB = 2;
-        const maxSizeBytes = maxSizeMB * 1024*1024;
 
-        const validTypes =['image/jpeg','image/png','image/jpg'];
-        if(!validTypes.includes(file.type)){
-            errorMessages.push("Only JPG,PNG,JPEG formats allowed");
+        const maxBytes = AddRecipeForm.MAX_IMAGE_MB * 1024 * 1024;
+        const validTypes = ["image/jpeg", "image/png", "image/jpg"];
+
+        if (!validTypes.includes(file.type)) {
+            errorMessages.push("Only JPG, PNG, JPEG formats allowed");
         }
-        if(file.size>maxSizeBytes){
-            errorMessages.push(`Image must be smaller than ${maxSizeMB}MB`);
+        if (file.size > maxBytes) {
+            errorMessages.push(`Image must be smaller than ${AddRecipeForm.MAX_IMAGE_MB}MB`);
         }
     }
-    controlName(fieldControlElement,errorMessages){
+
+    controlName(fieldControlElement, errorMessages) {
         const pattern = /^[A-Za-z\s]+$/;
-        if(!pattern.test(fieldControlElement.value.trim())){
-            errorMessages.push()
+        if (!pattern.test(fieldControlElement.value.trim())) {
+            errorMessages.push("Only letters and spaces are allowed");
         }
     }
 
-    controlDescription(fieldControlElement,errorMessages){
-        const pattern = /^[A-Za-z0-9+\-,.%:;() ]+(,[A-Za-z0-9+\-,.%:;() ]+)*$/;
-        if(!pattern.test(fieldControlElement.value.trim())){
-            errorMessages.push('Invalid symbols')
+    controlDescription(fieldControlElement, errorMessages) {
+        if (!AddRecipeForm.ING_PATTERN.test(fieldControlElement.value.trim())) {
+            errorMessages.push("Invalid symbols");
         }
     }
 
-    bindIngredientControls(){
-        const input = document.getElementById('IngredientInput');
-        const addBtn = document.getElementById('addIngredientBtn');
-        const list = document.getElementById('ingredientsList');
-        const hiddenInput = document.getElementById('ingredientsHiddenInput');
-        const updateHidden = () => {
-            const ingredients = [...list.querySelectorAll('li')]
-                .map(li => li.querySelector('.ingredient-text')?.textContent.trim())
-                .filter(Boolean);
-            hiddenInput.value = ingredients.join(';');
-        };
-
-        const showIngredientError = (message) => {
-            const errorElement = document.getElementById('IngredientInput-errors');
-            errorElement.innerHTML =`<span class="field__errors">${message}</span>`;
-            input.setAttribute('aria-invalid','true');
-        };
-        const clearIngredientError = () =>{
-            const errorElement = document.getElementById('IngredientInput-errors');
-            errorElement.innerHTML='';
-            input.removeAttribute('aria-invalid');
-        }
-
-        addBtn?.addEventListener('click',()=> {
-            const value = input.value.trim();
-            const pattern = /^[A-Za-z0-9+\-,.%:;() ]+(,[A-Za-z0-9+\-,.%:;() ]+)*$/;
-
-            if (!value) {
-
-                return;
-            }
-            if (!pattern.test(value)) {
-                showIngredientError('Ingredient contains invalid characters');
-                return;
-            }
-            const existingIngredients =[...list.querySelectorAll('.ingredient-text')]
-                .map(el => el.textContent.trim().toLowerCase());
-            if(existingIngredients.includes(value.toLowerCase())){
-                showIngredientError("Ingredient already added");
-                return;
-            }
-            clearIngredientError();
-
-            const li = document.createElement('li');
-            li.innerHTML = `
-            <span class="ingredient-text">${value}</span>
-            <button type="button" class="remove-ingredient" aria-label="Remove ingredient">
-                <i class="fa fa-times"></i>
-            </button>
-        `;
-            list.appendChild(li)
-            input.value='';
-            updateHidden();
-            input.required = false;
-        });
-        list?.addEventListener('click', (e) =>{
-            const {target} = e;
-            if(target.closest('.remove-ingredient'))
-            {
-                const li = target.closest('li');
-                li.remove();
-                updateHidden();
-                if (list.querySelectorAll('li').length === 0) {
-                    input.required = true;
-                }
-
-            }
-        });
-    }
-
-    controlInstruction(fieldControlElement,errorMessages){
+    controlInstruction(fieldControlElement, errorMessages) {
         const pattern = /^[A-Za-z0-9+\-,.%:;() ]+$/;
         if (!pattern.test(fieldControlElement.value.trim())) {
-            errorMessages.push('Invalid symbols.');
+            errorMessages.push("Invalid symbols.");
         }
     }
-    Controls(fieldControlElement,errorMessages){
-        if(fieldControlElement.id === 'recipeImage'){
-            this.controlRecipeImage(fieldControlElement,errorMessages);
-        }
-        if(fieldControlElement.id === 'name'){
-            this.controlName(fieldControlElement,errorMessages);
-        }
-        if(fieldControlElement.id==='description'){
-            this.controlDescription(fieldControlElement,errorMessages);
-        }
-        if(fieldControlElement.id==='instruction'){
-            this.controlInstruction(fieldControlElement,errorMessages);
-        }
-    }
-    validateField(fieldControlElement) {
-        const errors = fieldControlElement.validity
-        const errorMessages = []
-        this.Controls(fieldControlElement,errorMessages)
-        if(fieldControlElement.id === 'ingredientsHiddenInput'){
-            if(!fieldControlElement.value.trim())
-            {
-                errorMessages.push('Please add at least one ingredient');
+
+    /* ---------- Общая настройка блока ингредиентов ----------
+       Можно вызывать и для Add, и для Edit.
+       initialValues: [] — начальные ингредиенты (у Edit сюда передадим то, что было изначально)
+       restoreOnReset: true/false — нужно ли возвращать initialValues по reset
+    */
+    setupIngredientControls({ initialValues = [], restoreOnReset = false } = {}) {
+        const input        = document.getElementById("IngredientInput");
+        const addBtn       = document.getElementById("addIngredientBtn");
+        const list         = document.getElementById("ingredientsList");
+        const hiddenInput  = document.getElementById("ingredientsHiddenInput");
+        const errorBox     = document.getElementById("IngredientInput-errors");
+
+        const showError = (msg) => {
+            if (!errorBox) return;
+            errorBox.innerHTML = `<span class="field__errors">${msg}</span>`;
+            input?.setAttribute("aria-invalid", "true");
+        };
+        const clearError = () => {
+            if (!errorBox) return;
+            errorBox.innerHTML = "";
+            input?.removeAttribute("aria-invalid");
+        };
+
+        const updateHidden = () => {
+            const ingredients = [...list.querySelectorAll(".ingredient-text")]
+                .map((el) => el.textContent.trim())
+                .filter(Boolean);
+            hiddenInput.value = ingredients.join(";");
+        };
+
+        const addIngredient = (value) => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+        <span class="ingredient-text">${value}</span>
+        <button type="button" class="remove-ingredient" aria-label="Remove ingredient">
+          <i class="fa fa-times"></i>
+        </button>
+      `;
+            list.appendChild(li);
+            updateHidden();
+            if (input) {
+                input.value = "";
+                input.required = false;
             }
+        };
+
+        const tryAddFromInput = () => {
+            const value = input.value.trim();
+            if (!value) return;
+
+            // лимит
+            if (list.querySelectorAll("li").length >= AddRecipeForm.MAX_INGREDIENTS) {
+                showError(`Maximum ${AddRecipeForm.MAX_INGREDIENTS} ingredients allowed`);
+                return;
+            }
+            // паттерн
+            if (!AddRecipeForm.ING_PATTERN.test(value)) {
+                showError("Ingredient contains invalid characters");
+                return;
+            }
+            // дубликат
+            const existing = new Set(
+                [...list.querySelectorAll(".ingredient-text")].map((el) =>
+                    el.textContent.trim().toLowerCase()
+                )
+            );
+            if (existing.has(value.toLowerCase())) {
+                showError("Ingredient already added");
+                return;
+            }
+
+            clearError();
+            addIngredient(value);
+        };
+
+        // Поднять первоначальные ингредиенты (если были)
+        if (initialValues.length) {
+            list.innerHTML = "";
+            initialValues.forEach((v) => addIngredient(v));
+            if (input) input.required = false;
         }
-        Object.entries(this.errorMessages).forEach( ([errorType,getErrorMessage])=> {
-            if(errors[errorType])
-            {
-                errorMessages.push(getErrorMessage(fieldControlElement));
+
+        addBtn?.addEventListener("click", tryAddFromInput);
+
+        list?.addEventListener("click", (e) => {
+            if (e.target.closest(".remove-ingredient")) {
+                e.target.closest("li").remove();
+                updateHidden();
+                if (list.querySelectorAll("li").length === 0 && input) {
+                    input.required = true;
+                }
             }
         });
-        this.manageErrors(fieldControlElement,errorMessages)
-        const isValid = errorMessages.length === 0
-        fieldControlElement.ariaInvalid = !isValid
-        return isValid
-    }
-    ImagePreview() {
-        const imagePreview = document.getElementById('imagePreview');
-        const imageInput = document.getElementById('recipeImage');
-        const removeBtn =document.getElementById('removeImageBtn');
-        const previewWrapper = document.getElementById('imagePreviewWrapper');
-        if (imageInput && imagePreview) {
-            imageInput.addEventListener('change', () => {
-                const file = imageInput.files[0];
-                if (file && file.type.startsWith('image/')) {
-                    const reader = new FileReader();
-                    reader.onload = e => {
-                        imagePreview.src = e.target.result;
-                        previewWrapper.style.display ='block';
-                    };
-                    reader.readAsDataURL(file);
-                } else {
-                    imagePreview.style.display = 'none';
-                    imagePreview.src = '';
+
+        // Восстановление на reset (если нужно)
+        if (restoreOnReset) {
+            const form = document.querySelector("form");
+            form?.addEventListener("reset", () => {
+                list.innerHTML = "";
+                initialValues.forEach((v) => addIngredient(v));
+                updateHidden();
+                clearError();
+                if (input) {
+                    input.value = "";
+                    input.required = initialValues.length === 0;
                 }
-            });
-            removeBtn.addEventListener('click',()=>{
-                imageInput.value='';
-                imagePreview.src='';
-                previewWrapper.style.display='none';
             });
         }
     }
-    ResetChanges(){
+
+    /* ---------- Валидация одного поля ---------- */
+    Controls(fieldControlElement, errorMessages) {
+        if (fieldControlElement.id === "recipeImage") this.controlRecipeImage(fieldControlElement, errorMessages);
+        if (fieldControlElement.id === "name") this.controlName(fieldControlElement, errorMessages);
+        if (fieldControlElement.id === "description") this.controlDescription(fieldControlElement, errorMessages);
+        if (fieldControlElement.id === "instruction") this.controlInstruction(fieldControlElement, errorMessages);
+    }
+
+    validateField(fieldControlElement) {
+        const errors = fieldControlElement.validity;
+        const msgs = [];
+        this.Controls(fieldControlElement, msgs);
+
+        if (fieldControlElement.id === "ingredientsHiddenInput") {
+            if (!fieldControlElement.value.trim()) msgs.push("Please add at least one ingredient");
+        }
+
+        Object.entries(this.errorMessages).forEach(([type, getMsg]) => {
+            if (errors[type]) msgs.push(getMsg(fieldControlElement));
+        });
+
+        this.manageErrors(fieldControlElement, msgs);
+        const ok = msgs.length === 0;
+        fieldControlElement.ariaInvalid = !ok;
+        return ok;
+    }
+
+    /* ---------- Превью картинки ---------- */
+    ImagePreview() {
+        const imagePreview   = document.getElementById("imagePreview");
+        const imageInput     = document.getElementById("recipeImage");
+        const removeBtn      = document.getElementById("removeImageBtn");
+        const previewWrapper = document.getElementById("imagePreviewWrapper");
+
+        if (!imageInput || !imagePreview) return;
+
+        imageInput.addEventListener("change", () => {
+            const file = imageInput.files[0];
+            if (file && file.type.startsWith("image/")) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    imagePreview.src = e.target.result;
+                    previewWrapper.style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            } else {
+                imagePreview.style.display = "none";
+                imagePreview.src = "";
+            }
+        });
+
+        removeBtn?.addEventListener("click", () => {
+            imageInput.value = "";
+            imagePreview.src = "";
+            previewWrapper.style.display = "none";
+        });
+    }
+
+    /* ---------- Сброс формы (для Add — просто чистим всё) ---------- */
+    ResetChanges() {
         const form = document.querySelector('form');
-        if(!form) return;
-        form.addEventListener('reset',()=>{
-           const list = document.getElementById('ingredientsList');
-           const hiddenInput = document.getElementById('ingredientsHiddenInput');
-           const input = document.getElementById('IngredientInput');
+        if (!form) return;
+        form.addEventListener('reset', () => {
+            const list = document.getElementById('ingredientsList');
+            const hiddenInput = document.getElementById('ingredientsHiddenInput');
+            const input = document.getElementById('IngredientInput');
             if (list) list.innerHTML = '';
             if (hiddenInput) hiddenInput.value = '';
             if (input) {
@@ -191,21 +234,23 @@ export class AddRecipeForm extends FormsValidation {
         });
     }
 
-    init() {
+    init(opts = {}) {
+        const {
+            initialIngredients = [],   // стартовые ингредиенты (для Edit)
+            restoreOnReset = false,    // вернуть initialIngredients по reset
+            useBaseReset = true        // вешать ли базовый "очиститель"
+        } = opts;
+
         super.init();
-        this.bindIngredientControls();
+        // ЕДИНЫЙ вызов настройки ингредиентов
+        this.setupIngredientControls({ initialValues: initialIngredients, restoreOnReset });
         this.ImagePreview();
-        this.ResetChanges();
+
+        if (useBaseReset) {
+            this.ResetChanges();       // базовое поведение для Add
+        }
     }
 
-    getEndpoint() {
-        return '/AddRecipe/add_recipe.php';
-    }
-    getSuccessRedirect(){
-        return '/main/index.php';
-    }
-
-
+    getEndpoint() { return "/AddRecipe/add_recipe.php"; }
+    getSuccessRedirect() { return "/main/index.php"; }
 }
-
-
