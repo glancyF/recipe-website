@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
-
+global $conn;
+include __DIR__ . '/../../utils/IngredientsControl.php';
 session_start();
 header('Content-Type: application/json');
 require_once __DIR__ . '/../../db.php';
@@ -41,7 +42,8 @@ $category    = trim($_POST['category'] ?? '');
 $name        = trim($_POST['name'] ?? '');
 $description = trim($_POST['description'] ?? '');
 $instruction = trim($_POST['instruction'] ?? '');
-$ingredients = trim($_POST['ingredients'] ?? '');
+$ingredientsRaw = trim($_POST["ingredients"]);
+$ingredients = validateIngredients($ingredientsRaw);
 
 if ($recipe_id <= 0) {
     echo json_encode(["status" => "error", "message" => "Bad recipe id"]);
