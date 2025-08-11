@@ -1,0 +1,60 @@
+@media print {
+    /* Общие скрытия */
+    header, footer, nav,
+    .profile-sidebar,
+    .pagination, .pagination-controls,
+    .fixed-bottom,
+    .card-header, .like-container, .view {
+        display: none !important;
+    }
+
+    .profile-container::before { display: none !important; content: none !important; }
+
+    html, body,
+    .profile-wrapper, .profile-container, .profile-main, .content-area {
+        margin: 0 !important;
+        padding: 0 !important;
+        height: auto !important;
+        min-height: auto !important;
+        overflow: visible !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        border: 0 !important;
+        border-radius: 0 !important;
+    }
+
+    /* Контейнеры с карточками (оба типа) */
+    .recipe-grid,
+    .recipes-grid,
+    #recipesContainer,
+    #likedRecipes {
+        display: block !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+
+    /* Карточки (оба типа) */
+    .recipe-card,
+    .recipes-card {
+        position: static !important;
+        display: block !important;
+        width: auto !important;
+        margin: 0 0 12mm 0 !important;
+        padding: 8mm !important;
+        border: 1pt solid #000 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+        break-inside: avoid !important;
+        page-break-inside: avoid !important;
+    }
+
+    .recipe-card img,
+    .recipes-card img {
+        width: 100% !important;
+        height: auto !important;
+        max-height: 70mm !important;
+        object-fit: cover !important;
+        margin-bottom: 4mm !important;
+    }
+}
