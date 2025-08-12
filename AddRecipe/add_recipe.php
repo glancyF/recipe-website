@@ -10,7 +10,7 @@ function ControlRecipe($name,$description,$instruction,$category)
         echo json_encode(["status" => "error", "message" => "Invalid recipe name"]);
         exit;
     }
-    if(strlen($description)<10 || strlen($description)>300){
+    if(strlen($description)<10 || strlen($description)>130){
         echo json_encode(["status" => "error", "message" => "Invalid description"]);
         exit;
     }
@@ -29,7 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $user_id = $_SESSION['user_id'] ?? null;
     $auth_token = $_COOKIE['auth_token'] ?? null;
     $uploadDir = '../uploads/';
-    // Check if user is authenticated
+
     if (!$user_id || !$auth_token) {
         echo json_encode(["status" => "error", "message" => "User not authenticated"]);
         exit;

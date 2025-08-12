@@ -104,10 +104,6 @@ form button:hover {
 }
 
 
-
-
-
-/* --- Мобильная адаптация --- */
 @media (max-width: 640px) {
     .form-wrapper {
         padding: 1rem;
@@ -135,7 +131,7 @@ form button:hover {
     }
 }
 
-/* --- Печать --- */
+
 @media print {
     header,
     nav,

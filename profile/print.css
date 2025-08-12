@@ -1,5 +1,5 @@
 @media print {
-    /* Общие скрытия */
+
     header, footer, nav,
     .profile-sidebar,
     .pagination, .pagination-controls,
@@ -23,7 +23,7 @@
         border-radius: 0 !important;
     }
 
-    /* Контейнеры с карточками (оба типа) */
+
     .recipe-grid,
     .recipes-grid,
     #recipesContainer,
@@ -34,7 +34,7 @@
         max-width: 100% !important;
     }
 
-    /* Карточки (оба типа) */
+
     .recipe-card,
     .recipes-card {
         position: static !important;

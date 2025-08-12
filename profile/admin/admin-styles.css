@@ -1,10 +1,10 @@
-/* ---------- Общая обёртка профиля для якоря ---------- */
+
 .profile-main {
-    position: relative;      /* Якорь для absolute */
-    padding-bottom: 80px;    /* Место под пагинацию */
+    position: relative;
+    padding-bottom: 80px;
 }
 
-/* ---------- Админ: секция и таблица ---------- */
+
 .admin-users {
     max-width: 1100px;
     margin: 2rem auto;
@@ -18,7 +18,7 @@
     color: var(--color-green-dark, #476622);
 }
 
-/* Таблица */
+
 .admin-users .users-table {
     width: 100%;
     border-collapse: collapse;
@@ -26,7 +26,17 @@
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    white-space: nowrap;
+
+    text-overflow: ellipsis;
 }
+.admin-users .users-table th:nth-child(1),
+.admin-users .users-table td:nth-child(1) { width: 64px; }
+.admin-users .users-table th:nth-child(3),
+.admin-users .users-table td:nth-child(3) { width: 140px; }
+.admin-users .users-table th:nth-child(4),
+.admin-users .users-table td:nth-child(4) { width: 160px; }
+
 
 .admin-users .users-table thead th {
     text-align: left;
@@ -55,7 +65,7 @@
     margin-top: 2px;
 }
 
-/* ---------- Селект и кнопка Apply ---------- */
+
 .admin-users .status-select {
     appearance: none;
     -webkit-appearance: none;
@@ -98,26 +108,133 @@
 
 
 
-#usersPagination.fixed-bottom {
-    position: absolute;
-    bottom: 16px;
-    left: 0;
-    right: 0;          /* вместо left:50%/transform */
-    width: 100%;
-    transform: none;
-    z-index: 2;
-    display: flex;
-    justify-content: center;
-}
-
-/* Одна строка, без переносов */
-.pagination-controls {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: .5rem;
-    flex-wrap: nowrap;        /* было wrap */
+@media (max-width: 900px) {
+    .profile-container { gap: 1rem; }
+    .profile-sidebar { flex: 0 0 220px; }
+    .profile-main    { flex: 1 1 auto; min-width: 0; }
+    .admin-users { overflow-x: auto; }
+    .admin-users .users-table { min-width: 300px; }
 }
 
 
+
+@media (max-width: 800px) {
+
+    .profile-container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .profile-sidebar {
+        width: 100%;
+    }
+
+    .admin-users .users-table {
+        display: block;
+        border: 0;
+        box-shadow: none;
+    }
+
+    .admin-users .users-table thead {
+        display: none;
+    }
+
+    .admin-users .users-table tbody {
+        display: grid;
+        gap: 12px;
+    }
+
+    .admin-users .users-table tr {
+        display: grid;
+        gap: 10px;
+        padding: 12px 14px;
+        background: #fff;
+        border: 1px solid #e6e6e6;
+        border-radius: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .06);
+    }
+
+    .admin-users .users-table td {
+        display: grid;
+        grid-template-columns: 120px 1fr;
+        align-items: center;
+        gap: 8px;
+        border: 0;
+        padding: 0;
+        white-space: normal;
+    }
+
+
+    .admin-users .users-table td:nth-child(1)::before {
+        content: "ID";
+    }
+
+    .admin-users .users-table td:nth-child(2)::before {
+        content: "Username / Email";
+    }
+
+    .admin-users .users-table td:nth-child(3)::before {
+        content: "Status";
+    }
+
+    .admin-users .users-table td:nth-child(4)::before {
+        content: "Action";
+    }
+
+    .admin-users .users-table td::before {
+        font-weight: 700;
+        color: #555;
+    }
+
+
+    .admin-users .users-table td:nth-child(3) select {
+        width: 100%;
+    }
+
+    .admin-users .users-table td:nth-child(4) .apply-btn {
+        width: 100%;
+        justify-self: stretch;
+        margin-top: 6px;
+    }
+
+
+}
+
+
+@media print {
+    @page { size: A4; margin: 15mm; }
+
+    header, nav, footer,
+    .pagination, .pagination-controls, .fixed-bottom { display: none !important; }
+
+
+    .admin-users { margin: 0 !important; padding: 0 !important; }
+    .admin-users .users-table {
+        box-shadow: none !important;
+        background: #fff !important;
+        border: 1pt solid #000 !important;
+        border-radius: 0 !important;
+    }
+
+    .admin-users .users-table thead th {
+        background: #fff !important;
+        border-bottom: 1pt solid #000 !important;
+        color: #000 !important;
+    }
+
+    .admin-users .users-table tbody td {
+        border-bottom: 1pt solid #ccc !important;
+    }
+
+    .admin-users .users-table tr { break-inside: avoid; page-break-inside: avoid; }
+
+    .admin-users .users-table,
+    .admin-users .users-table thead,
+    .admin-users .users-table tbody,
+    .admin-users .users-table tr,
+    .admin-users .users-table th,
+    .admin-users .users-table td {
+        display: table !important;
+    }
+}
 

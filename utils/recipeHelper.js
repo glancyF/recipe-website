@@ -24,18 +24,16 @@ export function renderPagination(container, total, currentPage, limit, onPageCha
         return b;
     };
 
-    // Prev
+
     container.appendChild(
         btn('Prev', _currentPage <= 1, () => onPageChange(_currentPage - 1))
     );
 
-    // "Page X of Y"
     const info = document.createElement('span');
     info.className = 'page-indicator';
     info.textContent = `Page ${_currentPage} of ${totalPages}`;
     container.appendChild(info);
 
-    // Go to page
     const jump = document.createElement('span');
     jump.className = 'jump-wrap';
 
@@ -56,7 +54,6 @@ export function renderPagination(container, total, currentPage, limit, onPageCha
     jump.appendChild(goBtn);
     container.appendChild(jump);
 
-    // Next
     container.appendChild(
         btn('Next', _currentPage >= totalPages, () => onPageChange(_currentPage + 1))
     );

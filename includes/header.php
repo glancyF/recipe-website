@@ -19,7 +19,6 @@ $loggedIn = isset($_COOKIE['auth_token']);
 </head>
 <body>
 <header>
-    <!-- пока так. можно обернуть в div nav-container либо потом настроить @media правила. оставлю пока так-->
     <nav>
         <ul class="nav">
             <li><a href="/main/index.php"><i class="main"></i>

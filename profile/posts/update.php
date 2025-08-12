@@ -72,7 +72,7 @@ if ($len($ingredients) < 1 || $len($ingredients) > 300) {
     exit;
 }
 
-// Проверяем владельца или даём доступ админу
+
 if ($isAdmin) {
     $stmt = $conn->prepare("SELECT image_path FROM recipes WHERE id = ? LIMIT 1");
     $stmt->bind_param("i", $recipe_id);
@@ -125,7 +125,7 @@ if (isset($_FILES['recipeImage']) && $_FILES['recipeImage']['error'] !== UPLOAD_
     $newImagePath = $newName;
 }
 
-// UPDATE с учётом прав
+
 if ($isAdmin) {
     $stmt = $conn->prepare("
         UPDATE recipes

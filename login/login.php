@@ -55,7 +55,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
     else {
-        // Return an error response for invalid credentials
         echo json_encode(["status" => "error", "message" => "Invalid credentials or account doesn't exist"]);
         exit;
     }

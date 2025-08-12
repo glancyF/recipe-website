@@ -178,7 +178,7 @@
 }
 
 .fixed-bottom {
-    position: static; /* было absolute */
+    position: static;
     margin-top: 1.5rem;
     display: flex;
     justify-content: center;
@@ -186,9 +186,9 @@
 .category-wrapper {
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 140px); /* с учётом header/footer */
+    min-height: calc(100vh - 140px);
     position: relative;
-    padding-bottom: 4rem; /* отступ под пагинацией */
+    padding-bottom: 4rem;
 }
 #categoryPagination.fixed-bottom {
     position: absolute;
@@ -213,7 +213,7 @@
 
 }
 
-/* --- Печать: одинаково с категориями --- */
+
 @media print {
     header, nav, .pagination, .like-container, .card-header, .view, .btn, footer, .category-buttons { display:none !important; }
     body { background:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }

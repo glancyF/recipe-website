@@ -13,7 +13,6 @@ body {
     color: #333;
     line-height: 1.6;
 
-
 }
 
 main {
@@ -21,7 +20,7 @@ main {
     margin: 2rem auto;
 
 }
-/* Логотип */
+
 .logo {
     width: 50px;
     padding: 1px;
@@ -31,7 +30,7 @@ main {
     box-shadow: 0 0 2px 1px rgba(0,140,186,1);
 }
 
-/* Хэдер */
+
 header {
     background-color: var(--color-green-pale);
     border-bottom: 1px solid #dddddd;
@@ -42,7 +41,6 @@ header {
 
 }
 
-/* Навигация */
 .nav {
     list-style: none;
     display: flex;
@@ -57,7 +55,7 @@ header {
 .nav a:hover {
     color: #0077cc;
 }
-/* Футер */
+
 footer {
     text-align: center;
     padding: 1rem;

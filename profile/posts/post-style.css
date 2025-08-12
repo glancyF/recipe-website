@@ -2,9 +2,9 @@
     display: flex;
     flex-direction: column;
     height: 100%;
-    min-height: calc(100vh - 60px); /* 60px — если есть шапка или отступ сверху */
+    min-height: calc(100vh - 60px);
     position: relative;
-    padding-bottom: 4rem; /* чтобы контент не наезжал на пагинацию */
+    padding-bottom: 4rem;
 }
 
 .fixed-bottom {
@@ -117,8 +117,8 @@ h2 {
 
 
 .recipe-card {
-    position: relative; /* Нужно, чтобы абсолютное позиционирование работало внутри */
-   /* padding-bottom: 2rem;  Чтобы иконка не перекрывалась контентом */
+    position: relative;
+
     padding: 1.5rem 1rem 2rem 1rem;
 }
 
@@ -203,33 +203,33 @@ h2 {
 
 
 
-/* ====== Мобилка / планшет ====== */
+
 @media (max-width: 900px) {
     .recipe-grid {
-        grid-template-columns: 1fr;   /* одна колонка */
+        grid-template-columns: 1fr;
         gap: 1rem;
         padding: .5rem;
     }
     .content-area {
-        padding-bottom: 5rem;         /* запас под пагинацию */
+        padding-bottom: 5rem;
     }
 
     .recipe-card {
-        padding: 1rem 1rem 2.25rem 1rem; /* место для действий снизу */
+        padding: 1rem 1rem 2.25rem 1rem;
         border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0,0,0,.08);
     }
     .image-container img,
     .recipe-card img {
-        height: 200px;                /* чуть выше на мобиле */
+        height: 200px;
     }
-    /* Подпись "View" и иконки — пониже и не прилипают к краям */
+
     .view { left: .75rem; bottom: .75rem; }
     .card-header { right: .75rem; bottom: .75rem; gap: .75rem; }
     .like-container { right: .75rem; bottom: .75rem; }
 }
 
-/* ещё более узкие устройства */
+
 @media (max-width: 420px) {
     .recipe-card h3 { font-size: 1rem; }
     .recipe-card p  { font-size: .95rem; -webkit-line-clamp: 4; }

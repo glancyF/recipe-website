@@ -60,11 +60,8 @@ document.addEventListener("DOMContentLoaded", () => {
   </div>
 `;
 
-
-            // лайки по месту карточки
             LikeClicker(featured);
 
-            // удаление с авто-обновлением «избранного» рецепта
             bindDeleteHandler(featured, loadFeatured);
         } catch (e) {
             featured.innerHTML = `<div class="error">Failed to load. Please try again later.</div>`;

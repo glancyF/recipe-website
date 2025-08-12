@@ -1,7 +1,7 @@
 import { FormsValidation } from "../registration/registration.js";
 
 export class AddRecipeForm extends FormsValidation {
-    // ЕДИНЫЕ КОНСТАНТЫ — используем везде
+
     static MAX_INGREDIENTS = 86;
     static MAX_IMAGE_MB    = 2;
     static ING_PATTERN     = /^[A-Za-z0-9+\-,.%:;() ]+(,[A-Za-z0-9+\-,.%:;() ]+)*$/;
@@ -49,11 +49,6 @@ export class AddRecipeForm extends FormsValidation {
         }
     }
 
-    /* ---------- Общая настройка блока ингредиентов ----------
-       Можно вызывать и для Add, и для Edit.
-       initialValues: [] — начальные ингредиенты (у Edit сюда передадим то, что было изначально)
-       restoreOnReset: true/false — нужно ли возвращать initialValues по reset
-    */
     setupIngredientControls({ initialValues = [], restoreOnReset = false } = {}) {
         const input        = document.getElementById("IngredientInput");
         const addBtn       = document.getElementById("addIngredientBtn");
@@ -99,17 +94,17 @@ export class AddRecipeForm extends FormsValidation {
             const value = input.value.trim();
             if (!value) return;
 
-            // лимит
+
             if (list.querySelectorAll("li").length >= AddRecipeForm.MAX_INGREDIENTS) {
                 showError(`Maximum ${AddRecipeForm.MAX_INGREDIENTS} ingredients allowed`);
                 return;
             }
-            // паттерн
+
             if (!AddRecipeForm.ING_PATTERN.test(value)) {
                 showError("Ingredient contains invalid characters");
                 return;
             }
-            // дубликат
+
             const existing = new Set(
                 [...list.querySelectorAll(".ingredient-text")].map((el) =>
                     el.textContent.trim().toLowerCase()
@@ -124,7 +119,7 @@ export class AddRecipeForm extends FormsValidation {
             addIngredient(value);
         };
 
-        // Поднять первоначальные ингредиенты (если были)
+
         if (initialValues.length) {
             list.innerHTML = "";
             initialValues.forEach((v) => addIngredient(v));
@@ -143,7 +138,7 @@ export class AddRecipeForm extends FormsValidation {
             }
         });
 
-        // Восстановление на reset (если нужно)
+
         if (restoreOnReset) {
             const form = document.querySelector("form");
             form?.addEventListener("reset", () => {
@@ -159,7 +154,7 @@ export class AddRecipeForm extends FormsValidation {
         }
     }
 
-    /* ---------- Валидация одного поля ---------- */
+
     Controls(fieldControlElement, errorMessages) {
         if (fieldControlElement.id === "recipeImage") this.controlRecipeImage(fieldControlElement, errorMessages);
         if (fieldControlElement.id === "name") this.controlName(fieldControlElement, errorMessages);
@@ -186,7 +181,7 @@ export class AddRecipeForm extends FormsValidation {
         return ok;
     }
 
-    /* ---------- Превью картинки ---------- */
+
     ImagePreview() {
         const imagePreview   = document.getElementById("imagePreview");
         const imageInput     = document.getElementById("recipeImage");
@@ -217,7 +212,7 @@ export class AddRecipeForm extends FormsValidation {
         });
     }
 
-    /* ---------- Сброс формы (для Add — просто чистим всё) ---------- */
+
     ResetChanges() {
         const form = document.querySelector('form');
         if (!form) return;
@@ -236,18 +231,18 @@ export class AddRecipeForm extends FormsValidation {
 
     init(opts = {}) {
         const {
-            initialIngredients = [],   // стартовые ингредиенты (для Edit)
-            restoreOnReset = false,    // вернуть initialIngredients по reset
-            useBaseReset = true        // вешать ли базовый "очиститель"
+            initialIngredients = [],
+            restoreOnReset = false,
+            useBaseReset = true
         } = opts;
 
         super.init();
-        // ЕДИНЫЙ вызов настройки ингредиентов
+
         this.setupIngredientControls({ initialValues: initialIngredients, restoreOnReset });
         this.ImagePreview();
 
         if (useBaseReset) {
-            this.ResetChanges();       // базовое поведение для Add
+            this.ResetChanges();
         }
     }
 

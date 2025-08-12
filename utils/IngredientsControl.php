@@ -1,6 +1,5 @@
 <?php
 function validateIngredients(string $ingredientsRaw): string {
-    // разобьём по ';', подрежем пробелы, уберём пустые
     $parts = array_filter(array_map('trim', explode(';', $ingredientsRaw)), fn($v) => $v !== '');
 
     if (count($parts) === 0) {
@@ -12,7 +11,7 @@ function validateIngredients(string $ingredientsRaw): string {
         exit;
     }
 
-    $pattern = '/^[A-Za-z0-9+\-,.%:;() ]+$/u'; // как в JS
+    $pattern = '/^[A-Za-z0-9+\-,.%:;() ]+$/u';
     foreach ($parts as $ing) {
         if (mb_strlen($ing, 'UTF-8') > 50) {
             echo json_encode(["status" => "error", "message" => "Each ingredient must be ≤ 50 characters"]);
@@ -24,6 +23,5 @@ function validateIngredients(string $ingredientsRaw): string {
         }
     }
 
-    // Нормализуем (тримнутые значения) и возвращаем строку для хранения
     return implode(';', $parts);
 }

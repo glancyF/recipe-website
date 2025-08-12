@@ -24,7 +24,7 @@
     font-size: 1rem;
 }
 
-/* Поля */
+
 .field {
     display: flex;
     flex-direction: column;
@@ -114,7 +114,7 @@ select.field__control {
     background-color: #365d1e;
 }
 
-/* Ингредиенты */
+
 .ingredients-input {
     display: flex;
     gap: 0.5rem;
@@ -148,7 +148,7 @@ select.field__control {
     color: #333;
 }
 
-/* Превью изображения */
+
 .image-preview-wrapper {
     position: relative;
     margin-top: 1em;
@@ -184,4 +184,140 @@ select.field__control {
 
 #removeImageBtn:hover {
     background-color: #ffbbbb;
+}
+
+
+@media print {
+    @page { margin: 16mm; }
+
+    html, body {
+        background: #fff !important;
+        color: #000 !important;
+        font: 12pt/1.4 Arial, sans-serif;
+    }
+
+
+    header, nav, footer,
+    .reset-button, .submit-button,
+    .ingredients-input button,
+    .field__errors,
+    .fa, .fas, .far, .fal, .fab { display: none !important; }
+
+
+    .form-wrapper { min-height: auto !important; padding: 0 !important; }
+    .AddForm {
+        max-width: 100% !important;
+        width: 100% !important;
+        padding: 0 !important;
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+        gap: 1rem !important;
+    }
+
+    .field__label { font-weight: 700; margin: 0 0 .25rem !important; }
+    .field__label::after { color: #000 !important; }
+
+    .field__control,
+    textarea.field__control,
+    select.field__control {
+        border: 1px solid #000 !important;
+        background: #fff !important;
+        box-shadow: none !important;
+    }
+
+
+    #recipeImage { display: none !important; }
+
+    .image-preview-wrapper { display: block !important; margin: .5rem 0 0 !important; }
+    #imagePreview {
+        max-width: 100% !important;
+        width: 100% !important;
+        height: auto !important;
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+    }
+    #removeImageBtn { display: none !important; }
+
+
+    .ingredients-input input#IngredientInput { display: none !important; }
+    .ingredients-list {
+        margin: .25rem 0 0 !important;
+        padding-left: 1.2rem !important;
+        list-style: disc !important;
+        color: #000 !important;
+    }
+
+
+    .field,
+    .image-preview-wrapper,
+    .ingredients-list li { page-break-inside: avoid; }
+
+    textarea { white-space: pre-wrap !important; }
+    * { background-image: none !important; }
+}
+
+
+@media (max-width: 640px) {
+    .form-wrapper {
+        padding: 1rem;
+        min-height: auto;
+    }
+
+    .AddForm {
+        gap: 1rem;
+        padding: 1.25rem;
+        border-radius: 12px;
+        box-shadow: none;
+        font-size: 1rem;
+    }
+
+    .field__label {
+        font-size: .95rem;
+        margin-bottom: .35rem;
+    }
+
+    .field__control {
+        padding: .65em .9em;
+        font-size: 1rem;
+    }
+    textarea.field__control { min-height: 120px; }
+
+    .ingredients-input {
+        gap: .4rem;
+        align-items: stretch;
+    }
+    .ingredients-input input { flex: 1; }
+
+    .ingredients-input button {
+        min-width: 44px;
+        width: 44px;
+        height: 44px;
+        padding: 0;
+        font-size: 1rem;
+        border-radius: 8px;
+    }
+
+    .ingredients-list {
+        margin-top: .5rem;
+        font-size: .95rem;
+    }
+
+    .image-preview-wrapper { margin-top: .5rem; }
+    #imagePreview {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        aspect-ratio: auto;
+        border-radius: 8px;
+    }
+
+
+    .reset-button button,
+    .submit-button button {
+        max-width: 100%;
+        width: 100%;
+        font-size: 1.05rem;
+        padding: .75rem 1rem;
+    }
 }
