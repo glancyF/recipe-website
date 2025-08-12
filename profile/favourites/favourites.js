@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         LikeClicker(container);
     }
 
-    // универсальный обработчик удаления (перерисовываем текущую страницу после успеха)
+
     bindDeleteHandler(container, () => fetchLiked(currentPage));
 
     // старт

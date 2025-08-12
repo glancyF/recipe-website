@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-
+global $conn;
 session_start();
 header('Content-Type: application/json');
 require_once __DIR__ . '/../../db.php';
@@ -27,7 +27,7 @@ if ($recipeId <= 0) {
     exit;
 }
 
-// Если админ — удаляет любой рецепт, иначе только свой
+
 if ($isAdmin) {
     $stmt = $conn->prepare("DELETE FROM recipes WHERE id = ?");
     $stmt->bind_param("i", $recipeId);

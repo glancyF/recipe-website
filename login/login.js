@@ -3,7 +3,7 @@ import {FormsValidation} from "../registration/registration.js";
 class LoginValidation extends FormsValidation{
     constructor() {
         super();
-        // this._eventsBound = false; подумай завтра на счет этого!
+
     }
     init() {
         this.bindEvents();
@@ -13,7 +13,7 @@ class LoginValidation extends FormsValidation{
 
     }
     bindEvents() {
-        // чтобы два раза алерт не выскакивал
+
         if (this._eventsBound) return;
         this._eventsBound = true;
         document.addEventListener('blur', (event) => {

@@ -94,7 +94,7 @@ form button:hover {
 }
 
 .checkbox__label {
-    order: -1; /* Сначала текст, потом чекбокс */
+    order: -1;
     font-weight: 600;
     cursor: pointer;
     left:-3px;
@@ -103,8 +103,7 @@ form button:hover {
 
 .checkbox__control {
     left:-3px;
-    margin-right: auto; /* чтобы прижать чекбокс к левому краю */
-
+    margin-right: auto;
 }
 .radios {
     border: none;
@@ -153,9 +152,6 @@ form button:hover {
 }
 
 
-
-
-/* 📱 Мобильная адаптация */
 @media (max-width: 640px) {
     .form-wrapper {
         padding: 1rem;
@@ -178,30 +174,26 @@ form button:hover {
     }
 }
 
-/* 🖨 Печать */
-
 @media print {
-    /* размер и поля страницы */
+
     @page { size: A4; margin: 15mm; }
 
-    /* скрыть всё лишнее */
     header, footer, nav,
     .home-cta, .pagination, .category-buttons,
     .like-container, .card-header, .view,
-    .field__errors, /* подсказки об ошибках печатать не нужно */
+    .field__errors,
     button { display: none !important; }
 
-    /* базовая заливка */
+
     html, body { background: #fff !important; }
 
-    /* контейнер формы */
+
     .form-wrapper {
         min-height: auto;
         padding: 0;
         display: block;
     }
 
-    /* сама форма — как в авторизации: без теней/блюра, с тонкими границами */
     form {
         max-width: 100%;
         width: 100%;
@@ -213,7 +205,6 @@ form button:hover {
         box-shadow: none;
     }
 
-    /* поля и подписи */
     .field {
         padding: 10mm 10mm 0;
         page-break-inside: avoid;
@@ -235,7 +226,6 @@ form button:hover {
         color: #000 !important;
     }
 
-    /* radio/checkbox — компактно в рамке */
     fieldset.radios, .checkbox {
         border: 1px solid #000 !important;
         padding: 6mm 6mm 4mm;
@@ -243,7 +233,6 @@ form button:hover {
         margin: 6mm 10mm 0;
     }
 
-    /* убрать декоративные эффекты */
     * { text-shadow: none !important; filter: none !important; }
 }
 

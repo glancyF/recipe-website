@@ -7,7 +7,7 @@ include "../includes/header.php";
 
 <main class="home">
     <section id="featured" class="hero">
-        <!-- сюда JS подставит карточку -->
+
         <div class="hero-skeleton">
             <div class="img-skeleton"></div>
             <div class="info-skeleton">

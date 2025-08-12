@@ -19,7 +19,7 @@ export class FormsValidation {
         this.bindEvents()
     }
     manageErrors(fieldControlElement,errorMessages) {
-        // необязательная проверка, так как в случае отсутствия ошибок, мэп обновит поле. Оставленно во избежание мерцаний или залипаний ДОМ, и якобы оптимизации
+
         const fieldErrorsElement = fieldControlElement.parentElement?.querySelector(this.selectors.fieldErrors)
         if(errorMessages.length === 0){
             fieldErrorsElement.innerHTML = ''
@@ -146,7 +146,7 @@ export class FormsValidation {
                     alert(result.message || 'Something went wrong');
                     submitButton.disabled = false;
                 } else if (result.status === 'success') {
-                    // alert(result.message || 'Registration successful!');
+
                     window.location.href = this.getSuccessRedirect()
                 }
             } catch (err) {

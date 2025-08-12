@@ -23,7 +23,7 @@ if ($recipeId <= 0) {
 $userId  = (int)$_SESSION['user_id'];
 $admin   = isAdmin();
 
-// Админ может открыть любой рецепт, обычный — только свой
+
 if ($admin) {
     $stmt = $conn->prepare("SELECT * FROM recipes WHERE id = ? LIMIT 1");
     $stmt->bind_param("i", $recipeId);
@@ -43,5 +43,4 @@ if (!$recipe) {
     exit;
 }
 
-// ... тут отрисовываешь форму/страницу редактирования, экранируя вывод:
-// <?= htmlspecialchars($recipe['name'], ENT_QUOTES, 'UTF-8') ?>
+

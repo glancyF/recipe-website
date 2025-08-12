@@ -4,7 +4,46 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="958cf958-b428-4b45-8994-59fb9a8f693b" name="Changes" comment="" />
+    <list default="true" id="958cf958-b428-4b45-8994-59fb9a8f693b" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddRecipe/addRecipe-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/AddRecipe/addRecipe-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddRecipe/addRecipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/AddRecipe/addRecipe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddRecipe/add_recipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/AddRecipe/add_recipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AddRecipe/add_recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/AddRecipe/add_recipe.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Category/category-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Category/category-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/allRecipes/allRecipes-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/allRecipes/allRecipes-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/base.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/sections.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/sections.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/formlogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/login/formlogin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/login/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login/login.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/main/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/main/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main/main-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/main/main-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mostPopular/mostPopular-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/mostPopular/mostPopular-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pagination.css" beforeDir="false" afterPath="$PROJECT_DIR$/pagination.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/admin/admin-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/admin/admin-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/favourites/favourites-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/favourites/favourites-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/favourites/favourites.js" beforeDir="false" afterPath="$PROJECT_DIR$/profile/favourites/favourites.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/overview/mostLikedRecipe-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/overview/mostLikedRecipe-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/password_change/password_change-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/password_change/password_change-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/posts/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile/posts/delete.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/posts/editRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/profile/posts/editRecipe.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/posts/getPostForEdit.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile/posts/getPostForEdit.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/posts/post-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/posts/post-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/posts/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile/posts/update.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/print.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/print.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/profile-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/profile-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profile/settings/settings-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/settings/settings-styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/recipes/recipe-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/recipes/recipe-style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registration/formregister.css" beforeDir="false" afterPath="$PROJECT_DIR$/registration/formregister.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registration/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/registration/registration.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/registration/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/registration/registration.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/IngredientsControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/utils/IngredientsControl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/recipeHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/recipeHelper.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,16 +63,71 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)"
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 7
+}</component>
+  <component name="ProjectId" id="315gAt0175v2UnBQVjTF4cxt4TY" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;develop&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-09060db00ec0-JavaScript-PS-251.26927.60" />
+        <option value="bundled-php-predefined-a98d8de5180a-e5747d4f5a45-com.jetbrains.php.sharedIndexes-PS-251.26927.60" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="958cf958-b428-4b45-8994-59fb9a8f693b" name="Changes" comment="" />
+      <created>1754819208142</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1754819208142</updated>
+      <workItem from="1754819209598" duration="9398000" />
+      <workItem from="1754848440585" duration="4096000" />
+      <workItem from="1754898184714" duration="3521000" />
+      <workItem from="1754902800382" duration="16407000" />
+      <workItem from="1754941914796" duration="2573000" />
+      <workItem from="1754983403559" duration="8850000" />
+    </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

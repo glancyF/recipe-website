@@ -99,15 +99,10 @@
             $_SESSION["user_id"] = $conn->insert_id;
             $_SESSION['status'] = 'user';
 
-
-//            $updateTokenQuery = "UPDATE users SET auth_token=? WHERE id=?";
-//            $updateStmt = $conn->prepare($updateTokenQuery);
-//            $updateStmt->bind_param("si", $auth_token, $_SESSION["user_id"]);
-//            $updateStmt->execute();
             setcookie("auth_token", $auth_token,[
                 "expires" => time() + (86400 * 30),
                 "path" => "/",
-                //"secure" => false, //на релизе поменяю на тру
+                "secure" => true,
                 "httponly" => true,
                 "samesite" => "Lax",
             ]);

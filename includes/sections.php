@@ -14,7 +14,7 @@ function loadSection(string $section): void {
         return;
     }
 
-    // запрещаем прямой include этих файлов мимо profile.php
+
     if (!defined('ALLOW_SECTION_INCLUDE')) {
         define('ALLOW_SECTION_INCLUDE', true);
     }

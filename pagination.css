@@ -8,7 +8,7 @@
     font-family: inherit;
 }
 
-/* Кнопки */
+
 .pagination-controls button{
     padding:.45rem .9rem;
     background:#777777;
@@ -25,7 +25,6 @@
 .pagination-controls button:active{ transform:translateY(1px); }
 .pagination-controls button:focus{ outline:none; box-shadow:0 0 0 3px rgba(71,102,34,.15); }
 
-/* Неактивные (на первой/последней стр.) — мягкий серый */
 .pagination-controls button:disabled{
     background:#e9edf7;
     color:var(--color-green-dark);
@@ -33,7 +32,6 @@
     box-shadow:none;
 }
 
-/* Индикатор "Page X of Y" как чип */
 .pagination-controls .page-indicator{
     padding:.45rem .7rem;
     background:#f6f8ff;
@@ -43,7 +41,6 @@
     line-height:1;
 }
 
-/* Блок перехода на страницу */
 .pagination-controls .jump-wrap{
     display:inline-flex;
     align-items:center;

@@ -1,4 +1,4 @@
-/* Карточка героя (широкая) */
+
 .hero {
     max-width: 1100px;
     margin: 2rem auto;
@@ -41,7 +41,7 @@
     padding: 1.25rem 1.25rem 1rem 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* прижмёт низ к низу */
+    justify-content: space-between;
 }
 
 .hero-info h1 {
@@ -59,11 +59,10 @@
     color: #555;
     line-height: 1.5;
     margin: 0 0 .75rem;
-    max-height: 7.2em; /* 4-5 строк */
+    max-height: 7.2em;
     overflow: hidden;
 }
 
-/* Низ как в грид-карточках: View слева, иконки справа */
 .bottom-actions{
     display:flex;
     justify-content:space-between;
@@ -78,7 +77,7 @@
 }
 .view a:hover{ text-decoration:underline; }
 
-/* edit/delete */
+
 .card-header{
     display:flex;
     gap:.5rem;
@@ -103,7 +102,6 @@
 .card-header a:active,
 .card-header .delete-icon:active{ transform: translateY(1px); }
 
-/* Скелетон загрузки (если используешь) */
 .hero-skeleton{
     display:grid; grid-template-columns:1fr 1fr; gap:1.25rem;
     background: rgba(255,255,255,0.7);
@@ -116,7 +114,7 @@
 .info-skeleton .w90{ width:90%; }
 .info-skeleton .w40{ width:40%; }
 
-/* CTA блок под карточкой (навигация) */
+
 .home-cta{
     display:flex; gap:.5rem; justify-content:center;
     margin: 1.25rem auto 0; padding: 0 1rem;
@@ -153,4 +151,54 @@
 
 .more-info p {
     margin: 0;
+}
+
+
+
+@media (max-width: 900px) {
+    .hero { margin: 1rem auto; }
+    .hero-card {
+        grid-template-columns: 1fr;
+        gap: .75rem;
+    }
+    .hero-image img {
+        aspect-ratio: 16 / 9;
+        min-height: 220px;
+        max-height: 360px;
+    }
+    .hero-info {
+        padding: .75rem 1rem 1rem;
+        gap: .5rem;
+    }
+    .hero-info .desc { -webkit-line-clamp: 5; }
+    .bottom-actions {
+        gap: .5rem;
+        flex-wrap: wrap;
+    }
+    .card-header { gap: .4rem; }
+}
+
+@media (max-width: 480px) {
+    .hero { padding: 0 .5rem; }
+    .hero-image img { aspect-ratio: 4 / 3; max-height: 280px; }
+    .hero-info h1 { font-size: clamp(1.1rem, 4vw + .3rem, 1.4rem); }
+    .hero-info .meta, .hero-info .date, .hero-info .category { font-size: .9rem; }
+    .hero-info .desc { -webkit-line-clamp: 6; }
+    .like-container { bottom: 8px; right: 8px; }
+}
+
+
+@media print {
+    header, nav, footer, .home-cta, .like-container,.fa-user,.view,.card-header { display: none !important; }
+    .hero { margin: 0; padding: 0; }
+    .hero-card {
+        box-shadow: none !important;
+        background: #fff !important;
+        border: 1pt solid #ddd;
+        border-radius: 6pt;
+    }
+    .hero-image img {
+        width: 100% !important; height: auto !important;
+        max-height: 100mm; object-fit: cover;
+    }
 }

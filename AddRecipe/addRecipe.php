@@ -22,7 +22,7 @@ include_once("../includes/header.php");
             accept=".jpg,.jpeg,.png"
             />
         <div class="image-preview-wrapper" id="imagePreviewWrapper">
-            <!-- v js potom pridavam -->
+
             <img id="imagePreview" alt="Image preview" />
             <button type="button" id="removeImageBtn" aria-label="Remove image">
                 <i class="fa fa-times"></i> <!-- ИСПРАВИЛ -->
@@ -48,7 +48,7 @@ include_once("../includes/header.php");
         </p>
         <p class="field">
             <label class="field__label" for="description">Description</label>
-            <textarea class="field__control" id="description" name="description" minlength="10" maxlength="300" required></textarea>
+            <textarea class="field__control" id="description" name="description" minlength="10" maxlength="130" required></textarea>
             <span class="field__errors" id="description-errors" data-js-form-field-errors></span>
         </p>
         <div class="field" id="ingredientsField">
@@ -70,7 +70,7 @@ include_once("../includes/header.php");
                 </div>
                 <span class="field__errors" id="IngredientInput-errors" data-js-form-field-errors></span>
             <ul id="ingredientsList" class="ingredients-list">
-                <!-- dynamicky pomoci js delam to -->
+
             </ul>
             <input type="hidden" name="ingredients" id="ingredientsHiddenInput" required  />
            </div>

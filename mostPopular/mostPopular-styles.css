@@ -15,9 +15,9 @@
 .popular-wrapper {
     display: flex;
     flex-direction: column;
-    min-height: calc(100vh - 140px); /* с учётом header/footer */
+    min-height: calc(100vh - 140px);
     position: relative;
-    padding-bottom: 4rem; /* отступ под пагинацией */
+    padding-bottom: 4rem;
 }
 .fixed-bottom {
     position: absolute;
@@ -27,14 +27,14 @@
     display: flex;
     justify-content: center;
 }
-/* Сетка рецептов */
+
 .recipes-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
 }
 
-/* Карточка рецепта */
+
 .recipe-card {
     background-color: rgba(255, 255, 255, 0.8);
     border-radius: 16px;
@@ -51,7 +51,7 @@
     transform: translateY(-4px);
 }
 
-/* Картинка */
+
 .recipe-card .image-container {
     position: relative;
     width: 100%;
@@ -65,7 +65,7 @@
     object-fit: cover;
 }
 
-/* Лайки */
+
 .like-container {
     position: absolute;
     bottom: 8px;
@@ -121,7 +121,7 @@
     color: #777;
 }
 
-/* Автор и дата */
+
 .recipe-card .meta {
     display: flex;
     justify-content: space-between;
@@ -174,7 +174,6 @@
     color: var(--color-green-dark);
 }
 
-
 @media (max-width: 640px) {
     .popular-section { margin: 1.25rem auto; }
     .popular-wrapper { padding-bottom: 5.5rem; }
@@ -187,7 +186,6 @@
 
 }
 
-/* --- Печать: одинаково с категориями --- */
 @media print {
     header, nav, .pagination, .like-container, .card-header, .view, .btn, footer { display:none !important; }
     body { background:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }

@@ -8,7 +8,7 @@
     padding: 2rem;
 }
 
-/* Универсальная форма (и settings, и password) */
+
 .settingsForm {
     display: flex;
     flex-direction: column;
@@ -26,7 +26,7 @@
     font-size: 1rem;
 }
 
-/* Поля */
+
 .field {
     display: flex;
     flex-direction: column;
@@ -44,7 +44,7 @@
     margin-left: 0.3em;
 }
 
-/* Инпуты */
+
 input, button, select, fieldset {
     border: 2px solid var(--color-gray);
     border-radius: 8px;
@@ -65,7 +65,7 @@ input[disabled] {
     color: #555;
 }
 
-/* Ошибки */
+
 .field__errors {
     display: flex;
     flex-direction: column;
@@ -92,10 +92,10 @@ input[disabled] {
 .field{
     position: relative;
 }
-/* Иконка редактирования — универсальная */
+
 .fa-pen {
     position: absolute;
-    top: -0.5rem; /* над полем */
+    top: -0.5rem;
     right: 0.25rem;
 
     background-color: var(--color-whiteish);
@@ -135,15 +135,15 @@ form button:hover, .reset-button button:hover, .submit-button button:hover {
     justify-content: center;
 }
 
-/* Радиокнопки */
+
 .radios {
-    position: relative; /* Нужно, чтобы .fa-pen в .radios позиционировалась от нее */
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     gap: 1.2rem;
     margin-top: 0.5rem;
-    padding-top: 1.2rem; /* небольшой отступ сверху для иконки */
+    padding-top: 1.2rem;
 }
 
 .radios .fa-pen {
@@ -182,7 +182,7 @@ form button:hover, .reset-button button:hover, .submit-button button:hover {
     margin-top: 0.2rem;
 }
 
-/* Чекбокс */
+
 .checkbox {
     display: flex;
     flex-direction: column;
@@ -208,4 +208,80 @@ form button:hover, .reset-button button:hover, .submit-button button:hover {
     font-size: 0.85rem;
     color: red;
     line-height: 1.4;
+}
+
+
+
+
+
+
+@media (max-width: 640px) {
+    .settingsForm {
+        width: 100%;
+        max-width: 100%;
+        margin: 1rem auto;
+        padding: 1.25rem 1rem;
+        gap: 1rem;
+        border-radius: 12px;
+    }
+
+    .field__label { margin-bottom: 0.4rem; }
+
+    .fa-pen {
+        top: -.25rem;
+        right: 0;
+    }
+
+    .radios {
+        gap: .75rem;
+        padding-top: 1rem;
+    }
+
+    .reset-button, .submit-button { justify-content: stretch; }
+    .reset-button button, .submit-button button {
+        max-width: none;
+        font-size: 1.05rem;
+        padding: .75rem 1rem;
+    }
+}
+
+
+@media print {
+    @page { size: A4; margin: 15mm; }
+
+
+    header, nav, footer,
+    .profile-sidebar,
+    .fa-pen,
+    .reset-button, .submit-button { display: none !important; }
+
+
+    .form-wrapper {
+        min-height: auto !important;
+        padding: 0 !important;
+    }
+    .settingsForm {
+        background: #fff !important;
+        box-shadow: none !important;
+        border: 1pt solid #000 !important;
+        border-radius: 6pt !important;
+        width: auto !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 10mm !important;
+    }
+
+
+    .settingsForm input,
+    .settingsForm select,
+    .settingsForm fieldset {
+        border: 0 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+
+    .field__label { font-weight: 700; }
+    .field__errors { display: none !important; }
 }
