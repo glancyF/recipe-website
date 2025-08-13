@@ -4,7 +4,6 @@ session_start();
 require_once __DIR__ . '/../../db.php';
 require_once __DIR__ . '/../../includes/getUserIdANDToken.php';
 header("Content-Type: application/json");
-const PASSWORD_PATTERN = '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user_id = $_SESSION['user_id'];
     $auth_token = $_COOKIE['auth_token'];
@@ -17,16 +16,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         echo json_encode(["status" => "error", "message" => "Password must be between 8 and 16 characters"]);
         exit;
     }
-
     if ($new_password != $confirm_password) {
         echo json_encode(["status" => "error", "message" => "New password and confirm password do not match"]);
-        exit;
-    }
-    if (!preg_match(PASSWORD_PATTERN, $new_password)) {
-        echo json_encode([
-            "status" => "error",
-            "message" => "The password must be between 8 and 16 characters long, include at least one number, one lower case letter and one upper case letter"
-        ]);
         exit;
     }
     if(!empty($new_password) && !empty($confirm_password) && !empty($current_password)){

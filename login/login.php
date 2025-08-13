@@ -2,7 +2,6 @@
 session_start();
 require_once "../db.php";
 header("Content-Type: application/json");
-const PASSWORD_PATTERN = '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/';
 if (!isset($conn)){
     echo json_encode([
         "status" => "error",
@@ -22,18 +21,6 @@ function dataValidation($email,$password)
     }
     if (empty($email) || empty($password)) {
         echo json_encode(["status" => "error", "message" => "All fields are required"]);
-        exit;
-    }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo json_encode(["status" => "error", "message" => "Please enter a valid email address"]);
-        exit;
-    }
-
-    if (!preg_match(PASSWORD_PATTERN, $password)) {
-        echo json_encode([
-            "status" => "error",
-            "message" => "The password must be between 8 and 16 characters long, include at least one number, one lower case letter and one upper case letter"
-        ]);
         exit;
     }
 }

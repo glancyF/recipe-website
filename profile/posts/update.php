@@ -5,11 +5,7 @@ include __DIR__ . '/../../utils/IngredientsControl.php';
 session_start();
 header('Content-Type: application/json');
 require_once __DIR__ . '/../../db.php';
-const NAME_PATTERN = '~^[- A-Za-z\x{00C0}-\x{024F}\x{0400}-\x{052F}]+$~u';
 
-
-const TEXT_PATTERN = '~^[A-Za-z\x{00C0}-\x{024F}\x{0400}-\x{052F}0-9+\-,.%:;()\'"*!/ \r\n]+'
-    . '(,[A-Za-z\x{00C0}-\x{024F}\x{0400}-\x{052F}0-9+\-,.%:;()\'"*!/ \r\n]+)*$~u';
 if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(["status" => "error", "message" => "Invalid request method"]);
@@ -55,25 +51,27 @@ if ($recipe_id <= 0) {
 }
 
 $validCategories = ['breakfast','lunch','dinner','dessert','snack'];
-if ($len($name) < 3 || $len($name) > 100 || !preg_match(NAME_PATTERN, $name)) {
-    echo json_encode(["status" => "error", "message" => "Name must be 3–100 chars, only letters, spaces, and hyphens allowed"]);
+if (!in_array($category, $validCategories, true)) {
+    echo json_encode(["status" => "error", "message" => "Invalid category"]);
+    exit;
+}
+if ($len($name) < 3 || $len($name) > 100) {
+    echo json_encode(["status" => "error", "message" => "Name must be 3–100 chars"]);
+    exit;
+}
+if ($len($description) < 10 || $len($description) > 300) {
+    echo json_encode(["status" => "error", "message" => "Description must be 10–300 chars"]);
+    exit;
+}
+if ($len($instruction) < 20 || $len($instruction) > 5000) {
+    echo json_encode(["status" => "error", "message" => "Instruction must be 20–5000 chars"]);
+    exit;
+}
+if ($len($ingredients) < 1 || $len($ingredients) > 300) {
+    echo json_encode(["status" => "error", "message" => "Ingredients length is invalid"]);
     exit;
 }
 
-if ($len($description) < 10 || $len($description) > 130 || !preg_match(TEXT_PATTERN, $description)) {
-    echo json_encode(["status" => "error", "message" => "Description contains invalid characters"]);
-    exit;
-}
-
-if ($len($instruction) < 20 || $len($instruction) > 5000 || !preg_match(TEXT_PATTERN, $instruction)) {
-    echo json_encode(["status" => "error", "message" => "Instruction contains invalid characters"]);
-    exit;
-}
-
-//if ($len($ingredients) < 1 || $len($ingredients) > 50) {
-//    echo json_encode(["status" => "error", "message" => "Ingredients length is invalid"]);
-//    exit;
-//}
 
 if ($isAdmin) {
     $stmt = $conn->prepare("SELECT image_path FROM recipes WHERE id = ? LIMIT 1");
@@ -94,7 +92,7 @@ if (!$recipe) {
 
 $currentImage = $recipe['image_path'] ?? null;
 
-
+// Обработка нового изображения
 $newImagePath = $currentImage;
 if (isset($_FILES['recipeImage']) && $_FILES['recipeImage']['error'] !== UPLOAD_ERR_NO_FILE) {
     $file = $_FILES['recipeImage'];

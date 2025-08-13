@@ -25,7 +25,7 @@ include_once("../includes/header.php");
 
             <img id="imagePreview" alt="Image preview" />
             <button type="button" id="removeImageBtn" aria-label="Remove image">
-                <i class="fa fa-times"></i>
+                <i class="fa fa-times"></i> <!-- ИСПРАВИЛ -->
             </button>
         </div>
         <span class="field__errors" id="recipeImage-errors" data-js-form-field-errors></span>
@@ -40,7 +40,8 @@ include_once("../includes/header.php");
             required
             minlength="3"
             maxlength="100"
-            title="Name must contain only letters,hyphens and spaces"
+            pattern="^[A-Za-z\s,]+$"
+            title="Name must contain only letters and spaces"
             aria-errormessage="name-errors"
             />
             <span class="field__errors" id="name-errors" data-js-form-field-errors></span>

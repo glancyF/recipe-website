@@ -31,7 +31,7 @@ include "../includes/header.php";
         minlength="8"
         maxlength="16"
         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}"
-        title="The password must be between 8 and 16 characters long, include at least one number, one lower case letter and one upper case letter,must be in english"
+        title="The password must be between 8 and 16 characters long, include at least one number, one lower case letter and one upper case letter"
         aria-errormessage="password-errors"
         />
         <span  class="field__errors"  id="password-errors" data-js-form-field-errors></span>

@@ -5,7 +5,7 @@ session_start();
 header('Content-Type: application/json');
 require_once __DIR__ . '/../../db.php';
 
-if ($_SERVER['REQUEST_METHOD'] !== 'DELETE') {
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     http_response_code(405);
     echo json_encode(['status'=>'error','message'=>'Method not allowed']);
     exit;
@@ -20,7 +20,7 @@ if (!$userId) {
     exit;
 }
 
-$recipeId = (int)($_GET['id'] ?? 0);
+$recipeId = (int)($_POST['id'] ?? 0);
 if ($recipeId <= 0) {
     http_response_code(400);
     echo json_encode(['status'=>'error','message'=>'Bad recipe id']);
