@@ -3,8 +3,6 @@
     ini_set('display_startup_errors', 1);
     error_reporting(E_ALL);
     header("Content-Type: application/json");
-    const USERNAME_PATTERN = '/^[A-Za-z][A-Za-z0-9_-]*$/';
-    const PASSWORD_PATTERN = '/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,16}$/';
     session_start();
     require_once '../db.php';
     if (!isset($conn)){
@@ -15,64 +13,44 @@
         exit;
     }
 
-function dataValidation($username, $password, $confirm_password, $email, $agreement, $gender)
-{
+    function dataValidation($username,$password,$confirm_password,$email,$agreement,$gender){
+        if (!preg_match('/^[A-Za-z][A-Za-z0-9_-]*$/', $username)) {
+            echo json_encode([
+                "status" => "error",
+                "message" => "Username must start with a letter and contain only letters, numbers, underscores, or hyphens"
+            ]);
+            exit;
+        }
 
-    if ($username === '' || $password === '' || $confirm_password === '' || $email === '' || $gender === '') {
-        echo json_encode(["status" => "error", "message" => "All fields are required"]);
-        exit;
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo json_encode(["status" => "error", "message" => "Invalid email format"]);
+            exit;
+        }
+        if(empty($username) || empty($password) || empty($confirm_password) || empty($email) || empty($gender) || empty($agreement)) {
+            echo json_encode(["status" => "error", "message" => "All fields are required"]);
+            exit;
+        }
+        if ($password != $confirm_password) {
+            echo json_encode(["status" => "error", "message" => "Passwords do not match"]);
+            exit;
+        }
+        if (!in_array($gender, array("Male", "Female"))) {
+            echo json_encode(["status" => "error", "message" => "Please select a gender"]);
+            exit;
+        }
+        if (strlen($username) < 3 || strlen($username) > 12) {
+            echo json_encode(["status" => "error", "message" => "Username must be between 3 and 12 characters"]);
+            exit;
+        }
+        if (strlen($password) < 8 || strlen($password) > 16) {
+            echo json_encode(["status" => "error", "message" => "Password must be between 8 and 16 characters"]);
+            exit;
+        }
+        if (strlen($email) < 2 || strlen($email) > 64) {
+            echo json_encode(["status" => "error", "message" => "Email must be between 2 and 64 characters"]);
+            exit;
+        }
     }
-    if ((int)$agreement !== 1) {
-        echo json_encode(["status" => "error", "message" => "You must accept the agreement"]);
-        exit;
-    }
-
-
-    if (strlen($username) < 3 || strlen($username) > 12) {
-        echo json_encode(["status" => "error", "message" => "Username must be between 3 and 12 characters"]);
-        exit;
-    }
-    if (strlen($email) < 2 || strlen($email) > 64) {
-        echo json_encode(["status" => "error", "message" => "Email must be between 2 and 64 characters"]);
-        exit;
-    }
-    if (strlen($password) < 8 || strlen($password) > 16) {
-        echo json_encode(["status" => "error", "message" => "Password must be between 8 and 16 characters"]);
-        exit;
-    }
-
-
-    if (!preg_match(USERNAME_PATTERN, $username)) {
-        echo json_encode([
-            "status" => "error",
-            "message" => "Username must start with a letter and contain only letters, numbers, underscores, or hyphens"
-        ]);
-        exit;
-    }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo json_encode(["status" => "error", "message" => "Invalid email format"]);
-        exit;
-    }
-    if (!preg_match(PASSWORD_PATTERN, $password)) {
-        echo json_encode([
-            "status" => "error",
-            "message" => "The password must be between 8 and 16 characters long, include at least one number, one lower case letter and one upper case letter"
-        ]);
-        exit;
-    }
-
-
-    if ($password !== $confirm_password) {
-        echo json_encode(["status" => "error", "message" => "Passwords do not match"]);
-        exit;
-    }
-
-
-    if (!in_array($gender, ["Male", "Female"], true)) {
-        echo json_encode(["status" => "error", "message" => "Please select a gender"]);
-        exit;
-    }
-}
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $username = trim(strip_tags($_POST["username"]));
         $password = trim($_POST["password"]);

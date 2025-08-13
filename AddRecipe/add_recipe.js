@@ -4,9 +4,8 @@ export class AddRecipeForm extends FormsValidation {
 
     static MAX_INGREDIENTS = 86;
     static MAX_IMAGE_MB    = 5;
-    static NAME_RE = /^[- A-Za-z\u00C0-\u024F\u0400-\u052F]+$/u;
-    static ING_PATTERN =
-        /^[A-Za-z\u00C0-\u024F\u0400-\u052F0-9+\-,.%:;()'"*!\/ \r\n]+(,[A-Za-z\u00C0-\u024F\u0400-\u052F0-9+\-,.%:;()'"*!\/ \r\n]+)*$/u;
+    static ING_PATTERN = /^[A-Za-z0-9+\-,.%:;()'"*!\/ \r\n]+(,[A-Za-z0-9+\-,.%:;()'"*!\/ \r\n]+)*$/;
+
 
     constructor() {
         super();
@@ -32,8 +31,9 @@ export class AddRecipeForm extends FormsValidation {
     }
 
     controlName(fieldControlElement, errorMessages) {
-        if (!AddRecipeForm.NAME_RE.test(fieldControlElement.value.trim())) {
-            errorMessages.push("Only letters (Latin/Cyrillic), spaces, and hyphens are allowed");
+        const pattern = /^[A-Za-z\s]+$/;
+        if (!pattern.test(fieldControlElement.value.trim())) {
+            errorMessages.push("Only letters and spaces are allowed");
         }
     }
 

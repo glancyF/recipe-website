@@ -4,7 +4,7 @@ session_start();
 require_once __DIR__ . '/../../db.php';
 require_once __DIR__ . '/../../includes/getUserIdANDToken.php';
 header("Content-Type: application/json");
-const USERNAME_PATTERN = '/^[A-Za-z][A-Za-z0-9_-]*$/';
+
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $user_id = $_SESSION["user_id"];
     $auth_token = $_COOKIE["auth_token"];
@@ -17,13 +17,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     if (strlen($new_username) < 3 || strlen($new_username) > 12) {
         echo json_encode(["status" => "error", "message" => "Username must be between 3 and 12 characters"]);
-        exit;
-    }
-    if (!preg_match(USERNAME_PATTERN, $new_username)) {
-        echo json_encode([
-            "status" => "error",
-            "message" => "Username must start with a letter and contain only letters, numbers, underscores, or hyphens"
-        ]);
         exit;
     }
 

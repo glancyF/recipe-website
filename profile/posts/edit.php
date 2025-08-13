@@ -25,14 +25,14 @@ require_once (__DIR__ . '/getPostForEdit.php')
     </div>
     <div class="field">
         <label for="name" class="field__label">Recipe Name</label>
-        <input id="name" name="name" type="text" required minlength="3" maxlength="100" title="Only letters, hyphens and spaces are allowed" aria-errormessage="name-errors"  value="<?= htmlspecialchars($recipe['name'])?>" class="field__control">
+        <input id="name" name="name" type="text" required minlength="3" maxlength="100" pattern="^[A-Za-z\s,]+$" title="Name must contain only letters and spaces" aria-errormessage="name-errors"  value="<?= htmlspecialchars($recipe['name'])?>" class="field__control">
         <span class="field__errors" id="name-errors" data-js-form-field-errors></span>
     </div>
 
 
     <div class="field">
         <label for="description" class="field__label">Description</label>
-        <textarea id="description" name="description" minlength="10" maxlength="130" required class="field__control"><?= htmlspecialchars($recipe['description']) ?></textarea>
+        <textarea id="description" name="description" minlength="10" maxlength="300" required class="field__control"><?= htmlspecialchars($recipe['description']) ?></textarea>
         <span class="field__errors" id="description-errors" data-js-form-field-errors></span>
     </div>
 
@@ -59,7 +59,7 @@ require_once (__DIR__ . '/getPostForEdit.php')
         <input type="hidden" id="ingredientsHiddenInput" name="ingredients" value="<?= htmlspecialchars($recipe['ingredients']) ?>">
 
     </div>
-
+<!-- инструкция -->
     <div class="field">
         <label for="instruction" class="field__label">Instruction</label>
         <textarea id="instruction" name="instruction" minlength="20" maxlength="5000" required class="field__control"><?= htmlspecialchars($recipe['instruction']) ?></textarea>
