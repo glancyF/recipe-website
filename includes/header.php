@@ -19,19 +19,25 @@ $loggedIn = isset($_COOKIE['auth_token']);
 </head>
 <body>
 <header>
-    <nav>
+    <div class="logo-container">
+        <a href="/main/index.php">
+            <img src="/images/logo2.png" alt="Logo icon" class="logo">
+        </a>
+        <button class="burger" id="burger-btn">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+
+    <nav id="main-nav">
         <ul class="nav">
-            <li><a href="/main/index.php"><i class="main"></i>
-                <img src="/images/logo2.png" alt="Logo icon" class="logo">
-                </a></li>
-            <li><a href="/mostPopular/mostPopular.php"><i class="most-popular"></i>Most popular</a></li>
-            <li><a href="/allRecipes/allRecipe.php"><i class="all-recipes"></i>All recipes</a></li>
-            <li><a href="/Category/category.php"><i class="category"></i>Category</a></li>
+            <li><a href="/mostPopular/mostPopular.php">Most popular</a></li>
+            <li><a href="/allRecipes/allRecipe.php">All recipes</a></li>
+            <li><a href="/Category/category.php">Category</a></li>
             <?php if ($loggedIn): ?>
-            <li><a href="/AddRecipe/addRecipe.php"><i class="ad-recipe"></i>Add a recipe</a></li>
-            <li><a href="/profile/profile.php"><i class="login"></i>My Account</a></li>
+                <li><a href="/AddRecipe/addRecipe.php">Add a recipe</a></li>
+                <li><a href="/profile/profile.php">My Account</a></li>
             <?php else: ?>
-            <li><a href="/login/auth.php"><i class="login"></i>Log in</a></li>
+                <li><a href="/login/auth.php">Log in</a></li>
             <?php endif; ?>
         </ul>
     </nav>

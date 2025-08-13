@@ -4,22 +4,30 @@ session_start();
 require_once "../db.php";
 include __DIR__ . '/../utils/IngredientsControl.php';
 header("Content-Type: application/json");
-function ControlRecipe($name,$description,$instruction,$category)
+const NAME_PATTERN = '~^[- A-Za-z\x{00C0}-\x{024F}\x{0400}-\x{052F}]+$~u';
+
+
+const TEXT_PATTERN = '~^[A-Za-z\x{00C0}-\x{024F}\x{0400}-\x{052F}0-9+\-,.%:;()\'"*!/ \r\n]+'
+    . '(,[A-Za-z\x{00C0}-\x{024F}\x{0400}-\x{052F}0-9+\-,.%:;()\'"*!/ \r\n]+)*$~u';
+function ControlRecipe($name, $description, $instruction, $category)
 {
-    if(strlen($name)<3 || strlen($name)>100 || !preg_match('/^[A-Za-z\s,]+$/', $name) ){
+    if (strlen($name) < 3 || strlen($name) > 100 || !preg_match(NAME_PATTERN, $name)) {
         echo json_encode(["status" => "error", "message" => "Invalid recipe name"]);
         exit;
     }
-    if(strlen($description)<10 || strlen($description)>130){
+
+    if (strlen($description) < 10 || strlen($description) > 130 || !preg_match(TEXT_PATTERN, $description)) {
         echo json_encode(["status" => "error", "message" => "Invalid description"]);
         exit;
     }
-    if(strlen($instruction)<20 || strlen($instruction)>5000){
+
+    if (strlen($instruction) < 20 || strlen($instruction) > 5000 || !preg_match(TEXT_PATTERN, $instruction)) {
         echo json_encode(["status" => "error", "message" => "Invalid instruction"]);
         exit;
     }
+
     $validCategories = ['breakfast', 'lunch', 'dinner', 'dessert', 'snack'];
-    if(!in_array($category, $validCategories)){
+    if (!in_array($category, $validCategories, true)) {
         echo json_encode(["status" => "error", "message" => "Invalid category"]);
         exit;
     }
@@ -61,7 +69,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
     $image = $_FILES['recipeImage'];
-    $maxSize = 2 * 1024 * 1024;
+    $maxSize = 5 * 1024 * 1024;
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime  = finfo_file($finfo, $image['tmp_name']);
     finfo_close($finfo);
