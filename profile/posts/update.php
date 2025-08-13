@@ -92,7 +92,7 @@ if (!$recipe) {
 
 $currentImage = $recipe['image_path'] ?? null;
 
-// Обработка нового изображения
+
 $newImagePath = $currentImage;
 if (isset($_FILES['recipeImage']) && $_FILES['recipeImage']['error'] !== UPLOAD_ERR_NO_FILE) {
     $file = $_FILES['recipeImage'];
@@ -100,7 +100,7 @@ if (isset($_FILES['recipeImage']) && $_FILES['recipeImage']['error'] !== UPLOAD_
         echo json_encode(["status" => "error", "message" => "Image upload failed"]);
         exit;
     }
-    if ($file['size'] > 2 * 1024 * 1024) {
+    if ($file['size'] > 5 * 1024 * 1024) {
         echo json_encode(["status" => "error", "message" => "Image too large (max 2MB)"]);
         exit;
     }
