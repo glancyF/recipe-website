@@ -5,44 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="958cf958-b428-4b45-8994-59fb9a8f693b" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddRecipe/addRecipe-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/AddRecipe/addRecipe-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddRecipe/addRecipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/AddRecipe/addRecipe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddRecipe/add_recipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/AddRecipe/add_recipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AddRecipe/add_recipe.php" beforeDir="false" afterPath="$PROJECT_DIR$/AddRecipe/add_recipe.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Category/category-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/Category/category-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/allRecipes/allRecipes-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/allRecipes/allRecipes-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base.css" beforeDir="false" afterPath="$PROJECT_DIR$/base.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/header.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/header.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/sections.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/sections.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/formlogin.css" beforeDir="false" afterPath="$PROJECT_DIR$/login/formlogin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/login/login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/login/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/login/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/main/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/main/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main/main-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/main/main-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mostPopular/mostPopular-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/mostPopular/mostPopular-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pagination.css" beforeDir="false" afterPath="$PROJECT_DIR$/pagination.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/admin/admin-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/admin/admin-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/favourites/favourites-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/favourites/favourites-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/favourites/favourites.js" beforeDir="false" afterPath="$PROJECT_DIR$/profile/favourites/favourites.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/overview/mostLikedRecipe-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/overview/mostLikedRecipe-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/password_change/password_change-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/password_change/password_change-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/posts/delete.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile/posts/delete.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/posts/editRecipe.js" beforeDir="false" afterPath="$PROJECT_DIR$/profile/posts/editRecipe.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/posts/getPostForEdit.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile/posts/getPostForEdit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/posts/post-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/posts/post-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/posts/update.php" beforeDir="false" afterPath="$PROJECT_DIR$/profile/posts/update.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/print.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/print.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/profile-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/profile-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profile/settings/settings-styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/profile/settings/settings-styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recipes/recipe-style.css" beforeDir="false" afterPath="$PROJECT_DIR$/recipes/recipe-style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/formregister.css" beforeDir="false" afterPath="$PROJECT_DIR$/registration/formregister.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/registration.js" beforeDir="false" afterPath="$PROJECT_DIR$/registration/registration.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/registration/registration.php" beforeDir="false" afterPath="$PROJECT_DIR$/registration/registration.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/IngredientsControl.php" beforeDir="false" afterPath="$PROJECT_DIR$/utils/IngredientsControl.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/recipeHelper.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/recipeHelper.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +18,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -112,7 +75,8 @@
       <workItem from="1754898184714" duration="3521000" />
       <workItem from="1754902800382" duration="16407000" />
       <workItem from="1754941914796" duration="2573000" />
-      <workItem from="1754983403559" duration="8850000" />
+      <workItem from="1754983403559" duration="10136000" />
+      <workItem from="1755001428827" duration="25000" />
     </task>
     <servers />
   </component>

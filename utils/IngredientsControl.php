@@ -1,7 +1,10 @@
 <?php
-function validateIngredients(string $ingredientsRaw): string {
-    $parts = array_filter(array_map('trim', explode(';', $ingredientsRaw)), fn($v) => $v !== '');
 
+function validateIngredients(string $ingredientsRaw): string {
+
+    $parts = array_map('trim', explode(';', $ingredientsRaw));
+
+    $parts = array_values(array_filter($parts, static fn($v) => $v !== ''));
     if (count($parts) === 0) {
         echo json_encode(["status" => "error", "message" => "Please add at least one ingredient"]);
         exit;
@@ -11,9 +14,11 @@ function validateIngredients(string $ingredientsRaw): string {
         exit;
     }
 
-    $pattern = '/^[A-Za-z0-9+\-,.%:;() ]+$/u';
+    $pattern = '~^[-\x{2010}-\x{2015} A-Za-z\x{00C0}-\x{024F}\x{0400}-\x{052F}0-9+.,%:;()\'"*!/]+$~u';
+
     foreach ($parts as $ing) {
-        if (mb_strlen($ing, 'UTF-8') > 50) {
+        $len = mb_strlen($ing, 'UTF-8');
+        if ($len < 1 || $len > 50) {
             echo json_encode(["status" => "error", "message" => "Each ingredient must be ≤ 50 characters"]);
             exit;
         }
@@ -22,6 +27,11 @@ function validateIngredients(string $ingredientsRaw): string {
             exit;
         }
     }
+
+    $parts = array_values(array_unique(array_map(
+        fn($s) => $s,
+        $parts
+    )));
 
     return implode(';', $parts);
 }

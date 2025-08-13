@@ -4,8 +4,11 @@ session_start();
 require_once "../db.php";
 include __DIR__ . '/../utils/IngredientsControl.php';
 header("Content-Type: application/json");
-const NAME_PATTERN = '/^[A-Za-z\s\-]+$/';
-const TEXT_PATTERN = '/^[A-Za-z0-9+\-,.%:;()\'"*!\/ \r\n]+(,[A-Za-z0-9+\-,.%:;()\'"*!\/ \r\n]+)*$/';
+const NAME_PATTERN = '~^[- A-Za-z\x{00C0}-\x{024F}\x{0400}-\x{052F}]+$~u';
+
+
+const TEXT_PATTERN = '~^[A-Za-z\x{00C0}-\x{024F}\x{0400}-\x{052F}0-9+\-,.%:;()\'"*!/ \r\n]+'
+    . '(,[A-Za-z\x{00C0}-\x{024F}\x{0400}-\x{052F}0-9+\-,.%:;()\'"*!/ \r\n]+)*$~u';
 function ControlRecipe($name, $description, $instruction, $category)
 {
     if (strlen($name) < 3 || strlen($name) > 100 || !preg_match(NAME_PATTERN, $name)) {
