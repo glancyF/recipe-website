@@ -61,7 +61,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         exit;
     }
     $image = $_FILES['recipeImage'];
-    $maxSize = 2 * 1024 * 1024;
+    $maxSize = 5 * 1024 * 1024;
     $finfo = finfo_open(FILEINFO_MIME_TYPE);
     $mime  = finfo_file($finfo, $image['tmp_name']);
     finfo_close($finfo);
