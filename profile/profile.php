@@ -1,6 +1,6 @@
 <?php
 $pageTitle ='Profile';
-// $extra_css = '<link rel="stylesheet" href="/profile/profile-styles.css">';
+
 $extra_css = '
     <link rel="stylesheet" href="/profile/profile-styles.css">
     <link rel="stylesheet" href="/registration/formregister.css">
@@ -18,7 +18,7 @@ session_start();
 $section = $_GET['section'] ?? 'overview';
 require_once __DIR__ .'/../includes/isAdmin.php';
 $isAdmin = isAdmin();
-// ВОЗМОЖНО ВЫНЕСТИ В ОТДЕЛЬНЫЙ ФАЙЛ ПОДУМАЙ ЕЩЕ
+
 if ($section === 'admin' && !$isAdmin) {
     header('Location: /profile/profile.php?section=overview', true, 302);
     exit;
