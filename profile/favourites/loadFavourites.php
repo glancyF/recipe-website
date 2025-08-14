@@ -12,7 +12,7 @@ $user_id = $_SESSION['user_id'];
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 4;
 $offset = ($page - 1) * $limit;
-$query = $query = $query = "
+$query = $query = "
     SELECT 
         r.id,
         r.user_id,
