@@ -24,14 +24,14 @@ $recipes = $result->fetch_all(MYSQLI_ASSOC);
 foreach ($recipes as &$recipe) {
     $recipeId = $recipe['id'];
 
-    // Кол-во лайков
+    
     $stmtLikes = $conn->prepare("SELECT COUNT(*) as total FROM recipe_likes WHERE recipe_id = ?");
     $stmtLikes->bind_param("i", $recipeId);
     $stmtLikes->execute();
     $resLikes = $stmtLikes->get_result()->fetch_assoc();
     $recipe['like_count'] = (int)$resLikes['total'];
 
-    // Лайкал ли текущий пользователь
+    
     $stmtCheck = $conn->prepare("SELECT 1 FROM recipe_likes WHERE user_id = ? AND recipe_id = ?");
     $stmtCheck->bind_param("ii", $user_id, $recipeId);
     $stmtCheck->execute();
