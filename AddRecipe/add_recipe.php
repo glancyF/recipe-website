@@ -6,15 +6,16 @@ include __DIR__ . '/../utils/IngredientsControl.php';
 header("Content-Type: application/json");
 function ControlRecipe($name,$description,$instruction,$category)
 {
+    $textAllowedPattern = '/^[A-Za-z0-9+\-,.%:;()\'"*!\/ \r\n]+(,[A-Za-z0-9+\-,.%:;()\'"*!\/ \r\n]+)*$/';
     if(strlen($name)<3 || strlen($name)>100 || !preg_match('/^[A-Za-z\s,]+$/', $name) ){
         echo json_encode(["status" => "error", "message" => "Invalid recipe name"]);
         exit;
     }
-    if(strlen($description)<10 || strlen($description)>130){
+    if(strlen($description)<10 || strlen($description)>130 || !preg_match($textAllowedPattern, $description) ){
         echo json_encode(["status" => "error", "message" => "Invalid description"]);
         exit;
     }
-    if(strlen($instruction)<20 || strlen($instruction)>5000){
+    if(strlen($instruction)<20 || strlen($instruction)>5000 || !preg_match($textAllowedPattern, $instruction) ){
         echo json_encode(["status" => "error", "message" => "Invalid instruction"]);
         exit;
     }
