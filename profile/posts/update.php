@@ -44,7 +44,8 @@ $description = trim($_POST['description'] ?? '');
 $instruction = trim($_POST['instruction'] ?? '');
 $ingredientsRaw = trim($_POST["ingredients"]);
 $ingredients = validateIngredients($ingredientsRaw);
-
+$textAllowedPattern = '/^[A-Za-z0-9+\-,.%:;()\'"*!\/ \r\n]+(,[A-Za-z0-9+\-,.%:;()\'"*!\/ \r\n]+)*$/';
+$NamePattern = '/^[A-Za-z\s,]+$/';
 if ($recipe_id <= 0) {
     echo json_encode(["status" => "error", "message" => "Bad recipe id"]);
     exit;
@@ -55,15 +56,15 @@ if (!in_array($category, $validCategories, true)) {
     echo json_encode(["status" => "error", "message" => "Invalid category"]);
     exit;
 }
-if ($len($name) < 3 || $len($name) > 100) {
+if ($len($name) < 3 || $len($name) > 100 || !preg_match($NamePattern, $name)) {
     echo json_encode(["status" => "error", "message" => "Name must be 3–100 chars"]);
     exit;
 }
-if ($len($description) < 10 || $len($description) > 300) {
+if ($len($description) < 10 || $len($description) > 130 || !preg_match($textAllowedPattern, $description)) {
     echo json_encode(["status" => "error", "message" => "Description must be 10–300 chars"]);
     exit;
 }
-if ($len($instruction) < 20 || $len($instruction) > 5000) {
+if ($len($instruction) < 20 || $len($instruction) > 5000 || !preg_match($textAllowedPattern, $instruction)) {
     echo json_encode(["status" => "error", "message" => "Instruction must be 20–5000 chars"]);
     exit;
 }
@@ -92,7 +93,7 @@ if (!$recipe) {
 
 $currentImage = $recipe['image_path'] ?? null;
 
-// Обработка нового изображения
+
 $newImagePath = $currentImage;
 if (isset($_FILES['recipeImage']) && $_FILES['recipeImage']['error'] !== UPLOAD_ERR_NO_FILE) {
     $file = $_FILES['recipeImage'];
