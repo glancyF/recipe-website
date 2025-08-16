@@ -20,7 +20,7 @@ $loggedIn = isset($_COOKIE['auth_token']);
 <body>
 <header>
     <div class="logo-container">
-        <a href="/main/index.php">
+        <a href="/main/main.php">
             <img src="/images/logo2.png" alt="Logo icon" class="logo">
         </a>
         <button class="burger" id="burger-btn">
