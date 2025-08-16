@@ -247,5 +247,5 @@ export class AddRecipeForm extends FormsValidation {
     }
 
     getEndpoint() { return "/AddRecipe/add_recipe.php"; }
-    getSuccessRedirect() { return "/main/index.php"; }
+    getSuccessRedirect() { return "/main/main.php"; }
 }
