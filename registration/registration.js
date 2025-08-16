@@ -92,7 +92,7 @@ export class FormsValidation {
 
     }
     getSuccessRedirect(){
-        return '/main/index.php';
+        return '/main/main.php';
     }
     async onSubmit(event) {
         event.preventDefault();
@@ -129,7 +129,6 @@ export class FormsValidation {
 
         const formData = new FormData(target);
         const submitButton = target.querySelector('button[type=submit]');
-        console.log('>>> Sending data to:', this.getEndpoint());//Debug
         if (submitButton) submitButton.disabled = true;
 
         try {
