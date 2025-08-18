@@ -1,9 +1,9 @@
 # RecipeHub
 
 A clean and responsive recipe website with user accounts, likes, categories, pagination, print-friendly views, and an admin panel.  
-Built with **PHP (sessions + MySQLi)** on the backend and **Vanilla JS (ES modules)** on the frontend.
+Built with **Vanilla PHP (sessions + MySQLi)** on the backend and **Vanilla JS (ES modules)** on the frontend.
 
-🔗 Demo: [RecipeHub Live](https://recipetest.lovestoblog.com/)
+Demo: [RecipeHub Live](https://recipetest.lovestoblog.com/)
 
 ---
 
