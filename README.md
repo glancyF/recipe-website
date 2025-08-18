@@ -1,115 +1,106 @@
-🍲 RecipeHub
+# 🍲 RecipeHub
 
-A clean and responsive recipe website with user accounts, likes, categories, pagination, print-friendly views, and an admin panel.
-Built with PHP (sessions + MySQLi) on the backend and Vanilla JS (ES modules) on the frontend.
+A clean and responsive recipe website with user accounts, likes, categories, pagination, print-friendly views, and an admin panel.  
+Built with **PHP (sessions + MySQLi)** on the backend and **Vanilla JS (ES modules)** on the frontend.
 
-🔗 Demo: https://recipetest.lovestoblog.com/index.php
+🔗 Demo: [RecipeHub Live](https://recipetest.lovestoblog.com/)
 
-📑 Table of Contents
-
-📦 Features
-
-🚀 How to Run
-
-🎨 Styling
-
-⚠️ Limitations
-
-🛠️ Technologies Used
-
-📖 Documentation
-
-✅ Deployment Checklist
-
-👨‍💻 Author
-
-📦 Features
-
-Home page with “Featured Recipe” hero
-
-Browse: Most Popular, All Recipes, Categories
-
-Individual recipe pages (image, title, description, ingredients, instructions)
-
-Print-friendly layout (tidy typography, hides buttons/icons)
-
-Registration & Login
-
-Profile with sections: Overview, My Recipes, Favourites, Settings, Change Password, Admin Panel
-
-Add, Edit, Delete your own recipes
-
-Like/Unlike recipes
-
-Image upload with validation (JPG/PNG, max 5 MB)
-
-Inline form validation with error messages & aria attributes
-
-Admin panel: user management, promote/demote users, CSRF protection
-
-🚀 How to Run
-
-Install PHP 8.0+, MySQL/MariaDB, and a web server (Apache/Nginx) or use PHP built-in server.
-
-Make sure the uploads/ directory is writable by the web server.
-
-Create a database and import the schema (tables: users, recipes, likes).
-
-Configure your database connection in db.php:
-
-$conn = new mysqli('localhost', 'username', 'password', 'dbname');
-if ($conn->connect_error) {
-    die('DB connection failed: ' . $conn->connect_error);
-}
+---
 
 
-Run locally:
+## Table of Contents
+- [Features](#-features)
+- [How to Run](#-how-to-run)
+- [Styling](#-styling)
+- [Limitations](#️-limitations)
+- [Technologies Used](#️-technologies-used)
+- [Documentation](#-documentation)
+- [Deployment Checklist](#-deployment-checklist)
+- [Author](#-author)
 
-php -S localhost:8000
+---
 
+## Features
+- Home page with “Featured Recipe” hero
+- Browse: Most Popular, All Recipes, Categories
+- Individual recipe pages (image, title, description, ingredients, instructions)
+- Print-friendly layout (tidy typography, hides buttons/icons)
+- Registration & Login
+- Profile with sections: Overview, My Recipes, Favourites, Settings, Change Password, Admin Panel
+- Add, Edit, Delete your own recipes
+- Like/Unlike recipes
+- Image upload with validation (JPG/PNG, max 5 MB)
+- Accessible inline form validation (error messages, ARIA attributes)
+- Admin panel: user management, promote/demote users, CSRF protection
 
-Open http://localhost:8000/main/index.php in your browser.
+---
 
-🎨 Styling
+## How to Run
 
-Mobile-first responsive design
+1. Install **PHP 8.0+**, **MySQL/MariaDB**, and a web server (Apache/Nginx) or use the PHP built-in server.
+2. Ensure the `uploads/` directory is writable by the web server.
+3. Create a database and import the schema (tables: `users`, `recipes`, `likes`).
+4. Configure your database connection in `db.php`:
 
-Burger menu on small screens
+   ```php
+   <?php
+   $conn = new mysqli('localhost', 'username', 'password', 'dbname');
+   if ($conn->connect_error) {
+       die('DB connection failed: ' . $conn->connect_error);
+   }
+   ?>
+   ```
 
-Consistent card grid layout
+5. Run locally:
 
-Pagination with Prev / Next, page numbers, and jump-to-page
+   ```bash
+   php -S localhost:8000
+   ```
 
-Print-friendly pages using @media print
+6. Open http://localhost:8000/main/index.php in your browser.
 
+---
 
-🛠️ Technologies Used
+## Styling
+- Mobile-first responsive design
+- Burger menu on small screens
+- Consistent card grid layout
+- Pagination with Prev / Next, page numbers, and jump-to-page
+- Print-friendly pages using `@media print`
 
-Backend: PHP 8+, MySQL (MySQLi), Sessions, Cookies
+---
 
-Frontend: Vanilla JS (ES modules), Fetch API
+## Limitations
+**Note:**
+- File uploads are limited to 5 MB and only JPG/PNG.
+- Secure cookies and HTTPS are strongly recommended for deployment.
 
-Styling: CSS, Font Awesome 6 (CDN)
+---
 
-Security: CSRF tokens, MIME type checks, unique filenames
+## 🛠 Technologies Used
+- **Backend:** PHP 8+, MySQL (MySQLi), Sessions, Cookies
+- **Frontend:** Vanilla JS (ES modules), Fetch API
+- **Styling:** CSS, Font Awesome 6 (CDN)
+- **Security:** CSRF tokens, MIME type checks (`finfo` for `image/jpeg`, `image/png`), unique filenames via `uniqid('recipe_', true)`
 
-📖 Documentation
+---
 
-Available at: /documentation/documentation.php
+## Documentation
+Available at: `/documentation/documentation.php`  
 Includes:
+- Project requirements
+- End-user guide (CZ/EN)
+- Developer notes
 
-Project requirements
+---
 
-End-user guide (CZ/EN)
+## Deployment Checklist
+- Correct `db.php` credentials set
+- `/uploads` directory writable & not executable
+- Serve over **HTTPS** and set secure cookies if possible
+- Cache static assets (CSS/JS/images) via your web server
 
-Developer notes
+---
 
-✅ Deployment Checklist
-
-Correct db.php credentials set
-
-/uploads directory writable & not executable
-
-HTTPS enabled + secure cookies
-
-Cache static assets (CSS/JS/images) via server
+## Author
+**Valentyn Deshel** — [GitHub](https://github.com/glancyF)
