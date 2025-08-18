@@ -1,144 +1,93 @@
 🍲 RecipeHub
 
-RecipeHub is a clean, responsive recipe website with user accounts, likes, categories, pagination, print-friendly views, and an admin panel.
+A clean and responsive recipe website with user accounts, likes, categories, pagination, print-friendly views, and an admin panel.
+Built with PHP (sessions + MySQLi) on the backend and Vanilla JS (ES modules) on the frontend.
 
-✨ Built with PHP (sessions + MySQLi) on the backend and Vanilla JS (ES modules) on the frontend.
+🔗 Demo: RecipeHub Live
 
-🚀 Features
-🌐 Public Pages
+📦 Features
 
-Home with “Featured Recipe” hero
+Home page with “Featured Recipe” hero
 
-Most Popular, All Recipes, Categories
+Browse: Most Popular, All Recipes, Categories
 
-Individual recipe page (image, title, description, ingredients, instructions)
+Individual recipe pages (image, title, description, ingredients, instructions)
 
-Print-friendly layout (hides buttons/icons, tidy typography)
-
-👤 Authentication & Profile
+Print-friendly layout (tidy typography, hides buttons/icons)
 
 Registration & Login
 
-Profile sections: Overview, My Recipes, Favourites, Settings, Change Password, Admin Panel
-
-Like/Unlike recipes
+Profile with sections: Overview, My Recipes, Favourites, Settings, Change Password, Admin Panel
 
 Add, Edit, Delete your own recipes
 
-Image upload with type/size validation (JPG/PNG, max 5 MB)
+Like/Unlike recipes
 
-Accessible inline form validation (error messages, aria attributes)
+Image upload with validation (JPG/PNG, max 5 MB)
 
-🛠 Admin
+Inline form validation with error messages & aria attributes
 
-User management with pagination
+Admin panel: user management, promote/demote users, CSRF protection
 
-Promote/demote users ↔ admin
+🚀 How to Run
 
-CSRF token protection on sensitive actions
+Install PHP 8.0+, MySQL/MariaDB, and a web server (Apache/Nginx) or use PHP built-in server.
 
-📱 UX & Design
+Make sure the uploads/ directory is writable by the web server.
 
-Mobile-first responsive design
+Create a database and import the schema (tables: users, recipes, likes).
 
-Burger menu on small screens
-
-Consistent recipe card grid
-
-Pagination with Prev / Next, page number, and jump-to-page
-
-🧰 Tech Stack
-
-Backend: PHP 8+, MySQL (MySQLi), sessions, cookies
-
-Frontend: Vanilla JavaScript (ES Modules), Fetch API
-
-Styling: CSS
-
-Icons: Font Awesome 6 (CDN)
-
-📂 Folder names reflect routing structure (e.g., /mostPopular/mostPopular.php).
-
-⚙️ Setup
-Requirements
-
-PHP 8.0+
-
-MySQL/MariaDB
-
-Web server (Apache/Nginx) or PHP built-in server
-
-uploads/ directory must be writable
-
-Database
-
-Create a database and import schema (tables: users, recipes, likes).
-
-Configure DB connection in db.php:
+Configure your database connection in db.php:
 
 $conn = new mysqli('localhost', 'username', 'password', 'dbname');
 if ($conn->connect_error) {
     die('DB connection failed: ' . $conn->connect_error);
 }
 
-Run locally
+
+Run locally:
+
 php -S localhost:8000
 
 
-Open: http://localhost:8000/main/index.php
+Open http://localhost:8000/main/index.php in your browser.
 
-For Apache/Nginx, point docroot to project root (adjust paths if needed).
+🎨 Styling
 
-🔒 Security
+Mobile-first responsive design
 
-Session + auth_token cookie verification
+Burger menu on small screens
 
-CSRF tokens on admin/sensitive actions
+Consistent card grid layout
 
-File uploads:
+Pagination with Prev / Next, page numbers, and jump-to-page
 
-MIME check via finfo (image/jpeg, image/png)
+Print-friendly pages using @media print
 
-Max size: 5 MB
+⚠️ Limitations
 
-Unique file names via uniqid('recipe_', true)
+Note: Free API-like functionality is not used here, but:
 
-🖥 UI / UX Details
+File uploads are limited to 5 MB and only JPG/PNG.
 
-Responsive grids collapse to 1 column < 900px
+Secure cookies and HTTPS are recommended for deployment.
 
-Burger menu via /burger-toggle.js
+🛠️ Technologies Used
 
-Pagination: buttons + page indicator + jump-to-page
+Backend: PHP 8+, MySQL (MySQLi), Sessions, Cookies
 
-Print mode (@media print):
+Frontend: Vanilla JS (ES modules), Fetch API
 
-Hides interactive elements
+Styling: CSS, Font Awesome 6 (CDN)
 
-Converts grids to simple flow to avoid page breaks
-
-📚 Usage Flow
-
-Register / Login
-
-Add a Recipe (title, description, category, ingredients, instructions, image)
-
-Browse All / Categories / Most Popular
-
-Like recipes, open details
-
-Profile → Overview, My Recipes (edit/delete), Favourites, Settings, Change Password
-
-Admin (if admin): user list + role updates
+Security: CSRF tokens, MIME type checks, unique filenames
 
 📖 Documentation
 
-Available at: /documentation/documentation.php
+See: /documentation/documentation.php
 Includes:
 
-Generated source docs
-
-Full project tasks / requirements
+Project requirements
 
 End-user guide (CZ/EN)
 
@@ -146,10 +95,14 @@ Developer notes
 
 ✅ Deployment Checklist
 
-Set correct db.php credentials on server
+Correct db.php credentials set
 
-Ensure /uploads is writable and not executable
+/uploads directory writable & not executable
 
-Serve over HTTPS (set secure cookies if possible)
+HTTPS enabled + secure cookies
 
-Cache static assets (CSS/JS/images) on web server
+Cache static assets (CSS/JS/images) via server
+
+👨‍💻 Author
+
+Valentyn Deshel – GitHub
