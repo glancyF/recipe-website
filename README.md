@@ -77,7 +77,7 @@ Built with **PHP (sessions + MySQLi)** on the backend and **Vanilla JS (ES modul
 
 ---
 
-## 🛠 Technologies Used
+## Technologies Used
 - **Backend:** PHP 8+, MySQL (MySQLi), Sessions, Cookies
 - **Frontend:** Vanilla JS (ES modules), Fetch API
 - **Styling:** CSS, Font Awesome 6 (CDN)
