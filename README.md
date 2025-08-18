@@ -3,7 +3,25 @@
 A clean and responsive recipe website with user accounts, likes, categories, pagination, print-friendly views, and an admin panel.
 Built with PHP (sessions + MySQLi) on the backend and Vanilla JS (ES modules) on the frontend.
 
-🔗 Demo: RecipeHub Live
+🔗 Demo: https://recipetest.lovestoblog.com/index.php
+
+📑 Table of Contents
+
+📦 Features
+
+🚀 How to Run
+
+🎨 Styling
+
+⚠️ Limitations
+
+🛠️ Technologies Used
+
+📖 Documentation
+
+✅ Deployment Checklist
+
+👨‍💻 Author
 
 📦 Features
 
@@ -64,13 +82,6 @@ Pagination with Prev / Next, page numbers, and jump-to-page
 
 Print-friendly pages using @media print
 
-⚠️ Limitations
-
-Note: Free API-like functionality is not used here, but:
-
-File uploads are limited to 5 MB and only JPG/PNG.
-
-Secure cookies and HTTPS are recommended for deployment.
 
 🛠️ Technologies Used
 
@@ -84,7 +95,7 @@ Security: CSRF tokens, MIME type checks, unique filenames
 
 📖 Documentation
 
-See: /documentation/documentation.php
+Available at: /documentation/documentation.php
 Includes:
 
 Project requirements
@@ -102,7 +113,3 @@ Correct db.php credentials set
 HTTPS enabled + secure cookies
 
 Cache static assets (CSS/JS/images) via server
-
-👨‍💻 Author
-
-Valentyn Deshel – GitHub
