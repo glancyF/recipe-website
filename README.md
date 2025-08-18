@@ -1,63 +1,66 @@
-RecipeHub (PHP + Vanilla JS)
-available at https://recipetest.lovestoblog.com/
-A clean, responsive recipe website with user accounts, likes, categories, pagination, print-friendly views, and an admin panel. Built with PHP (sessions + MySQLi) on the backend and vanilla ES modules on the frontend.
+🍲 RecipeHub
 
-Features
+RecipeHub is a clean, responsive recipe website with user accounts, likes, categories, pagination, print-friendly views, and an admin panel.
 
-Public pages
+✨ Built with PHP (sessions + MySQLi) on the backend and Vanilla JS (ES modules) on the frontend.
 
-Home “featured” recipe hero
+🚀 Features
+🌐 Public Pages
 
-Most Popular, All Recipes, Categories 
+Home with “Featured Recipe” hero
 
-Individual recipe page (image,title, description, ingredients, instructions)
+Most Popular, All Recipes, Categories
+
+Individual recipe page (image, title, description, ingredients, instructions)
 
 Print-friendly layout (hides buttons/icons, tidy typography)
 
-Auth & Profile
+👤 Authentication & Profile
 
-Registration + Login
+Registration & Login
 
-Profile sections: Overview, My Recipes, Favourites, Settings, Change password,Admin panel
+Profile sections: Overview, My Recipes, Favourites, Settings, Change Password, Admin Panel
 
 Like/Unlike recipes
 
-Add/Edit/Delete your own recipes
+Add, Edit, Delete your own recipes
 
 Image upload with type/size validation (JPG/PNG, max 5 MB)
 
 Accessible inline form validation (error messages, aria attributes)
 
-Admin
+🛠 Admin
 
-Users table with pagination
+User management with pagination
 
-Promote/demote user ↔ admin
+Promote/demote users ↔ admin
 
-CSRF token on sensitive actions
+CSRF token protection on sensitive actions
 
-UX
+📱 UX & Design
 
 Mobile-first responsive design
 
-“Burger” menu on small screens
+Burger menu on small screens
 
-Consistent card grid, pagination with Prev / Next, page number, and jump-to-page
+Consistent recipe card grid
 
- Tech Stack
+Pagination with Prev / Next, page number, and jump-to-page
 
-Backend: PHP 8+, MySQL (mysqli), sessions, cookies
+🧰 Tech Stack
 
-Frontend: Vanilla JS (ES modules), Fetch API
+Backend: PHP 8+, MySQL (MySQLi), sessions, cookies
 
-Styling: CSS 
+Frontend: Vanilla JavaScript (ES Modules), Fetch API
+
+Styling: CSS
 
 Icons: Font Awesome 6 (CDN)
 
-Folder names reflect how the site routes (e.g., /mostPopular/mostPopular.php).
+📂 Folder names reflect routing structure (e.g., /mostPopular/mostPopular.php).
 
-Setup
-1) Requirements
+⚙️ Setup
+Requirements
 
 PHP 8.0+
 
@@ -65,149 +68,88 @@ MySQL/MariaDB
 
 Web server (Apache/Nginx) or PHP built-in server
 
-uploads/ directory must be writable by the web server
+uploads/ directory must be writable
 
-2) Database
+Database
 
-Create a database and import your schema (tables such as users, recipes, likes).
+Create a database and import schema (tables: users, recipes, likes).
 
-3) Configure DB connection
+Configure DB connection in db.php:
 
-Edit db.php with your credentials (example):
+$conn = new mysqli('localhost', 'username', 'password', 'dbname');
+if ($conn->connect_error) {
+    die('DB connection failed: ' . $conn->connect_error);
+}
 
-<?php
-$host = '127.0.0.1';
-$user = 'root';
-$pass = 'password';
-$db   = 'recipes';
-$conn = new mysqli($host, $user, $pass, $db);
-if ($conn->connect_error) { die('DB connection failed: ' . $conn->connect_error); }
-
-5) Run locally
-
-Using the PHP built-in server from the project root:
-
+Run locally
 php -S localhost:8000
+
 
 Open: http://localhost:8000/main/index.php
 
-If using Apache/Nginx, point the docroot to the project root (or adjust paths accordingly).
+For Apache/Nginx, point docroot to project root (adjust paths if needed).
 
- Security Notes
+🔒 Security
 
-Auth via session + auth_token cookie verification.
+Session + auth_token cookie verification
 
-CSRF tokens on admin and sensitive actions.
+CSRF tokens on admin/sensitive actions
 
 File uploads:
 
-Server-side MIME check with finfo (image/jpeg, image/png)
+MIME check via finfo (image/jpeg, image/png)
 
-Max size 5MB
+Max size: 5 MB
 
-Unique file names (uniqid('recipe_', true))
+Unique file names via uniqid('recipe_', true)
 
- Frontend Modules (key ones)
+🖥 UI / UX Details
 
-utils/recipeHelper.js
+Responsive grids collapse to 1 column < 900px
 
-escapeHtml(text) — XSS-safe text rendering
+Burger menu via /burger-toggle.js
 
-renderPagination(container, total, currentPage, limit, onPageChange) — Prev/Next + page indicator + jump-to-page
+Pagination: buttons + page indicator + jump-to-page
 
-likes/likeClicker.js
+Print mode (@media print):
 
-Attaches like/unlike handlers (updates heart icon + count)
+Hides interactive elements
 
-utils/deleHandler.js
+Converts grids to simple flow to avoid page breaks
 
-Confirmation + delete via fetch; callback to refresh the list
-
-Pages fetch JSON from endpoints like:
-
-/mostPopular/loadPopular.php?page=1
-
-/profile/posts/post.php?page=1
-
-/profile/favourites/loadFavourites.php?page=1
-
-/profile/admin/list.php?page=1&limit=10
-
-/profile/admin/update_status.php
-
-/AddRecipe/add_recipe.php
-
-Endpoints return {"status":"success", ...} or an error with message where applicable.
-
- UI/UX Details
-
-Responsive
-
-Grids collapse to a single column under ~900px
-
-Burger menu for small screens (/burger-toggle.js)
-
-Pagination
-
-Buttons + page indicator + direct jump to N
-
-Print
-
-@media print across listing and recipe pages
-
-Hides interactive elements (like buttons/icons)
-
-Switches grid to a simple document flow so pages don’t break awkwardly
-
-
-Usage Flow
+📚 Usage Flow
 
 Register / Login
 
-Add a Recipe
+Add a Recipe (title, description, category, ingredients, instructions, image)
 
-Title, description, category, ingredients (validated), instructions
-
-Upload image (JPG/PNG ≤ 5MB)
-
-Browse
-
-All / Categories / Most Popular
+Browse All / Categories / Most Popular
 
 Like recipes, open details
 
-Profile
+Profile → Overview, My Recipes (edit/delete), Favourites, Settings, Change Password
 
-Overview, My Recipes (edit/delete), Favourites
+Admin (if admin): user list + role updates
 
-Settings (username/gender), Change Password
+📖 Documentation
 
-Admin (if admin)
-
-User list with pagination
-
-Update user roles
-
- Documentation Page
-
-There’s a public Documentation / FAQ page at /documentation/faq.php where you can link:
+Available at: /documentation/documentation.php
+Includes:
 
 Generated source docs
 
-Full project task / requirements
+Full project tasks / requirements
 
 End-user guide (CZ/EN)
 
 Developer notes
 
-Add more sections as needed.
+✅ Deployment Checklist
 
- Deployment Checklist
-
-Set correct db.php credentials on the server
+Set correct db.php credentials on server
 
 Ensure /uploads is writable and not executable
 
-Serve over HTTPS, set secure cookies if possible
+Serve over HTTPS (set secure cookies if possible)
 
-Cache static assets (CSS/JS/images) via your web server
+Cache static assets (CSS/JS/images) on web server
