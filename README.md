@@ -88,7 +88,7 @@ Demo: [RecipeHub Live](https://recipetest.lovestoblog.com/)
 ## Documentation
 Available at: `/documentation/documentation.php`  
 Includes:
-(CZ/EN)
+   (CZ/EN)
 - Project requirements
 - End-user guide
 - Developer notes
