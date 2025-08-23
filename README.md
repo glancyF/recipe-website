@@ -57,7 +57,7 @@ Demo: [RecipeHub Live](https://recipetest.lovestoblog.com/)
    php -S localhost:8000
    ```
 
-6. Open http://localhost:8000/main/index.php in your browser.
+6. Open http://localhost:8000/index.php in your browser.
 
 ---
 
