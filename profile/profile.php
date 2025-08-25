@@ -14,7 +14,8 @@ $extra_css = '
     <link rel="stylesheet" href="/profile/print.css">
 ';
 session_start();
-
+require_once __DIR__ . '/../includes/authorization.php';
+$user = requireAuth();
 $section = $_GET['section'] ?? 'overview';
 require_once __DIR__ .'/../includes/isAdmin.php';
 $isAdmin = isAdmin();
