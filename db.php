@@ -1,9 +1,9 @@
 <?php
 global $conn;
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "zwa_first_db";
+$servername = "servername";
+$username = "username_in_db";
+$password = "your_password";
+$dbname = "your_db_name";
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
