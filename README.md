@@ -7,19 +7,6 @@ Demo: [RecipeHub Live](https://recipetest.lovestoblog.com/)
 
 ---
 
-
-## Table of Contents
-- [Features](#-features)
-- [How to Run](#-how-to-run)
-- [Styling](#-styling)
-- [Limitations](#️-limitations)
-- [Technologies Used](#️-technologies-used)
-- [Documentation](#-documentation)
-- [Deployment Checklist](#-deployment-checklist)
-- [Author](#-author)
-
----
-
 ## Features
 - Home page with “Featured Recipe” hero
 - Browse: Most Popular, All Recipes, Categories
