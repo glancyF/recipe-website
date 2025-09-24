@@ -1,5 +1,5 @@
 <?php
-$PageTitle = 'FAQ';
+$pageTitle = 'FAQ';
 $extra_css = '<link rel="stylesheet" href="/documentation/documentation-style.css">';
 include __DIR__ .'/../includes/header.php';
 ?>
