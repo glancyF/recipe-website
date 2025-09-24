@@ -55,7 +55,8 @@ export class AddRecipeForm extends FormsValidation {
         const list         = document.getElementById("ingredientsList");
         const hiddenInput  = document.getElementById("ingredientsHiddenInput");
         const errorBox     = document.getElementById("IngredientInput-errors");
-
+        hiddenInput.setAttribute("required", "");
+        hiddenInput.setAttribute("aria-errormessage", "IngredientInput-errors");
         const showError = (msg) => {
             if (!errorBox) return;
             errorBox.innerHTML = `<span class="field__errors">${msg}</span>`;
