@@ -1,5 +1,6 @@
 <?php
 global $recipe;
+$pageTitle = 'Edit Recipe';
 $extra_css = '<link rel="stylesheet" href="/AddRecipe/addRecipe-styles.css">';
 include(__DIR__ . '/../../includes/header.php');
 
