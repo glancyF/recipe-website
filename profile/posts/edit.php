@@ -69,7 +69,7 @@ require_once (__DIR__ . '/getPostForEdit.php')
     <div class="field select">
         <label for="category" class="field__label">Category</label>
         <select id="category" name="category" required class="field__control" aria-errormessage="category-errors">
-            <option value="" disabled selected>Select category</option>
+            <option value="" disabled <?= empty($recipe['category']) ? 'selected' : '' ?>>Select category</option>
             <option value="lunch" <?= $recipe['category'] === 'lunch' ? 'selected' : '' ?>>Lunch</option>
             <option value="dessert" <?= $recipe['category'] === 'dessert' ? 'selected' : '' ?>>Dessert</option>
             <option value="snack" <?= $recipe['category'] === 'snack' ? 'selected' : '' ?>>Snack</option>
