@@ -44,12 +44,12 @@ include "../includes/header.php";
                 <li><a href="../profile/logout.php">Logout</a></li>
             </ul>
         </aside>
-        <main class="profile-main">
+        <div class="profile-main">
             <?php
             include "../includes/sections.php";
             loadSection($section);
             ?>
-        </main>
+        </div>
     </div>
     </div>
 
