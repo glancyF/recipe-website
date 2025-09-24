@@ -5,7 +5,7 @@ $extra_css = '<link rel="stylesheet" href="/main/main-style.css">';
 include "../includes/header.php";
 ?>
 
-<main class="home">
+<div class="home">
     <section id="featured" class="hero">
 
         <div class="hero-skeleton">
@@ -27,7 +27,7 @@ include "../includes/header.php";
         <a class="btn" href="/allRecipes/allRecipe.php">All recipes</a>
         <a class="btn" href="/Category/category.php">Categories</a>
     </section>
-</main>
+</div>
 
 <script>
     window.currentUserId = <?= (int)$_SESSION['user_id'] ?>;
