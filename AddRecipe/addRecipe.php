@@ -23,9 +23,9 @@ include_once("../includes/header.php");
             />
         <div class="image-preview-wrapper" id="imagePreviewWrapper">
 
-            <img id="imagePreview" alt="Image preview" />
+            <img id="imagePreview" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw=" alt="Image preview" />
             <button type="button" id="removeImageBtn" aria-label="Remove image">
-                <i class="fa fa-times"></i> <!-- ИСПРАВИЛ -->
+                <i class="fa fa-times"></i> 
             </button>
         </div>
         <span class="field__errors" id="recipeImage-errors" data-js-form-field-errors></span>
@@ -61,6 +61,7 @@ include_once("../includes/header.php");
                     class="field__control"
                     placeholder="Add ingredient.."
                     maxlength="50"
+                    aria-errormessage="IngredientInput-errors"
 
                     />
                     <button type="button" id="addIngredientBtn" aria-label="Add ingredient">
@@ -72,7 +73,7 @@ include_once("../includes/header.php");
             <ul id="ingredientsList" class="ingredients-list">
 
             </ul>
-            <input type="hidden" name="ingredients" id="ingredientsHiddenInput" required  />
+            <input type="hidden" name="ingredients" id="ingredientsHiddenInput"  />
            </div>
 
         </div>
