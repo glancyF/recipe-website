@@ -59,7 +59,6 @@ require_once (__DIR__ . '/getPostForEdit.php')
         <input type="hidden" id="ingredientsHiddenInput" name="ingredients" value="<?= htmlspecialchars($recipe['ingredients']) ?>">
 
     </div>
-<!-- инструкция -->
     <div class="field">
         <label for="instruction" class="field__label">Instruction</label>
         <textarea id="instruction" name="instruction" minlength="20" maxlength="5000" required class="field__control"><?= htmlspecialchars($recipe['instruction']) ?></textarea>
@@ -88,3 +87,7 @@ require_once (__DIR__ . '/getPostForEdit.php')
 </form>
 </div>
 <script type="module" src="/profile/posts/editRecipe.js"></script>
+
+<?php
+include(__DIR__ . '/../../includes/footer.php');
+?>
