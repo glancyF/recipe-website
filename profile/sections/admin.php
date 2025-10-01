@@ -12,6 +12,7 @@ if (empty($_SESSION['csrf_token'])) {
     <h2>User statuses</h2>
 
     <table class="users-table">
+        <caption>List of users with their statuses and available actions</caption>
         <thead>
         <tr>
             <th>ID</th>
