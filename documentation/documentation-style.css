@@ -1,0 +1,134 @@
+@import url("/colors.css");
+
+/* Контейнер страницы */
+.container {
+    max-width: 1100px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    font-family: sans-serif;
+    color: #333;
+}
+
+/* Обёртка контента документации (как твои формы/карточки) */
+.description-container {
+    background-color: rgba(255,255,255,0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(0,0,0,0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    padding: 2rem;
+}
+
+/* Заголовки */
+.description-container h1 {
+    text-align: center;
+    font-size: 2rem;
+    color: var(--color-green-dark, #476622);
+    margin-bottom: 1.5rem;
+}
+.description-container h2 {
+    font-size: 1.25rem;
+    color: var(--color-green-dark, #476622);
+    margin: 1.5rem 0 .75rem;
+}
+
+/* Секции CZ / EN визуально разделим */
+.description-container section {
+    background: rgba(255,255,255,0.6);
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 12px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+
+.description-container section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: .75rem;
+}
+
+.description-container section li a {
+    display: block;
+    background: rgba(255,255,255,0.9);
+    border: 1px solid #e6e6e6;
+    border-radius: 12px;
+    padding: .9rem 1rem;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    transition: transform .15s ease, box-shadow .2s ease, background-color .2s ease, border-color .2s ease;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+    line-height: 1.35;
+}
+
+.description-container section li a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border-color: #dcdcdc;
+    background: #fff;
+}
+
+.description-container section li a:active {
+    transform: translateY(0);
+}
+
+.description-container .note {
+    display: block;
+    font-size: .9rem;
+    color: #666;
+    margin-top: .35rem;
+    font-weight: 400;
+}
+
+/* Адаптив */
+@media (max-width: 640px) {
+    .description-container {
+        padding: 1rem;
+        border-radius: 12px;
+    }
+    .description-container section ul {
+        grid-template-columns: 1fr;
+    }
+    .description-container h1 {
+        font-size: 1.6rem;
+    }
+    .description-container h2 {
+        font-size: 1.1rem;
+    }
+}
+
+@media print {
+    @page { margin: 15mm; }
+    header, footer, nav { display: none !important; }
+
+    html, body, .container {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: #fff !important;
+    }
+
+    .description-container,
+    .description-container section,
+    .description-container section li a {
+        box-shadow: none !important;
+        background: #fff !important;
+    }
+
+    .description-container {
+        border: 1pt solid #ddd;
+        padding: 10mm;
+    }
+
+    .description-container section {
+        border: 1pt solid #eee;
+    }
+
+    .description-container section li a {
+        border: 1pt solid #ddd;
+    }
+}

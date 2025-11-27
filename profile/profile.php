@@ -1,0 +1,58 @@
+<?php
+$pageTitle ='Profile';
+
+$extra_css = '
+    <link rel="stylesheet" href="profile/profile-styles.css">
+    <link rel="stylesheet" href="registration/formregister.css">
+    <link rel="stylesheet" href="profile/settings/settings-styles.css">
+    <link rel="stylesheet" href="profile/password_change/password_change-styles.css">
+    <link rel="stylesheet" href="profile/posts/post-style.css">
+    <link rel="stylesheet" href="profile/overview/mostLikedRecipe-styles.css">
+    <link rel="stylesheet" href="profile/favourites/favourites-styles.css">
+    <link rel="stylesheet" href="profile/admin/admin-styles.css">
+    <link rel="stylesheet" href="pagination.css">
+    <link rel="stylesheet" href="profile/print.css">
+';
+session_start();
+
+require_once __DIR__ . '/../includes/authorization.php';
+$user = requireAuth();
+$section = $_GET['section'] ?? 'overview';
+require_once __DIR__ .'/../includes/isAdmin.php';
+$isAdmin = isAdmin();
+
+if ($section === 'admin' && !$isAdmin) {
+    header('Location: /profile/profile.php?section=overview', true, 302);
+    exit;
+}
+
+
+include "../includes/header.php";
+
+?>
+    <div class="profile-wrapper">
+    <div class="profile-container">
+        <aside class="profile-sidebar">
+            <ul class="menu">
+                <li><a href="profile/profile.php?section=overview" class="<?= $section === 'overview' ? 'active' : '' ?>">Overview</a></li>
+                <li><a href="profile/profile.php?section=posts" class="<?= $section === 'posts' ? 'active' : '' ?>">My recipes</a></li>
+                <li><a href="profile/profile.php?section=favourites" class="<?= $section === 'favourites' ? 'active' : '' ?>">Favourites</a></li>
+                <li><a href="profile/profile.php?section=settings" class="<?= $section === 'settings' ? 'active' : '' ?>">Settings</a></li>
+                <li><a href="profile/profile.php?section=change_pass" class="<?= $section === 'change_pass' ? 'active' : '' ?>">Change password</a></li>
+                <?php if($isAdmin):?>
+                    <li><a href="profile/profile.php?section=admin" class="<?= $section ==='admin' ? 'active' : '' ?>">Admin panel</a></li>
+                <?php endif;?>
+                <li><a href="profile/logout.php">Logout</a></li>
+            </ul>
+        </aside>
+        <div class="profile-main">
+            <?php
+            include "../includes/sections.php";
+            loadSection($section);
+            ?>
+        </div>
+    </div>
+    </div>
+
+<?php
+include '../includes/footer.php';

@@ -1,0 +1,287 @@
+@import url("/~desheval/colors.css");
+
+.form-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 160px);
+    padding: 2rem;
+}
+
+
+.settingsForm {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 480px;
+    width: 480px;
+    margin: 2rem auto;
+    padding: 2.5rem 2rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
+}
+
+
+.field {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.field__label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.field:has([required]) .field__label::after {
+    content: "*";
+    color: red;
+    margin-left: 0.3em;
+}
+
+
+input, button, select, fieldset {
+    border: 2px solid var(--color-gray);
+    border-radius: 8px;
+    padding: 0.75em 1em;
+    font-size: 1.05rem;
+    background-color: var(--color-whiteish);
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--color-green-dark);
+    background-color: #fff;
+}
+
+input[disabled] {
+    background-color: var(--color-white);
+    color: #555;
+}
+
+
+.field__errors {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4em;
+    margin-top: 0.5em;
+    font-size: 0.85rem;
+    color: red;
+    line-height: 1.4;
+    min-height: 1.2em;
+    transition: opacity 0.2s ease-in-out;
+}
+.field__errors:empty {
+    visibility: hidden;
+    opacity: 0;
+    height: 0;
+    pointer-events: none;
+}
+.field__errors span {
+    display: block;
+}
+
+
+
+.field{
+    position: relative;
+}
+
+.fa-pen {
+    position: absolute;
+    top: -0.5rem;
+    right: 0.25rem;
+
+    background-color: var(--color-whiteish);
+    padding: 0.35em;
+    border-radius: 50%;
+    font-size: 1rem;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    z-index: 2;
+}
+
+.fa-pen:hover {
+    transform: scale(1.1);
+    color: var(--color-green-dark);
+}
+
+/* Кнопки */
+form button, .reset-button button, .submit-button button {
+    background-color: var(--color-green-dark);
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.25rem;
+    width: 100%;
+    max-width: 300px;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+form button:hover, .reset-button button:hover, .submit-button button:hover {
+    background-color: #365d1e;
+}
+.reset-button, .submit-button {
+    display: flex;
+    justify-content: center;
+}
+
+
+.radios {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.2rem;
+    margin-top: 0.5rem;
+    padding-top: 1.2rem;
+}
+
+.radios .fa-pen {
+    position: absolute;
+    top: -1.25rem;
+    right: 0.25rem;
+    background-color: var(--color-whiteish);
+    padding: 0.35em;
+    border-radius: 50%;
+    font-size: 1rem;
+    color: gray;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out, transform 0.2s ease-in-out;
+    z-index: 2;
+}
+
+.radios .fa-pen:hover {
+    transform: scale(1.1);
+    color: var(--color-green-dark);
+}
+.radios__control {
+    vertical-align: middle;
+    transform: translateY(1px);
+}
+.radios__label {
+    font-size: 1rem;
+    cursor: pointer;
+}
+.radios:has(input[required]) .radios__legend::after {
+    content: " *";
+    color: red;
+    padding-left: 0.25em;
+}
+.radios .field__errors {
+    flex-basis: 100%;
+    margin-top: 0.2rem;
+}
+
+
+.checkbox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+}
+.checkbox__label {
+    font-weight: 600;
+    cursor: pointer;
+    margin-right: auto;
+}
+.checkbox__control {
+    margin-right: auto;
+}
+.checkbox:has(input[required]) .checkbox__label::after {
+    content: " *";
+    color: red;
+    padding-left: 0.25em;
+}
+.checkbox .field__errors {
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+    color: red;
+    line-height: 1.4;
+}
+
+
+
+
+
+
+@media (max-width: 640px) {
+    .settingsForm {
+        width: 100%;
+        max-width: 100%;
+        margin: 1rem auto;
+        padding: 1.25rem 1rem;
+        gap: 1rem;
+        border-radius: 12px;
+    }
+
+    .field__label { margin-bottom: 0.4rem; }
+
+    .fa-pen {
+        top: -.25rem;
+        right: 0;
+    }
+
+    .radios {
+        gap: .75rem;
+        padding-top: 1rem;
+    }
+
+    .reset-button, .submit-button { justify-content: stretch; }
+    .reset-button button, .submit-button button {
+        max-width: none;
+        font-size: 1.05rem;
+        padding: .75rem 1rem;
+    }
+}
+
+
+@media print {
+    @page { size: A4; margin: 15mm; }
+
+
+    header, nav, footer,
+    .profile-sidebar,
+    .fa-pen,
+    .reset-button, .submit-button { display: none !important; }
+
+
+    .form-wrapper {
+        min-height: auto !important;
+        padding: 0 !important;
+    }
+    .settingsForm {
+        background: #fff !important;
+        box-shadow: none !important;
+        border: 1pt solid #000 !important;
+        border-radius: 6pt !important;
+        width: auto !important;
+        max-width: 100% !important;
+        margin: 0 !important;
+        padding: 10mm !important;
+    }
+
+
+    .settingsForm input,
+    .settingsForm select,
+    .settingsForm fieldset {
+        border: 0 !important;
+        background: transparent !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+    }
+
+
+    .field__label { font-weight: 700; }
+    .field__errors { display: none !important; }
+}

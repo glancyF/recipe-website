@@ -1,0 +1,192 @@
+.recipe-page {
+    max-width: 1000px;
+    width: 100%;
+    margin: 3rem auto;
+    padding: 2.5rem;
+    box-sizing: border-box;
+    overflow-wrap: anywhere;
+    background-color: rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(0, 0, 0, 0.15);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    font-family: sans-serif;
+    color: #333;
+    word-break: break-word;
+    font-size: 1.05rem;
+
+}
+
+.recipe-page h1 {
+    font-size: clamp(1.4rem, 3.2vw + .6rem, 2rem);
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: var(--color-green-dark);
+    text-align: center;
+    line-height: 1.25;
+
+}
+.description,.instruction,.ingredients{ overflow-wrap:anywhere; }
+
+.recipe-page img {
+    width: 100%;
+    height: auto;
+    max-height: min(60vh, 420px);
+    object-fit: cover;
+}
+
+
+.recipe-page .description {
+    font-size: 1.1rem;
+    color: #444;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    text-align: justify;
+}
+
+
+.recipe-page h3 {
+    margin-top: 2rem;
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: var(--color-green-dark);
+}
+
+
+.recipe-page .ingredients {
+    list-style-type: disc;
+    padding-left: 1.5rem;
+    color: #333;
+    margin-top: 0.5rem;
+}
+
+.recipe-page .ingredients li {
+    margin-bottom: 0.4rem;
+    line-height: 1.5;
+}
+
+
+.recipe-page .instruction {
+    margin-top: 1rem;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #444;
+    white-space: pre-wrap;
+    text-align: justify;
+}
+
+
+.category {
+    font-size: 1rem;
+    color: var(--color-green-dark);
+    font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.meta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    margin: 0.5rem 0 1.5rem;
+    font-size: 0.95rem;
+    color: #666;
+    align-items: center;
+}
+
+.meta i {
+    margin-right: 0.4rem;
+    color: var(--color-gray);
+}
+.like-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background-color: rgba(255,255,255,0.8);
+    border-radius: 16px;
+    padding: 4px 10px;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.like-container .fa-heart {
+    color: #aaa;
+    font-size: 1.2rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.like-container .fa-heart.liked {
+    color: #e74c3c;
+    transform: scale(1.2);
+}
+
+.like-count {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+
+@page{ margin: 15mm; }
+@media print{
+
+    header, nav, footer, .like-container,.fa-user,.fa-calendar{ display:none !important; }
+
+    html, body{ background:#fff !important; }
+    .recipe-page{
+        box-shadow:none !important;
+        background:#fff !important;
+        border:1pt solid #ddd;
+        border-radius:6pt;
+        margin:0;
+        padding:10mm;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .recipe-page h1{ font-size: 18pt; color:#000; }
+    .recipe-page h3{ font-size: 13pt; color:#000; margin-top: 8mm; }
+    .meta{ color:#000; gap:2mm; }
+    .meta i{ color:#000; }
+
+    .recipe-page img{
+        width:100% !important;
+        height:auto !important;
+        max-height: 110mm;
+        object-fit: cover;
+        box-shadow:none !important;
+        border-radius:4pt;
+    }
+
+    .description, .instruction{
+        text-align:left;
+        -webkit-line-clamp: initial;
+        max-height: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .recipe-page { padding: 1.25rem; }
+    .recipe-page img { max-height: 340px; }
+}
+
+@media (max-width: 480px) {
+    .recipe-page { padding: 1rem; border-radius: 12px; }
+    .recipe-page img { aspect-ratio: 4/3; max-height: 260px; }
+
+    .recipe-page .meta {
+        grid-template-columns: 1fr;
+        gap: .5rem;
+    }
+    .recipe-page .meta .like-container {
+        justify-self: end;
+    }
+
+    .recipe-page .description,
+    .recipe-page .instruction { font-size: 1rem; }
+}
